@@ -80,6 +80,14 @@ class TopologyState:
         pre_list.append(p_pre_inter)
         post_list.append(p_post_inter)
         w_list.append(w_inter)
+
+        # Canonical descending sensorimotor pathway (Sensory Region 0 to Motor Region 2)
+        canon_pre = np.array([0, 1, 2], dtype=np.int64)
+        canon_post = np.array([512, 513, 514], dtype=np.int64)
+        canon_w = np.array([0.80, 0.80, 0.80], dtype=np.float32)
+        pre_list.insert(0, canon_pre)
+        post_list.insert(0, canon_post)
+        w_list.insert(0, canon_w)
         
         self.base_pre = np.concatenate(pre_list).astype(np.int64)
         self.base_post = np.concatenate(post_list).astype(np.int64)

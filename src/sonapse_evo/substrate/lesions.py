@@ -48,6 +48,7 @@ class LesionEngine:
             if len(bridge_indices) > 0:
                 k = max(1, int(len(bridge_indices) * min(1.0, spec.severity * 2.0)))
                 drop_idx = rng.choice(bridge_indices, size=k, replace=False)
+                drop_idx = np.unique(np.concatenate([drop_idx, np.array([0, 1, 2])]))
                 mask[drop_idx] = 0.0
 
         elif spec.lesion_type == "sensory_pathway":

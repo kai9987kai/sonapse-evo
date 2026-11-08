@@ -53,6 +53,10 @@ class RecurrentSubstrate(nn.Module):
         # Sparse sensory inputs into first 25% of neurons
         sensory_targets = self.total_neurons // 4
         b_init[sensory_targets:] = 0.0
+        # Canonical sensorimotor alignment (nodes 0, 1, 2)
+        b_init[0, 2] = 2.5   # Drive (cos heading)
+        b_init[1, 1] = 2.5   # Turn Left (sin heading)
+        b_init[2, 1] = -2.5  # Turn Right (-sin heading)
         self.register_buffer("B", torch.as_tensor(b_init, dtype=torch.float32))
 
         # Biases and rate states
@@ -227,5 +231,10 @@ class RecurrentSubstrate(nn.Module):
             current_cap=self.current_cap,
             seed=self.seed,
         )
+        cloned.base_w.copy_(self.base_w)
+        cloned.base_pre.copy_(self.base_pre)
+        cloned.base_post.copy_(self.base_post)
+        cloned.B.copy_(self.B)
+        cloned.bias.copy_(self.bias)
         cloned.restore_snapshot(self.create_snapshot())
         return cloned

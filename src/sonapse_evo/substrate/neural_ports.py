@@ -47,10 +47,11 @@ def create_uniform_ports(
         region_nodes = np.arange(start, end)
 
         for p in range(ports_per_region):
-            if len(region_nodes) >= port_width:
-                chosen = rng.choice(region_nodes, size=port_width, replace=False)
+            p_start = start + p * port_width
+            if p_start + port_width <= end:
+                chosen = np.arange(p_start, p_start + port_width)
             else:
-                chosen = rng.choice(region_nodes, size=port_width, replace=True)
+                chosen = rng.choice(region_nodes, size=min(port_width, len(region_nodes)), replace=False)
             chosen.sort()
             port = NeuralPort(
                 port_id=f"R{r}_P{p}",
