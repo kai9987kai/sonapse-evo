@@ -1,3 +1,18 @@
+---
+language:
+- en
+tags:
+- neuromorphic
+- connectome
+- causal-learning
+- neural-grafting
+- continual-learning
+- pytorch
+- autonomous-repair
+- recurrent-neural-networks
+license: apache-2.0
+---
+
 # SONAPSE-EVO: Causal Neural Circuit Evolution, Autonomous Repair and Adaptive Intelligence
 
 **Research Architecture — Version 1.0**
