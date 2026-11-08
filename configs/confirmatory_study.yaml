@@ -1,0 +1,61 @@
+project:
+  name: Sonapse-EVO
+  experiment: confirmatory_evaluation_study
+  schema_version: 1
+
+substrate:
+  adapter: sonapse
+  total_neurons: 768
+  microsteps: 2
+  freeze_original_weights: true
+
+lesions:
+  enabled: true
+  families:
+    - inter_region_bridge
+    - recurrent_memory
+    - targeted_hub
+  severity_fractions:
+    - 0.20
+    - 0.30
+  hide_ground_truth_from_repair_policy: true
+
+confirmatory_design:
+  independent_seeds: 30
+  predeclared_primary_arm: A6
+  primary_baseline_arm: A4
+  significance_level: 0.05
+  power_target: 0.80
+  multiple_testing_correction: holm_bonferroni
+  metrics:
+    - recovery_ratio
+    - catastrophic_forgetting
+    - transitions_to_threshold
+    - jacobian_stability_norm
+
+evaluation:
+  tasks:
+    - forage
+    - delayed_match
+    - predator_avoidance
+  arms:
+    - A0  # frozen damaged
+    - A1  # fine-tuned
+    - A2  # random graft
+    - A3  # matched adapter
+    - A4  # gradient rewiring (RigL)
+    - A5  # correlation graft
+    - A6  # SONAPSE-EVO causal graft
+    - A7  # biological motif
+    - A8  # AETHER donor
+    - A9  # oracle upper bound
+
+transactions:
+  enable_atomic_commit: true
+  require_parent_digest: true
+  rollback_on_failed_validation: true
+
+compute:
+  device: cpu
+  precision: float32
+  maximum_cpu_threads: 4

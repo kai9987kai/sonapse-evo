@@ -1,0 +1,56 @@
+project:
+  name: Sonapse-EVO
+  experiment: smoke_verification
+  schema_version: 1
+
+substrate:
+  adapter: standalone
+  total_neurons: 768
+  num_regions: 3
+  connectome_mode: proxy
+  microsteps: 2
+  freeze_original_weights: true
+
+lesions:
+  enabled: true
+  families:
+    - inter_region_bridge
+  severity_fractions:
+    - 0.25
+
+diagnostics:
+  max_candidate_sites: 16
+  require_persistent_deficit: true
+  allow_no_repair_decision: true
+
+grafts:
+  allowed_types:
+    - low_rank
+  low_rank_dimension: 8
+  source_width: 32
+  target_width: 32
+  maximum_active_grafts: 2
+  maximum_total_aux_current: 0.10
+  initialise_with_zero_effect: true
+
+training:
+  freeze_backbone: true
+  initial_support_steps_per_candidate: 64
+  retain_previous_skills: true
+  isolate_training_state: true
+
+evaluation:
+  tasks:
+    - forage
+  exploratory_training_seeds: 3
+  execute_real_environment_transitions: true
+
+transactions:
+  enable_atomic_commit: true
+  require_parent_digest: true
+  rollback_on_failed_validation: true
+
+compute:
+  device: cpu
+  precision: float32
+  maximum_cpu_threads: 2

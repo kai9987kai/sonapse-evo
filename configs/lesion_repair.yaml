@@ -1,0 +1,81 @@
+project:
+  name: Sonapse-EVO
+  experiment: causal_graft_repair
+  schema_version: 1
+
+substrate:
+  adapter: sonapse
+  total_neurons: 768
+  connectome_sources:
+    - flywire
+    - manc
+    - optic-lobe
+  connectome_mode: proxy
+  microsteps: 2
+  freeze_original_weights: true
+
+lesions:
+  enabled: true
+  families:
+    - random_edges
+    - inter_region_bridge
+    - sensory_pathway
+    - recurrent_memory
+    - targeted_hub
+  severity_fractions:
+    - 0.10
+    - 0.20
+    - 0.30
+  hide_ground_truth_from_repair_policy: true
+
+diagnostics:
+  max_candidate_sites: 64
+  short_probe_rollouts_per_candidate: 4
+  require_persistent_deficit: true
+  allow_no_repair_decision: true
+
+grafts:
+  allowed_types:
+    - low_rank
+    - recurrent
+    - biological
+  low_rank_dimension: 8
+  source_width: 32
+  target_width: 32
+  recurrent_state_width: 16
+  maximum_active_grafts: 4
+  maximum_total_aux_current: 0.10
+  initialise_with_zero_effect: true
+
+training:
+  freeze_backbone: true
+  candidate_shortlist: 8
+  initial_support_steps_per_candidate: 512
+  retain_previous_skills: true
+  isolate_training_state: true
+
+evaluation:
+  tasks:
+    - forage
+    - delayed_match
+  compare_against:
+    - frozen_damaged
+    - fine_tuned
+    - random_graft
+    - matched_adapter
+    - gradient_rewiring
+    - correlation_graft
+  exploratory_training_seeds: 5
+  execute_real_environment_transitions: true
+  record_negative_results: true
+
+transactions:
+  enable_atomic_commit: true
+  require_parent_digest: true
+  preserve_checkpoint_schema: true
+  rollback_on_failed_validation: true
+
+compute:
+  device: cpu
+  precision: float32
+  maximum_cpu_threads: 4
