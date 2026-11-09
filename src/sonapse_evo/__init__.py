@@ -1,9 +1,9 @@
-"""SONAPSE-EVO: Causal Neural Circuit Evolution, Autonomous Repair and Adaptive Intelligence.
+"""SONAPSE-EVO: Autonomous Connectome Discovery, Structural Evolution, Causal Repair and Continual Adaptation.
 
-Proposed Research Architecture — Version 1.0
+Research Architecture — Version 2.0
 """
 
-__version__ = "1.0.0"
+__version__ = "2.0.0"
 
 from .contracts.observations import ObservationSpec, SensoryObservation, ActionCommand
 from .contracts.graft_manifest import GraftSpec, GraftType

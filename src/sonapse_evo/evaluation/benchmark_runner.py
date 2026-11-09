@@ -69,6 +69,30 @@ class ForageNavigationTask:
 
         return self._get_obs(), reward, done, {"dist": dist, "success": dist < 0.8}
 
+    def rollout_episode(
+        self,
+        substrate: RecurrentSubstrate,
+        motor_head: Optional[nn.Module] = None,
+        graft_registry: Optional[Any] = None,
+        max_steps: Optional[int] = None,
+        seed: Optional[int] = None,
+    ) -> float:
+        """Helper to run a full episode rollout on this task."""
+        if motor_head is None:
+            motor_head = nn.Linear(64, 5, bias=False)
+            with torch.no_grad():
+                motor_head.weight.zero_()
+                motor_head.weight[0, 0] = 2.0
+                motor_head.weight[1, 1] = 2.0
+                motor_head.weight[1, 2] = -2.0
+        return run_benchmark_episode(
+            self,
+            substrate,
+            motor_head,
+            registry=graft_registry,
+            seed=seed if seed is not None else 42,
+        )
+
 
 class DelayedCueMatchingTask:
     """Working memory task: cue presented in step 0, delay of N steps, matching action required."""
