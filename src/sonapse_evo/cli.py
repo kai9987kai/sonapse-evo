@@ -205,8 +205,37 @@ def run_lesion_repair(task_name: str = "forage", severity: float = 0.25) -> int:
     return 0
 
 
-def run_benchmark_arms(n_seeds: int = 5) -> int:
-    print(f"=== SONAPSE-EVO 10-Arm Evaluation Study ===")
+def run_discovery(generations: int = 3, population: int = 8) -> int:
+    """Executes Mode B: Autonomous Connectome Architecture Discovery."""
+    print(f"=== SONAPSE-EVO v{__version__} Autonomous Connectome Discovery ===")
+    print(f"Generations: {generations} | Population: {population}")
+    t0 = time.time()
+
+    from .substrate.graph_topology import GraphTopology
+    from .discovery.discovery_engine import DiscoveryEngine
+
+    base_graph = GraphTopology(total_neurons=768, num_regions=3, seed=42)
+    engine = DiscoveryEngine(base_graph, population_size=population, seed=42)
+
+    champion, full_pop = engine.run_discovery_cycle(generations=generations, verbose=True)
+    dt = time.time() - t0
+
+    print(f"\nDiscovery Cycle Completed in {dt:.2f}s")
+    print(f"--- Pareto Champion: {champion.genotype_id} ---")
+    print(f"Pareto Rank:        {champion.pareto_rank} (Front 0 = Optimal)")
+    print(f"Scalar Utility:     {champion.scalar_utility:+.4f}")
+    print(f"In-Dist Return:     {champion.fitness_vector[0]:.2f}")
+    print(f"Held-Out Return:    {champion.fitness_vector[1]:.2f}")
+    print(f"Latency Penalty:    {champion.fitness_vector[4]:.2f} ms")
+    print(f"Memory Footprint:   {abs(champion.fitness_vector[5]):.2f} KB")
+    print(f"Applied Operators:  {', '.join(champion.applied_operators) if champion.applied_operators else 'None (Root)'}")
+    print(f"Evidence Tier:      {champion.evidence_tier.value}")
+    return 0
+
+
+def run_benchmark_arms(n_seeds: int = 5, use_authentic: bool = False) -> int:
+    mode_label = "Authentic Scientific" if use_authentic else "Matched Baseline"
+    print(f"=== SONAPSE-EVO 10-Arm Evaluation Study ({mode_label}) ===")
     print(f"Evaluating arms A0 - A9 across {n_seeds} paired seeds...")
 
     topology = TopologyState(total_neurons=768, num_regions=3, seed=42)
@@ -241,7 +270,7 @@ def run_benchmark_arms(n_seeds: int = 5) -> int:
         returns = []
         for s in range(n_seeds):
             seed = 100 + s * 137
-            sub_arm, reg_arm, _ = factory.build_arm(arm)
+            sub_arm, reg_arm, _ = factory.build_arm(arm, use_authentic=use_authentic)
             ret = run_benchmark_episode(env, sub_arm, motor, registry=reg_arm, seed=seed, motor_offset=512)
             returns.append(ret)
         arm_results[arm] = returns
@@ -271,6 +300,14 @@ def main():
 
     bench_p = subparsers.add_parser("benchmark", help="Run 10-arm matched control study")
     bench_p.add_argument("--seeds", type=int, default=5, help="Number of seeds")
+    bench_p.add_argument("--authentic", action="store_true", help="Run authentic scientific baselines (RigL, true covariance, trained controls)")
+
+    bench_v2_p = subparsers.add_parser("benchmark-v2", help="Run authentic 10-arm scientific benchmark")
+    bench_v2_p.add_argument("--seeds", type=int, default=5, help="Number of seeds")
+
+    disc_p = subparsers.add_parser("discover", help="Run Mode B: Autonomous Connectome Architecture Discovery")
+    disc_p.add_argument("--generations", type=int, default=3, help="Evolutionary generations")
+    disc_p.add_argument("--population", type=int, default=8, help="Population size")
 
     serve_p = subparsers.add_parser("serve", help="Launch observatory dashboard")
     serve_p.add_argument("--port", type=int, default=8890, help="Web server port")
@@ -282,7 +319,11 @@ def main():
     elif args.subcommand == "lesion-repair":
         sys.exit(run_lesion_repair(args.task, args.severity))
     elif args.subcommand == "benchmark":
-        sys.exit(run_benchmark_arms(args.seeds))
+        sys.exit(run_benchmark_arms(args.seeds, use_authentic=args.authentic))
+    elif args.subcommand == "benchmark-v2":
+        sys.exit(run_benchmark_arms(args.seeds, use_authentic=True))
+    elif args.subcommand == "discover":
+        sys.exit(run_discovery(args.generations, args.population))
     elif args.subcommand == "serve":
         from .observatory.server import run_server
         run_server(args.port)

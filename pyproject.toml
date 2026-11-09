@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sonapse-evo"
-version = "1.0.0"
-description = "Causal Neural Circuit Evolution, Autonomous Repair and Adaptive Intelligence"
+version = "2.0.0"
+description = "Autonomous Connectome Discovery, Structural Evolution, Causal Repair and Continual Adaptation"
 readme = "README.md"
 authors = [{ name = "Sonapse Research Team" }]
 license = { text = "Apache-2.0" }

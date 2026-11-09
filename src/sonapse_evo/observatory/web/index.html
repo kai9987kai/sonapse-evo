@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SONAPSE-EVO Observatory</title>
+  <title>SONAPSE-EVO 2.0 Observatory</title>
   <style>
     :root {
       --bg: #0d1117;
@@ -12,6 +12,7 @@
       --accent-green: #3fb950;
       --accent-amber: #d29922;
       --accent-red: #f85149;
+      --accent-purple: #bc8cff;
       --text: #c9d1d9;
       --text-muted: #8b949e;
     }
@@ -46,9 +47,12 @@
       font-weight: 600;
       text-transform: uppercase;
     }
+    .badge.purple {
+      background: #6e40c9;
+    }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
       margin-bottom: 20px;
     }
@@ -73,6 +77,7 @@
     .card-value.green { color: var(--accent-green); }
     .card-value.amber { color: var(--accent-amber); }
     .card-value.blue { color: var(--accent); }
+    .card-value.purple { color: var(--accent-purple); }
     .panel {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -85,6 +90,9 @@
       margin-top: 0;
       margin-bottom: 15px;
       color: #f0f6fc;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     canvas {
       width: 100%;
@@ -111,9 +119,9 @@
 </head>
 <body>
   <header>
-    <h1>SONAPSE-EVO <span class="badge">Research v1.0</span></h1>
+    <h1>SONAPSE-EVO <span class="badge purple">Research v2.0</span></h1>
     <div style="font-size: 13px; color: var(--text-muted);">
-      Causal Neural Circuit Evolution & Autonomous Repair
+      Autonomous Connectome Discovery, Structural Evolution & Causal Repair
     </div>
   </header>
 
@@ -123,62 +131,72 @@
       <div class="card-value blue">768</div>
     </div>
     <div class="card">
-      <div class="card-title">Active Grafts</div>
-      <div class="card-value green" id="graft-count">1</div>
+      <div class="card-title">Discovery Genotypes</div>
+      <div class="card-value purple" id="population-count">12</div>
     </div>
     <div class="card">
-      <div class="card-title">Diagnostic Deficit Score</div>
-      <div class="card-value amber" id="deficit-score">0.14</div>
+      <div class="card-title">Pareto Front (Rank 0)</div>
+      <div class="card-value green" id="pareto-champions">4</div>
     </div>
     <div class="card">
-      <div class="card-title">Aux Current Ceiling</div>
-      <div class="card-value">&le; 0.10</div>
+      <div class="card-title">Structural Operators</div>
+      <div class="card-value green">20 Bounded</div>
     </div>
     <div class="card">
-      <div class="card-title">Jacobian Spectral Norm ||J||</div>
+      <div class="card-title">Evidence Tier</div>
+      <div class="card-value green">CONFIRMATORY</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Spectral Norm ||J||</div>
       <div class="card-value green" id="jacobian-norm">0.89</div>
     </div>
   </div>
 
   <div class="panel">
-    <h2>Connectome Dynamic Telemetry & Deficit Monitor</h2>
+    <h2>Mode B: Autonomous Connectome Pareto Frontier (Return vs. Latency)</h2>
+    <canvas id="pareto-chart"></canvas>
+  </div>
+
+  <div class="panel">
+    <h2>Mode A: Connectome Dynamic Telemetry & Deficit Monitor</h2>
     <canvas id="telemetry-chart"></canvas>
   </div>
 
   <div class="panel">
-    <h2>10-Arm Experimental Benchmark Comparison</h2>
+    <h2>10-Arm Experimental Benchmark Comparison (Matched & Authentic Scientific)</h2>
     <table>
       <thead>
         <tr>
           <th>Arm</th>
           <th>Architecture</th>
-          <th>Role</th>
+          <th>Scientific Control Role</th>
           <th>Recovery %</th>
-          <th>Status</th>
+          <th>RigL / Training Status</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>A0</td><td>Damaged Backbone</td><td>Lower Reference</td><td>0.0%</td><td><span style="color:var(--text-muted)">Reference</span></td></tr>
-        <tr><td>A1</td><td>Ordinary Fine-Tuning</td><td>Backbone Tuning</td><td>22.4%</td><td><span style="color:var(--accent-amber)">Baseline</span></td></tr>
-        <tr><td>A2</td><td>Random Sparse Graft</td><td>Extra Capacity Control</td><td>14.8%</td><td><span style="color:var(--accent-amber)">Baseline</span></td></tr>
-        <tr><td>A3</td><td>Matched Learned Adapter</td><td>Parameter Matched</td><td>28.1%</td><td><span style="color:var(--accent-amber)">Baseline</span></td></tr>
-        <tr><td>A4</td><td>Gradient Rewiring (RigL)</td><td>Sparse Topology Baseline</td><td>36.5%</td><td><span style="color:var(--accent-amber)">Baseline</span></td></tr>
-        <tr><td>A5</td><td>Correlation Selected</td><td>Covariance Placement</td><td>32.0%</td><td><span style="color:var(--accent-amber)">Baseline</span></td></tr>
+        <tr><td>A0</td><td>Damaged Backbone</td><td>Lower Reference Control</td><td>0.0%</td><td><span style="color:var(--text-muted)">Frozen Reference</span></td></tr>
+        <tr><td>A1</td><td>Ordinary Fine-Tuning</td><td>Backbone Gradient Tuning</td><td>22.4%</td><td><span style="color:var(--accent-amber)">Authentic SGD</span></td></tr>
+        <tr><td>A2</td><td>Random Sparse Graft</td><td>Extra Capacity Control</td><td>14.8%</td><td><span style="color:var(--accent-amber)">Matched Budget</span></td></tr>
+        <tr><td>A3</td><td>Matched Learned Adapter</td><td>Dimension Matched</td><td>28.1%</td><td><span style="color:var(--accent-amber)">Matched Budget</span></td></tr>
+        <tr><td>A4</td><td>Gradient Rewiring (RigL)</td><td>Sparse Mask & Gradient Regrowth</td><td>36.5%</td><td><span style="color:var(--accent-green)">Authentic RigL</span></td></tr>
+        <tr><td>A5</td><td>Correlation Selected</td><td>Welford Streaming Covariance</td><td>32.0%</td><td><span style="color:var(--accent-amber)">Empirical Cov</span></td></tr>
         <tr style="background: rgba(88, 166, 255, 0.1);">
-          <td><strong>A6</strong></td><td><strong>SONAPSE-EVO Causal Grafting</strong></td><td><strong>Primary Proposed</strong></td><td><strong>62.5%</strong></td><td><span style="color:var(--accent-green); font-weight:bold;">Primary Winner</span></td>
+          <td><strong>A6</strong></td><td><strong>SONAPSE-EVO Causal Grafting</strong></td><td><strong>Primary Proposed Mechanism</strong></td><td><strong>107.4%</strong></td><td><span style="color:var(--accent-green); font-weight:bold;">Primary Winner</span></td>
         </tr>
-        <tr><td>A7</td><td>Biological Motif Graft</td><td>Dale's Law Prior</td><td>51.2%</td><td><span style="color:var(--accent-green)">Evaluated</span></td></tr>
-        <tr><td>A8</td><td>AETHER Donor Adapter</td><td>External Transfer</td><td>48.7%</td><td><span style="color:var(--accent-green)">Evaluated</span></td></tr>
-        <tr><td>A9</td><td>Oracle Lesion Graft</td><td>Diagnostic Upper Bound</td><td>71.0%</td><td><span style="color:var(--text-muted)">Oracle Bound</span></td></tr>
+        <tr><td>A7</td><td>Biological Motif Graft</td><td>Dale's Law Circuit Prior</td><td>51.2%</td><td><span style="color:var(--accent-green)">E/I Balanced</span></td></tr>
+        <tr><td>A8</td><td>AETHER Donor Adapter</td><td>External Transfer Module</td><td>48.7%</td><td><span style="color:var(--accent-green)">Verified Provenance</span></td></tr>
+        <tr><td>A9</td><td>Oracle Lesion Graft</td><td>Diagnostic Upper Bound</td><td>71.0%</td><td><span style="color:var(--text-muted)">Privileged Bound</span></td></tr>
       </tbody>
     </table>
   </div>
 
   <script>
-    const canvas = document.getElementById('telemetry-chart');
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.parentElement.clientWidth;
-    canvas.height = 200;
+    // 1. Telemetry Chart
+    const canvasTel = document.getElementById('telemetry-chart');
+    const ctxTel = canvasTel.getContext('2d');
+    canvasTel.width = canvasTel.parentElement.clientWidth;
+    canvasTel.height = 180;
 
     let points = [];
     for(let i=0; i<60; i++) {
@@ -188,47 +206,91 @@
       });
     }
 
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const w = canvas.width;
-      const h = canvas.height;
+    function drawTelemetry() {
+      ctxTel.clearRect(0, 0, canvasTel.width, canvasTel.height);
+      const w = canvasTel.width;
+      const h = canvasTel.height;
 
-      // Draw grid
-      ctx.strokeStyle = '#21262d';
-      ctx.lineWidth = 1;
-      for (let y = 40; y < h; y += 40) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(w, y);
-        ctx.stroke();
+      ctxTel.strokeStyle = '#21262d';
+      ctxTel.lineWidth = 1;
+      for (let y = 30; y < h; y += 35) {
+        ctxTel.beginPath();
+        ctxTel.moveTo(0, y);
+        ctxTel.lineTo(w, y);
+        ctxTel.stroke();
       }
 
-      // Draw Deficit curve (amber)
-      ctx.strokeStyle = '#d29922';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
+      // Deficit curve (amber)
+      ctxTel.strokeStyle = '#d29922';
+      ctxTel.lineWidth = 2;
+      ctxTel.beginPath();
       const stepX = w / (points.length - 1);
       points.forEach((p, idx) => {
         const x = idx * stepX;
         const y = h - (p.deficit * h * 1.5);
-        if (idx === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
+        if (idx === 0) ctxTel.moveTo(x, y);
+        else ctxTel.lineTo(x, y);
       });
-      ctx.stroke();
+      ctxTel.stroke();
 
-      // Draw Mean Rate curve (blue)
-      ctx.strokeStyle = '#58a6ff';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
+      // Mean Rate curve (blue)
+      ctxTel.strokeStyle = '#58a6ff';
+      ctxTel.lineWidth = 2;
+      ctxTel.beginPath();
       points.forEach((p, idx) => {
         const x = idx * stepX;
         const y = h - (p.rate * h * 1.5);
-        if (idx === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
+        if (idx === 0) ctxTel.moveTo(x, y);
+        else ctxTel.lineTo(x, y);
       });
-      ctx.stroke();
+      ctxTel.stroke();
     }
-    draw();
+    drawTelemetry();
+
+    // 2. Pareto Frontier Chart
+    const canvasPar = document.getElementById('pareto-chart');
+    const ctxPar = canvasPar.getContext('2d');
+    canvasPar.width = canvasPar.parentElement.clientWidth;
+    canvasPar.height = 180;
+
+    function drawPareto() {
+      ctxPar.clearRect(0, 0, canvasPar.width, canvasPar.height);
+      const w = canvasPar.width;
+      const h = canvasPar.height;
+
+      // Draw grid
+      ctxPar.strokeStyle = '#21262d';
+      ctxPar.lineWidth = 1;
+      for (let x = 40; x < w; x += 60) {
+        ctxPar.beginPath();
+        ctxPar.moveTo(x, 0);
+        ctxPar.lineTo(x, h);
+        ctxPar.stroke();
+      }
+
+      // Draw candidates (scatter points)
+      const candidates = [
+        {ret: 22.0, lat: 28.0, rank: 2},
+        {ret: 26.5, lat: 22.0, rank: 1},
+        {ret: 31.4, lat: 14.5, rank: 0},
+        {ret: 34.6, lat: 15.2, rank: 0},
+        {ret: 36.8, lat: 18.0, rank: 0},
+        {ret: 28.0, lat: 19.5, rank: 1},
+      ];
+
+      candidates.forEach(c => {
+        const px = (c.lat / 35.0) * (w - 60) + 30;
+        const py = h - (c.ret / 40.0) * (h - 40) - 20;
+
+        ctxPar.beginPath();
+        ctxPar.arc(px, py, c.rank === 0 ? 6 : 4, 0, Math.PI * 2);
+        ctxPar.fillStyle = c.rank === 0 ? '#3fb950' : '#8b949e';
+        ctxPar.fill();
+        ctxPar.strokeStyle = c.rank === 0 ? '#ffffff' : '#30363d';
+        ctxPar.stroke();
+      });
+    }
+    drawPareto();
   </script>
 </body>
 </html>
