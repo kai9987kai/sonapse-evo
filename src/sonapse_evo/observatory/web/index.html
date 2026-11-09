@@ -256,16 +256,25 @@
       <div class="card-value amber" id="stat-deficit">0.12</div>
     </div>
     <div class="card">
-      <div class="card-title">Discovery Generation</div>
+      <div class="card-title">Discovery Gen</div>
       <div class="card-value purple" id="stat-generation">Gen 1</div>
     </div>
     <div class="card">
-      <div class="card-title">Pareto Champions (Rank 0)</div>
-      <div class="card-value green" id="stat-champions">4</div>
+      <div class="card-title">Phase Criticality</div>
+      <div class="card-value green" id="stat-lle">&lambda; = +0.002</div>
+      <div style="font-size:10px; color:var(--text-muted);" id="stat-regime">EDGE-OF-CHAOS</div>
     </div>
     <div class="card">
-      <div class="card-title">Mean Rate &lt;r&gt;</div>
-      <div class="card-value blue" id="stat-mean-rate">0.28</div>
+      <div class="card-title">Dopamine RPE (DA)</div>
+      <div class="card-value blue" id="stat-da">0.18</div>
+    </div>
+    <div class="card">
+      <div class="card-title">ACh Uncertainty</div>
+      <div class="card-value amber" id="stat-ach">0.09</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Pareto Champions</div>
+      <div class="card-value green" id="stat-champions">4</div>
     </div>
     <div class="card">
       <div class="card-title">Spectral Norm ||J||</div>
@@ -275,6 +284,15 @@
       <div class="card-title">Evidence Tier</div>
       <div class="card-value green" id="stat-evidence">CONFIRMATORY</div>
     </div>
+  </div>
+
+  <!-- Live Connectome Network Diagram -->
+  <div class="panel">
+    <div class="panel-header">
+      <h2>Live Connectome Circuit & Signal Propagation</h2>
+      <span style="font-size: 11px; color: var(--text-muted);" id="net-tract-label">Sensory Hub (R0) &rarr; Memory (R1) &rarr; Motor Hub (R2)</span>
+    </div>
+    <canvas id="connectome-network-canvas" style="height: 120px;"></canvas>
   </div>
 
   <!-- Live Animated Graphs Row -->
@@ -403,12 +421,18 @@
     const ctxPar = cPar.getContext('2d');
     const cTel = document.getElementById('telemetry-chart');
     const ctxTel = cTel.getContext('2d');
+    const cNet = document.getElementById('connectome-network-canvas');
+    const ctxNet = cNet.getContext('2d');
+
+    let animTick = 0;
 
     function resizeCanvases() {
       cPar.width = cPar.parentElement.clientWidth;
       cPar.height = 180;
       cTel.width = cTel.parentElement.clientWidth;
       cTel.height = 180;
+      cNet.width = cNet.parentElement.clientWidth;
+      cNet.height = 120;
     }
     window.addEventListener('resize', resizeCanvases);
     resizeCanvases();
@@ -470,9 +494,21 @@
       document.getElementById('def-task').innerText = dv.r_task.toFixed(3);
       document.getElementById('def-stab').innerText = dv.s_stab.toFixed(3);
 
+      // Criticality & Neuromodulators
+      if (data.criticality) {
+        const lle = data.criticality.lyapunov_exponent;
+        document.getElementById('stat-lle').innerText = `λ = ${lle > 0 ? '+' : ''}${lle.toFixed(3)}`;
+        document.getElementById('stat-regime').innerText = data.criticality.regime.replace(/_/g, ' ');
+      }
+      if (data.neuromodulators) {
+        document.getElementById('stat-da').innerText = data.neuromodulators.dopamine_rpe.toFixed(2);
+        document.getElementById('stat-ach').innerText = data.neuromodulators.acetylcholine_unc.toFixed(2);
+      }
+
       // Render Charts
       drawPareto(data.mode_b.pareto_points);
       drawTelemetry(data.telemetry_stream);
+      drawConnectomeNetwork(data);
 
       // Population Table
       renderPopulationTable(data.mode_b.population);
@@ -577,6 +613,108 @@
         else ctxTel.lineTo(x, y);
       });
       ctxTel.stroke();
+    }
+
+    function drawConnectomeNetwork(data) {
+      animTick += 0.05;
+      const w = cNet.width;
+      const h = cNet.height;
+      ctxNet.clearRect(0, 0, w, h);
+
+      const xSens = w * 0.15;
+      const xMem = w * 0.50;
+      const xMot = w * 0.85;
+
+      const isLesioned = data.mode_a && data.mode_a.status === 'LESION_ACTIVE';
+
+      // 1. Draw inter-region edges
+      // Sensory -> Memory
+      ctxNet.strokeStyle = '#238636';
+      ctxNet.lineWidth = 2;
+      ctxNet.beginPath();
+      ctxNet.moveTo(xSens + 10, h * 0.5);
+      ctxNet.lineTo(xMem - 10, h * 0.5);
+      ctxNet.stroke();
+
+      // Memory -> Motor
+      ctxNet.strokeStyle = '#6e40c9';
+      ctxNet.lineWidth = 2;
+      ctxNet.beginPath();
+      ctxNet.moveTo(xMem + 10, h * 0.5);
+      ctxNet.lineTo(xMot - 10, h * 0.5);
+      ctxNet.stroke();
+
+      // Direct Descending Tract / Causal Graft Bridge (Arched top)
+      ctxNet.lineWidth = 2.5;
+      if (isLesioned) {
+        ctxNet.strokeStyle = '#f85149';
+        ctxNet.setLineDash([6, 6]);
+      } else {
+        ctxNet.strokeStyle = '#3fb950';
+        ctxNet.setLineDash([]);
+      }
+      ctxNet.beginPath();
+      ctxNet.moveTo(xSens, h * 0.35);
+      ctxNet.quadraticCurveTo(xMem, 10, xMot, h * 0.35);
+      ctxNet.stroke();
+      ctxNet.setLineDash([]); // Reset
+
+      // Bridge status label
+      ctxNet.fillStyle = isLesioned ? '#f85149' : '#3fb950';
+      ctxNet.font = '11px sans-serif';
+      ctxNet.textAlign = 'center';
+      ctxNet.fillText(isLesioned ? 'SEVERED DESCENDING BRIDGE (LESION)' : 'ACTIVE CAUSAL GRAFT BRIDGE (R0 -> R2)', xMem, 22);
+
+      // Signal Pulse Animation along the bridge
+      if (!isLesioned) {
+        const t = (animTick % 1.0);
+        const px = (1 - t) * (1 - t) * xSens + 2 * (1 - t) * t * xMem + t * t * xMot;
+        const py = (1 - t) * (1 - t) * (h * 0.35) + 2 * (1 - t) * t * 10 + t * t * (h * 0.35);
+
+        ctxNet.beginPath();
+        ctxNet.arc(px, py, 4, 0, Math.PI * 2);
+        ctxNet.fillStyle = '#ffffff';
+        ctxNet.fill();
+        ctxNet.shadowColor = '#3fb950';
+        ctxNet.shadowBlur = 8;
+        ctxNet.stroke();
+        ctxNet.shadowBlur = 0;
+      }
+
+      // 2. Draw Neuropil Hub Nodes
+      function drawHub(x, y, label, sublabel, color, act) {
+        ctxNet.beginPath();
+        ctxNet.arc(x, y, 16 + act * 10, 0, Math.PI * 2);
+        ctxNet.fillStyle = color;
+        ctxNet.globalAlpha = 0.25;
+        ctxNet.fill();
+        ctxNet.globalAlpha = 1.0;
+
+        ctxNet.beginPath();
+        ctxNet.arc(x, y, 14, 0, Math.PI * 2);
+        ctxNet.fillStyle = '#161b22';
+        ctxNet.strokeStyle = color;
+        ctxNet.lineWidth = 2;
+        ctxNet.fill();
+        ctxNet.stroke();
+
+        ctxNet.fillStyle = '#f0f6fc';
+        ctxNet.font = 'bold 11px sans-serif';
+        ctxNet.textAlign = 'center';
+        ctxNet.fillText(label, x, y + 4);
+
+        ctxNet.font = '10px sans-serif';
+        ctxNet.fillStyle = '#8b949e';
+        ctxNet.fillText(sublabel, x, y + 26);
+      }
+
+      const act0 = data.connectome.regions[0].activity;
+      const act1 = data.connectome.regions[1].activity;
+      const act2 = data.connectome.regions[2].activity;
+
+      drawHub(xSens, h * 0.5, 'R0', 'Sensory (256)', '#3fb950', act0);
+      drawHub(xMem, h * 0.5, 'R1', 'Central (256)', '#bc8cff', act1);
+      drawHub(xMot, h * 0.5, 'R2', 'Motor (256)', '#58a6ff', act2);
     }
 
     function renderPopulationTable(pop) {

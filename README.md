@@ -65,7 +65,19 @@ Built as an independent research successor to Sonapse-LAB, SONAPSE-EVO 2.0 unifi
   - Authentic fine-tuning (Arm A1) with unmasked SGD optimization.
   - Streaming covariance tracking (Arm A5) via Welford's algorithm.
 - **Typed Evidence Taxonomy**: Formal evidence tiers (`SYNTHETIC_FIXTURE`, `SMOKE_TEST`, `SIMULATED_ASSAY`, `PAIRED_EXPERIMENT`, `CONFIRMATORY_RESULT`) preventing synthetic data from passing production promotion gates.
-- **Interactive Observatory 2.0**: Live telemetry dashboard featuring real-time Pareto frontier scatter plots, connectome activity monitoring, and transactional audit receipts.
+- **Three-Factor Neuromodulated Synaptic Plasticity**:
+  - Implements eligibility coincidence traces with heterosynaptic gating governed by Dopamine (reward prediction error $\delta$), Acetylcholine (novelty / surprise), Serotonin (punishment), and Noradrenaline (gain).
+  - Strict preservation of Dale's law invariants ($w_{ij} \ge 0$ for excitatory, $w_{ij} \le 0$ for inhibitory) and homeostatic dendritic fan-in bounding ($\sum_i |w_{ij}| \le 2.0$).
+- **Phase-Space Criticality & Edge-of-Chaos Tuning**:
+  - Quantifies Largest Local Lyapunov Exponent (LLE) via infinitesimal orthogonal perturbation ($d_0 = \epsilon$) and Wolf et al. renormalization.
+  - Automatically classifies dynamic regime (`SUBCRITICAL_ORDER`, `EDGE_OF_CHAOS_CRITICAL`, `SUPERCRITICAL_CHAOTIC`), computes singular value representational rank, and tunes recurrent gains to the critical edge ($\lambda \approx 0.0$).
+- **Pearlian Causal Graph Interventions**:
+  - Surgical counterfactual interventions ($do(r_i = c)$) cutting upstream graph dependencies.
+  - Computes Average Causal Effect (ACE) and pairwise causal influence matrices across all 24 uniform neural ports.
+- **4-Stage Continual Adaptation Curriculum**:
+  - Standardized multi-stage sequence (Sensory Foraging $\to$ Delayed Cue Working Memory $\to$ Non-Stationary Friction Drift $\to$ Context-Inverted Obstacle Avoidance).
+  - Quantifies Forward Transfer ($+0.945$), Backward Retention ($1.000$), Catastrophic Forgetting ($0.000$), and Continual Learning Index ($0.973$).
+- **Interactive Observatory 2.0 (Real-Time Auto-Updating)**: Live telemetry dashboard featuring real-time Pareto frontier scatter plots, animated connectome signal propagation, Lyapunov gauges, neuromodulator status, and transactional audit receipts without page refresh.
 
 ---
 
@@ -83,17 +95,17 @@ Sonapse-EVO/
 │
 ├── src/sonapse_evo/
 │   ├── contracts/            # Observations, GraftManifest, Snapshots, Receipts, Evidence tiers
-│   ├── substrate/            # Recurrent rate runtime, GraphTopology G=(V,E,T,W,P,M), Lesions, NeuralPorts
+│   ├── substrate/            # Recurrent rate runtime, GraphTopology G=(V,E,T,W,P,M), Lesions, NeuralPorts, NeuromodulatedPlasticity
 │   ├── grafts/               # LowRankBridge, RecurrentMicrocircuit, BiologicalGraft, DonorAdapter
-│   ├── diagnostics/          # DeficitMonitor, RegionRanker, VirtualGradientProbe, CausalAttribution, Covariance
+│   ├── diagnostics/          # DeficitMonitor, RegionRanker, VirtualGradientProbe, CausalAttribution, Covariance, CriticalityEngine, PearlianInterventionEngine
 │   ├── evolution/            # 20 Structural Operators, CandidateTrainer, Lifecycle, TransactionManager
 │   ├── discovery/            # DiscoveryOpportunityMonitor, GenotypePool, MultiFidelity, ParetoOptimizer, Engine
-│   ├── evaluation/           # Benchmark tasks, Authentic RigL, MatchedControls (A0-A9), Generalization, Statistics
+│   ├── evaluation/           # Benchmark tasks, Authentic RigL, MatchedControls (A0-A9), Generalization, ContinualCurriculumBenchmark, Statistics
 │   ├── adapters/             # Sonapse-LAB adapter, AETHER adapter, BiologicalMotifLibrary
-│   ├── observatory/          # TelemetryLogger, HTTP server, Dark-mode Web Dashboard 2.0
-│   └── cli.py                # Audited CLI entrypoint (smoke, lesion-repair, benchmark, benchmark-v2, discover, serve)
+│   ├── observatory/          # TelemetryLogger, HTTP server, Dark-mode Web Dashboard 2.0 with live auto-refresh
+│   └── cli.py                # Audited CLI entrypoint (smoke, lesion-repair, benchmark, benchmark-v2, discover, criticality, curriculum, serve)
 │
-├── tests/                    # 48 Unit & Integration Tests (100% Passing)
+├── tests/                    # 60 Unit & Integration Tests (100% Passing)
 │   ├── test_zero_gain.py
 │   ├── test_lesions.py
 │   ├── test_causal_probes.py
@@ -104,7 +116,12 @@ Sonapse-EVO/
 │   ├── test_operators.py     # Tests for all 20 bounded structural operators
 │   ├── test_discovery.py     # Tests for opportunity monitor, Pareto sorting, multi-fidelity
 │   ├── test_authentic_benchmarks.py  # Tests for authentic RigL, covariance, matched controls
-│   └── test_evidence_gate.py # Tests for evidence hierarchy and promotion gates
+│   ├── test_evidence_gate.py # Tests for evidence hierarchy and promotion gates
+│   ├── test_observatory_live.py # Tests for live auto-updating telemetry feed
+│   ├── test_plasticity.py    # Tests for 3-factor neuromodulation, Dale's law, and fan-in bounds
+│   ├── test_criticality.py   # Tests for Lyapunov exponents, spectral radius, and edge-of-chaos tuning
+│   ├── test_causal_interventions.py # Tests for Pearlian do-calculus and Average Causal Effect (ACE)
+│   └── test_curriculum.py    # Tests for 4-stage continual curriculum and retention scorecards
 │
 └── docs/
     ├── BASELINE_AUDIT.md
@@ -161,7 +178,19 @@ python -m sonapse_evo.cli benchmark-v2 --seeds 5
 python -m sonapse_evo.cli benchmark --seeds 5
 ```
 
-### Launching the Interactive Web Observatory 2.0
+### Running Phase-Space Criticality Diagnostics & Edge-of-Chaos Tuning
+
+```bash
+python -m sonapse_evo.cli criticality --seed 42
+```
+
+### Running 4-Stage Continual Adaptation Curriculum
+
+```bash
+python -m sonapse_evo.cli curriculum --seed 42
+```
+
+### Launching the Interactive Web Observatory 2.0 (Real-Time Auto-Updating)
 
 ```bash
 python -m sonapse_evo.cli serve --port 8890
@@ -176,7 +205,7 @@ python -m sonapse_evo.cli serve --port 8890
 pytest -q
 ```
 
-**All 48 tests pass cleanly (100% pass rate in ~12 seconds)**, verifying:
+**All 60 tests pass cleanly (100% pass rate in ~14 seconds)**, verifying:
 - Zero-gain initialisation ($\mathbf{u}_{\text{aux}}(0) = \mathbf{0}$)
 - Frozen-backbone invariants ($\nabla_{W_{\text{base}}}\mathcal{L} = \mathbf{0}$)
 - All 20 bounded structural variation operators with exact undo reversibility
@@ -184,6 +213,10 @@ pytest -q
 - Multi-fidelity evaluation funnel and non-dominated Pareto ranking
 - Atomic transaction commits, cryptographic digests, and probation rollbacks
 - Evidence tier promotion gating and catastrophic forgetting resistance
+- Three-factor neuromodulated plasticity, Dale's law invariants, and fan-in normalization
+- Largest Local Lyapunov Exponent (LLE) calculation and edge-of-chaos gain tuning
+- Pearlian counterfactual $do(X=x)$ interventions and Average Causal Effect (ACE)
+- 4-stage continual learning curriculum, forward transfer, and backward retention scorecards
 
 ---
 

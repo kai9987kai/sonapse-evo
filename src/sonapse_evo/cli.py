@@ -287,6 +287,44 @@ def run_benchmark_arms(n_seeds: int = 5, use_authentic: bool = False) -> int:
     return 0
 
 
+def run_curriculum(seed: int = 42) -> int:
+    """Executes 4-stage continual learning curriculum."""
+    print("=== SONAPSE-EVO 4-Stage Continual Learning Curriculum ===")
+    from .evaluation.curriculum import ContinualCurriculumBenchmark
+    topology = TopologyState(total_neurons=768, num_regions=3, seed=seed)
+    substrate = RecurrentSubstrate(topology=topology, seed=seed)
+    bench = ContinualCurriculumBenchmark(seed=seed)
+    card = bench.evaluate_curriculum(substrate)
+    
+    print(f"Stage 1 (Sensory-Motor Navigation): {card.task_returns['stage_1_navigation']:.2f}")
+    print(f"Stage 2 (Temporal Working Memory):   {card.task_returns['stage_2_memory']:.2f}")
+    print(f"Stage 3 (Physical Parameter Drift):  {card.task_returns['stage_3_friction_drift']:.2f}")
+    print(f"Stage 4 (Inverted Context Maneuver): {card.task_returns['stage_4_inverted_context']:.2f}")
+    print(f"\nForward Transfer Score:      {card.forward_transfer_score:+.3f}")
+    print(f"Backward Retention Score:     {card.backward_retention_score:.3f}")
+    print(f"Catastrophic Forgetting:     {card.catastrophic_forgetting:.3f}")
+    print(f"Continual Learning Index:    {card.continual_learning_index:.3f}")
+    print(f"Curriculum Benchmark Passed: {card.passed_curriculum}")
+    return 0
+
+
+def run_criticality(seed: int = 42) -> int:
+    """Measures Largest Local Lyapunov Exponent and criticality."""
+    print("=== SONAPSE-EVO Phase-Space Criticality Diagnostics ===")
+    from .diagnostics.criticality import CriticalityDiagnosticsEngine
+    topology = TopologyState(total_neurons=768, num_regions=3, seed=seed)
+    substrate = RecurrentSubstrate(topology=topology, seed=seed)
+    engine = CriticalityDiagnosticsEngine()
+    rep = engine.evaluate_criticality(substrate)
+    
+    print(f"Largest Local Lyapunov Exponent (LLE): {rep.largest_lyapunov_exponent:+.4f}")
+    print(f"Dynamical Regime:                      {rep.regime}")
+    print(f"Spectral Radius:                       {rep.jacobian_spectral_radius:.4f}")
+    print(f"Singular Value Effective Rank:         {rep.effective_rank:.2f}")
+    print(f"Operating at Edge of Chaos:            {rep.is_critical}")
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(description="SONAPSE-EVO Command Line Interface")
     parser.add_argument("--version", action="version", version=f"SONAPSE-EVO {__version__}")
@@ -309,6 +347,12 @@ def main():
     disc_p.add_argument("--generations", type=int, default=3, help="Evolutionary generations")
     disc_p.add_argument("--population", type=int, default=8, help="Population size")
 
+    curr_p = subparsers.add_parser("curriculum", help="Run 4-stage continual learning curriculum")
+    curr_p.add_argument("--seed", type=int, default=42, help="Random seed")
+
+    crit_p = subparsers.add_parser("criticality", help="Evaluate Lyapunov exponent and edge-of-chaos criticality")
+    crit_p.add_argument("--seed", type=int, default=42, help="Random seed")
+
     serve_p = subparsers.add_parser("serve", help="Launch observatory dashboard")
     serve_p.add_argument("--port", type=int, default=8890, help="Web server port")
 
@@ -324,6 +368,10 @@ def main():
         sys.exit(run_benchmark_arms(args.seeds, use_authentic=True))
     elif args.subcommand == "discover":
         sys.exit(run_discovery(args.generations, args.population))
+    elif args.subcommand == "curriculum":
+        sys.exit(run_curriculum(args.seed))
+    elif args.subcommand == "criticality":
+        sys.exit(run_criticality(args.seed))
     elif args.subcommand == "serve":
         from .observatory.server import run_server
         run_server(args.port)
