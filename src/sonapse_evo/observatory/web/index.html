@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SONAPSE-EVO 2.0 Observatory</title>
+  <title>SONAPSE-EVO 2.0 Real-Time Observatory</title>
   <style>
     :root {
-      --bg: #0d1117;
-      --card-bg: #161b22;
-      --border: #30363d;
+      --bg: #090d13;
+      --card-bg: #121820;
+      --border: #242c38;
       --accent: #58a6ff;
       --accent-green: #3fb950;
       --accent-amber: #d29922;
@@ -16,9 +16,10 @@
       --text: #c9d1d9;
       --text-muted: #8b949e;
     }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      padding: 20px;
+      padding: 16px 24px;
       background: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -28,12 +29,17 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 15px;
-      margin-bottom: 20px;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
     h1 {
       margin: 0;
-      font-size: 22px;
+      font-size: 20px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -47,30 +53,87 @@
       font-weight: 600;
       text-transform: uppercase;
     }
-    .badge.purple {
-      background: #6e40c9;
+    .badge.purple { background: #6e40c9; }
+    .live-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-green);
     }
+    .dot {
+      width: 9px;
+      height: 9px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    button {
+      background: #21262d;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    button:hover {
+      background: #30363d;
+      border-color: #8b949e;
+      color: #fff;
+    }
+    button.primary {
+      background: #238636;
+      border-color: #2ea043;
+      color: white;
+    }
+    button.primary:hover { background: #2ea043; }
+    button.danger {
+      background: #82071e;
+      border-color: #a40e26;
+      color: white;
+    }
+    button.danger:hover { background: #cf222e; }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
     }
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 16px;
+      padding: 12px 14px;
     }
     .card-title {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .card-value {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
       color: #f0f6fc;
     }
@@ -78,140 +141,407 @@
     .card-value.amber { color: var(--accent-amber); }
     .card-value.blue { color: var(--accent); }
     .card-value.purple { color: var(--accent-purple); }
+    .card-value.red { color: var(--accent-red); }
+
+    .charts-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 1024px) {
+      .charts-row { grid-template-columns: 1fr; }
+    }
     .panel {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 20px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
     }
     .panel h2 {
-      font-size: 16px;
-      margin-top: 0;
-      margin-bottom: 15px;
+      font-size: 14px;
+      margin: 0;
       color: #f0f6fc;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
     canvas {
       width: 100%;
-      height: 200px;
-      background: #090d13;
+      height: 180px;
+      background: #080b10;
       border-radius: 6px;
       display: block;
+      border: 1px solid #161d26;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 13px;
+      font-size: 12px;
     }
     th, td {
       text-align: left;
-      padding: 8px 12px;
+      padding: 7px 10px;
       border-bottom: 1px solid var(--border);
     }
     th {
       color: var(--text-muted);
       font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+    .meter-bar {
+      height: 6px;
+      background: #21262d;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .meter-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 0.3s ease;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>SONAPSE-EVO <span class="badge purple">Research v2.0</span></h1>
-    <div style="font-size: 13px; color: var(--text-muted);">
-      Autonomous Connectome Discovery, Structural Evolution & Causal Repair
+    <div class="brand">
+      <h1>SONAPSE-EVO <span class="badge purple">Research v2.0</span></h1>
+      <span style="font-size: 12px; color: var(--text-muted);">Autonomous Connectome Discovery & Causal Repair</span>
+    </div>
+    <div class="live-status">
+      <div class="dot"></div>
+      <span id="live-indicator">LIVE AUTO-POLLING (1.0s)</span>
+      <span style="color: var(--text-muted); font-size: 11px; margin-left: 8px;" id="last-updated">Connecting...</span>
     </div>
   </header>
 
+  <!-- Real-Time Interactive Controls -->
+  <div class="controls">
+    <button class="primary" onclick="triggerAction('discovery_step')">
+      ⚡ Advance Discovery Generation (Mode B)
+    </button>
+    <button class="danger" onclick="triggerAction('induce_lesion')">
+      ⚠ Induce Bridge Lesion (Mode A)
+    </button>
+    <button class="primary" onclick="triggerAction('repair')">
+      🛠 Execute Autonomous Causal Repair (Mode A)
+    </button>
+    <button onclick="toggleAutoStream()" id="stream-toggle-btn">
+      ⏸ Pause Live Stream
+    </button>
+  </div>
+
+  <!-- Dynamic KPI Cards -->
   <div class="grid">
     <div class="card">
       <div class="card-title">Recurrent Neurons</div>
-      <div class="card-value blue">768</div>
+      <div class="card-value blue" id="stat-neurons">768</div>
     </div>
     <div class="card">
-      <div class="card-title">Discovery Genotypes</div>
-      <div class="card-value purple" id="population-count">12</div>
+      <div class="card-title">Mode A Status</div>
+      <div class="card-value green" id="stat-mode-a">INTACT</div>
     </div>
     <div class="card">
-      <div class="card-title">Pareto Front (Rank 0)</div>
-      <div class="card-value green" id="pareto-champions">4</div>
+      <div class="card-title">Diagnostic Deficit</div>
+      <div class="card-value amber" id="stat-deficit">0.12</div>
     </div>
     <div class="card">
-      <div class="card-title">Structural Operators</div>
-      <div class="card-value green">20 Bounded</div>
+      <div class="card-title">Discovery Generation</div>
+      <div class="card-value purple" id="stat-generation">Gen 1</div>
     </div>
     <div class="card">
-      <div class="card-title">Evidence Tier</div>
-      <div class="card-value green">CONFIRMATORY</div>
+      <div class="card-title">Pareto Champions (Rank 0)</div>
+      <div class="card-value green" id="stat-champions">4</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Mean Rate &lt;r&gt;</div>
+      <div class="card-value blue" id="stat-mean-rate">0.28</div>
     </div>
     <div class="card">
       <div class="card-title">Spectral Norm ||J||</div>
-      <div class="card-value green" id="jacobian-norm">0.89</div>
+      <div class="card-value green" id="stat-jacobian">0.88</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Evidence Tier</div>
+      <div class="card-value green" id="stat-evidence">CONFIRMATORY</div>
     </div>
   </div>
 
-  <div class="panel">
-    <h2>Mode B: Autonomous Connectome Pareto Frontier (Return vs. Latency)</h2>
-    <canvas id="pareto-chart"></canvas>
+  <!-- Live Animated Graphs Row -->
+  <div class="charts-row">
+    <!-- Mode B: Pareto Frontier Scatter -->
+    <div class="panel">
+      <div class="panel-header">
+        <h2>Mode B: Real-Time Pareto Frontier (Return vs. Latency)</h2>
+        <span style="font-size: 11px; color: var(--accent-green);">● Front 0 (Optimal) &nbsp; ○ Sub-optimal</span>
+      </div>
+      <canvas id="pareto-chart"></canvas>
+    </div>
+
+    <!-- Mode A: Connectome Dynamic Telemetry -->
+    <div class="panel">
+      <div class="panel-header">
+        <h2>Mode A: Connectome Live Telemetry & Deficit Monitor</h2>
+        <span style="font-size: 11px; color: var(--accent-amber);">― Deficit &nbsp; <span style="color:var(--accent);">― Firing Rate</span></span>
+      </div>
+      <canvas id="telemetry-chart"></canvas>
+    </div>
   </div>
 
+  <!-- Connectome Region Activity Breakdown -->
   <div class="panel">
-    <h2>Mode A: Connectome Dynamic Telemetry & Deficit Monitor</h2>
-    <canvas id="telemetry-chart"></canvas>
+    <div class="panel-header">
+      <h2>Connectome Neuropil Activity & 6D Deficit Vector</h2>
+      <span style="font-size: 11px; color: var(--text-muted);">Real-time stream</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <div style="font-size: 12px; margin-bottom: 8px; font-weight:600; color:var(--text-muted);">REGION ACTIVITY DISTRIBUTION</div>
+        <div style="margin-bottom: 8px;">
+          <div style="display:flex; justify-content:space-between; font-size:11px;">
+            <span>Region 0: Sensory Entry (flywire)</span>
+            <span id="r0-act">0.31</span>
+          </div>
+          <div class="meter-bar"><div class="meter-fill" id="r0-bar" style="width: 31%;"></div></div>
+        </div>
+        <div style="margin-bottom: 8px;">
+          <div style="display:flex; justify-content:space-between; font-size:11px;">
+            <span>Region 1: Central Memory (manc)</span>
+            <span id="r1-act">0.25</span>
+          </div>
+          <div class="meter-bar"><div class="meter-fill" id="r1-bar" style="width: 25%; background: var(--accent-purple);"></div></div>
+        </div>
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:11px;">
+            <span>Region 2: Motor Outflow (optic-lobe)</span>
+            <span id="r2-act">0.29</span>
+          </div>
+          <div class="meter-bar"><div class="meter-fill" id="r2-bar" style="width: 29%; background: var(--accent-green);"></div></div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size: 12px; margin-bottom: 8px; font-weight:600; color:var(--text-muted);">6D CAUSAL DEFICIT VECTOR</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 11px;">
+          <div class="card" style="padding: 6px 10px;"><span style="color:var(--text-muted)">e_pred:</span> <strong id="def-pred">0.08</strong></div>
+          <div class="card" style="padding: 6px 10px;"><span style="color:var(--text-muted)">e_policy:</span> <strong id="def-policy">0.11</strong></div>
+          <div class="card" style="padding: 6px 10px;"><span style="color:var(--text-muted)">u_unc:</span> <strong id="def-unc">0.14</strong></div>
+          <div class="card" style="padding: 6px 10px;"><span style="color:var(--text-muted)">c_rep:</span> <strong id="def-rep">0.09</strong></div>
+          <div class="card" style="padding: 6px 10px;"><span style="color:var(--text-muted)">r_task:</span> <strong id="def-task">0.15</strong></div>
+          <div class="card" style="padding: 6px 10px;"><span style="color:var(--text-muted)">s_stab:</span> <strong id="def-stab">0.07</strong></div>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- Mode B Genotype Population Table -->
   <div class="panel">
-    <h2>10-Arm Experimental Benchmark Comparison (Matched & Authentic Scientific)</h2>
+    <div class="panel-header">
+      <h2>Mode B: Live Genotype Population Pool & Pareto Ranks</h2>
+      <span style="font-size: 11px; color: var(--text-muted);" id="pop-summary">Population: 8 candidates</span>
+    </div>
     <table>
       <thead>
         <tr>
-          <th>Arm</th>
-          <th>Architecture</th>
-          <th>Scientific Control Role</th>
-          <th>Recovery %</th>
-          <th>RigL / Training Status</th>
+          <th>Genotype ID</th>
+          <th>Pareto Rank</th>
+          <th>Scalar Utility</th>
+          <th>In-Dist Return</th>
+          <th>OOD Return</th>
+          <th>Latency (ms)</th>
+          <th>Memory</th>
+          <th>Operators Applied</th>
+          <th>Tier</th>
         </tr>
       </thead>
-      <tbody>
-        <tr><td>A0</td><td>Damaged Backbone</td><td>Lower Reference Control</td><td>0.0%</td><td><span style="color:var(--text-muted)">Frozen Reference</span></td></tr>
-        <tr><td>A1</td><td>Ordinary Fine-Tuning</td><td>Backbone Gradient Tuning</td><td>22.4%</td><td><span style="color:var(--accent-amber)">Authentic SGD</span></td></tr>
-        <tr><td>A2</td><td>Random Sparse Graft</td><td>Extra Capacity Control</td><td>14.8%</td><td><span style="color:var(--accent-amber)">Matched Budget</span></td></tr>
-        <tr><td>A3</td><td>Matched Learned Adapter</td><td>Dimension Matched</td><td>28.1%</td><td><span style="color:var(--accent-amber)">Matched Budget</span></td></tr>
-        <tr><td>A4</td><td>Gradient Rewiring (RigL)</td><td>Sparse Mask & Gradient Regrowth</td><td>36.5%</td><td><span style="color:var(--accent-green)">Authentic RigL</span></td></tr>
-        <tr><td>A5</td><td>Correlation Selected</td><td>Welford Streaming Covariance</td><td>32.0%</td><td><span style="color:var(--accent-amber)">Empirical Cov</span></td></tr>
-        <tr style="background: rgba(88, 166, 255, 0.1);">
-          <td><strong>A6</strong></td><td><strong>SONAPSE-EVO Causal Grafting</strong></td><td><strong>Primary Proposed Mechanism</strong></td><td><strong>107.4%</strong></td><td><span style="color:var(--accent-green); font-weight:bold;">Primary Winner</span></td>
-        </tr>
-        <tr><td>A7</td><td>Biological Motif Graft</td><td>Dale's Law Circuit Prior</td><td>51.2%</td><td><span style="color:var(--accent-green)">E/I Balanced</span></td></tr>
-        <tr><td>A8</td><td>AETHER Donor Adapter</td><td>External Transfer Module</td><td>48.7%</td><td><span style="color:var(--accent-green)">Verified Provenance</span></td></tr>
-        <tr><td>A9</td><td>Oracle Lesion Graft</td><td>Diagnostic Upper Bound</td><td>71.0%</td><td><span style="color:var(--text-muted)">Privileged Bound</span></td></tr>
+      <tbody id="genotype-table-body">
+        <tr><td colspan="9" style="text-align:center; color:var(--text-muted);">Loading population pool...</td></tr>
       </tbody>
     </table>
   </div>
 
-  <script>
-    // 1. Telemetry Chart
-    const canvasTel = document.getElementById('telemetry-chart');
-    const ctxTel = canvasTel.getContext('2d');
-    canvasTel.width = canvasTel.parentElement.clientWidth;
-    canvasTel.height = 180;
+  <!-- Mode A Transaction Audit Ledger -->
+  <div class="panel">
+    <div class="panel-header">
+      <h2>Mode A: Atomic Transaction Audit Ledger & Graft Deployments</h2>
+      <span style="font-size: 11px; color: var(--accent-green);">Zero-Gain Verified</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Tx ID</th>
+          <th>Status</th>
+          <th>Graft ID</th>
+          <th>Recovery %</th>
+          <th>Timestamp</th>
+          <th>Verification Details</th>
+        </tr>
+      </thead>
+      <tbody id="transaction-table-body">
+        <tr><td colspan="6" style="text-align:center; color:var(--text-muted);">Loading ledger...</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    let points = [];
-    for(let i=0; i<60; i++) {
-      points.push({
-        deficit: 0.15 + 0.1 * Math.sin(i * 0.2) + Math.random() * 0.05,
-        rate: 0.25 + 0.05 * Math.cos(i * 0.15),
+  <!-- Client-Side Auto-Update Script (Polls every 1.0s, no refresh needed) -->
+  <script>
+    let isStreaming = true;
+    let pollInterval = null;
+
+    // Canvas references
+    const cPar = document.getElementById('pareto-chart');
+    const ctxPar = cPar.getContext('2d');
+    const cTel = document.getElementById('telemetry-chart');
+    const ctxTel = cTel.getContext('2d');
+
+    function resizeCanvases() {
+      cPar.width = cPar.parentElement.clientWidth;
+      cPar.height = 180;
+      cTel.width = cTel.parentElement.clientWidth;
+      cTel.height = 180;
+    }
+    window.addEventListener('resize', resizeCanvases);
+    resizeCanvases();
+
+    async function fetchState() {
+      if (!isStreaming) return;
+      try {
+        const res = await fetch('/api/live_state');
+        if (!res.ok) throw new Error('Network error');
+        const data = await res.json();
+        updateUI(data);
+      } catch (err) {
+        document.getElementById('live-indicator').innerText = 'OFFLINE (Reconnecting...)';
+        document.getElementById('live-indicator').style.color = '#f85149';
+      }
+    }
+
+    function updateUI(data) {
+      document.getElementById('live-indicator').innerText = 'LIVE LINKED (1.0s Interval)';
+      document.getElementById('live-indicator').style.color = '#3fb950';
+      document.getElementById('last-updated').innerText = new Date(data.server_time * 1000).toLocaleTimeString();
+
+      // KPIs
+      document.getElementById('stat-neurons').innerText = data.connectome.total_neurons;
+      const modeAEl = document.getElementById('stat-mode-a');
+      modeAEl.innerText = data.mode_a.status;
+      modeAEl.className = data.mode_a.status === 'LESION_ACTIVE' ? 'card-value red' : 'card-value green';
+
+      document.getElementById('stat-deficit').innerText = data.mode_a.deficit_score.toFixed(3);
+      document.getElementById('stat-generation').innerText = `Gen ${data.mode_b.generation}`;
+      
+      const rank0Count = data.mode_b.pareto_points.filter(p => p.rank === 0).length;
+      document.getElementById('stat-champions').innerText = rank0Count;
+      document.getElementById('stat-mean-rate').innerText = data.mode_a.mean_rate.toFixed(3);
+
+      const jEl = document.getElementById('stat-jacobian');
+      jEl.innerText = data.mode_a.spectral_norm.toFixed(3);
+      jEl.className = data.mode_a.spectral_norm > 1.0 ? 'card-value amber' : 'card-value green';
+
+      // Region meters
+      if (data.connectome.regions.length >= 3) {
+        const r0 = data.connectome.regions[0].activity;
+        const r1 = data.connectome.regions[1].activity;
+        const r2 = data.connectome.regions[2].activity;
+        document.getElementById('r0-act').innerText = r0;
+        document.getElementById('r0-bar').style.width = `${Math.min(100, r0 * 200)}%`;
+        document.getElementById('r1-act').innerText = r1;
+        document.getElementById('r1-bar').style.width = `${Math.min(100, r1 * 200)}%`;
+        document.getElementById('r2-act').innerText = r2;
+        document.getElementById('r2-bar').style.width = `${Math.min(100, r2 * 200)}%`;
+      }
+
+      // 6D Deficit
+      const dv = data.mode_a.deficit_vector;
+      document.getElementById('def-pred').innerText = dv.e_pred.toFixed(3);
+      document.getElementById('def-policy').innerText = dv.e_policy.toFixed(3);
+      document.getElementById('def-unc').innerText = dv.u_unc.toFixed(3);
+      document.getElementById('def-rep').innerText = dv.c_rep.toFixed(3);
+      document.getElementById('def-task').innerText = dv.r_task.toFixed(3);
+      document.getElementById('def-stab').innerText = dv.s_stab.toFixed(3);
+
+      // Render Charts
+      drawPareto(data.mode_b.pareto_points);
+      drawTelemetry(data.telemetry_stream);
+
+      // Population Table
+      renderPopulationTable(data.mode_b.population);
+
+      // Transaction Table
+      renderTransactionTable(data.mode_a.transactions);
+    }
+
+    function drawPareto(points) {
+      const w = cPar.width;
+      const h = cPar.height;
+      ctxPar.clearRect(0, 0, w, h);
+
+      // Grid
+      ctxPar.strokeStyle = '#18202c';
+      ctxPar.lineWidth = 1;
+      for (let y = 30; y < h; y += 35) {
+        ctxPar.beginPath();
+        ctxPar.moveTo(0, y);
+        ctxPar.lineTo(w, y);
+        ctxPar.stroke();
+      }
+
+      if (!points || points.length === 0) return;
+
+      // Extract frontiers
+      const rank0 = points.filter(p => p.rank === 0).sort((a, b) => a.latency - b.latency);
+
+      // Draw frontier line
+      if (rank0.length > 1) {
+        ctxPar.strokeStyle = '#3fb950';
+        ctxPar.lineWidth = 2;
+        ctxPar.beginPath();
+        rank0.forEach((p, idx) => {
+          const px = (p.latency / 35.0) * (w - 60) + 30;
+          const py = h - (p.return / 40.0) * (h - 40) - 20;
+          if (idx === 0) ctxPar.moveTo(px, py);
+          else ctxPar.lineTo(px, py);
+        });
+        ctxPar.stroke();
+      }
+
+      // Draw points
+      points.forEach(p => {
+        const px = (p.latency / 35.0) * (w - 60) + 30;
+        const py = h - (p.return / 40.0) * (h - 40) - 20;
+
+        ctxPar.beginPath();
+        ctxPar.arc(px, py, p.rank === 0 ? 6 : 4, 0, Math.PI * 2);
+        ctxPar.fillStyle = p.rank === 0 ? '#3fb950' : '#8b949e';
+        ctxPar.fill();
+        ctxPar.strokeStyle = p.rank === 0 ? '#ffffff' : '#242c38';
+        ctxPar.stroke();
+
+        // Label Pareto champion
+        if (p.rank === 0 && p.return > 32) {
+          ctxPar.fillStyle = '#c9d1d9';
+          ctxPar.font = '10px sans-serif';
+          ctxPar.fillText(p.id, px + 8, py - 4);
+        }
       });
     }
 
-    function drawTelemetry() {
-      ctxTel.clearRect(0, 0, canvasTel.width, canvasTel.height);
-      const w = canvasTel.width;
-      const h = canvasTel.height;
+    function drawTelemetry(stream) {
+      const w = cTel.width;
+      const h = cTel.height;
+      ctxTel.clearRect(0, 0, w, h);
 
-      ctxTel.strokeStyle = '#21262d';
+      ctxTel.strokeStyle = '#18202c';
       ctxTel.lineWidth = 1;
       for (let y = 30; y < h; y += 35) {
         ctxTel.beginPath();
@@ -220,77 +550,105 @@
         ctxTel.stroke();
       }
 
-      // Deficit curve (amber)
+      if (!stream || stream.length === 0) return;
+
+      const stepX = w / Math.max(1, stream.length - 1);
+
+      // Draw Deficit curve (amber)
       ctxTel.strokeStyle = '#d29922';
       ctxTel.lineWidth = 2;
       ctxTel.beginPath();
-      const stepX = w / (points.length - 1);
-      points.forEach((p, idx) => {
+      stream.forEach((p, idx) => {
         const x = idx * stepX;
-        const y = h - (p.deficit * h * 1.5);
+        const y = h - (p.deficit_score * (h - 30)) - 15;
         if (idx === 0) ctxTel.moveTo(x, y);
         else ctxTel.lineTo(x, y);
       });
       ctxTel.stroke();
 
-      // Mean Rate curve (blue)
+      // Draw Rate curve (cyan)
       ctxTel.strokeStyle = '#58a6ff';
       ctxTel.lineWidth = 2;
       ctxTel.beginPath();
-      points.forEach((p, idx) => {
+      stream.forEach((p, idx) => {
         const x = idx * stepX;
-        const y = h - (p.rate * h * 1.5);
+        const y = h - (p.mean_rate * (h - 30) * 2.0) - 15;
         if (idx === 0) ctxTel.moveTo(x, y);
         else ctxTel.lineTo(x, y);
       });
       ctxTel.stroke();
     }
-    drawTelemetry();
 
-    // 2. Pareto Frontier Chart
-    const canvasPar = document.getElementById('pareto-chart');
-    const ctxPar = canvasPar.getContext('2d');
-    canvasPar.width = canvasPar.parentElement.clientWidth;
-    canvasPar.height = 180;
-
-    function drawPareto() {
-      ctxPar.clearRect(0, 0, canvasPar.width, canvasPar.height);
-      const w = canvasPar.width;
-      const h = canvasPar.height;
-
-      // Draw grid
-      ctxPar.strokeStyle = '#21262d';
-      ctxPar.lineWidth = 1;
-      for (let x = 40; x < w; x += 60) {
-        ctxPar.beginPath();
-        ctxPar.moveTo(x, 0);
-        ctxPar.lineTo(x, h);
-        ctxPar.stroke();
-      }
-
-      // Draw candidates (scatter points)
-      const candidates = [
-        {ret: 22.0, lat: 28.0, rank: 2},
-        {ret: 26.5, lat: 22.0, rank: 1},
-        {ret: 31.4, lat: 14.5, rank: 0},
-        {ret: 34.6, lat: 15.2, rank: 0},
-        {ret: 36.8, lat: 18.0, rank: 0},
-        {ret: 28.0, lat: 19.5, rank: 1},
-      ];
-
-      candidates.forEach(c => {
-        const px = (c.lat / 35.0) * (w - 60) + 30;
-        const py = h - (c.ret / 40.0) * (h - 40) - 20;
-
-        ctxPar.beginPath();
-        ctxPar.arc(px, py, c.rank === 0 ? 6 : 4, 0, Math.PI * 2);
-        ctxPar.fillStyle = c.rank === 0 ? '#3fb950' : '#8b949e';
-        ctxPar.fill();
-        ctxPar.strokeStyle = c.rank === 0 ? '#ffffff' : '#30363d';
-        ctxPar.stroke();
+    function renderPopulationTable(pop) {
+      const tbody = document.getElementById('genotype-table-body');
+      if (!pop || pop.length === 0) return;
+      let html = '';
+      pop.forEach(g => {
+        const rankColor = g.pareto_rank === 0 ? '#3fb950; font-weight:bold;' : '#8b949e;';
+        const ops = g.operators && g.operators.length > 0 ? g.operators.join(', ') : 'None (Root)';
+        html += `
+          <tr style="${g.pareto_rank === 0 ? 'background: rgba(63, 185, 80, 0.08);' : ''}">
+            <td><strong>${g.genotype_id}</strong></td>
+            <td style="color:${rankColor}">${g.pareto_rank === 0 ? 'Rank 0 (Optimal)' : 'Rank ' + g.pareto_rank}</td>
+            <td>${g.scalar_utility.toFixed(3)}</td>
+            <td><strong>${g.return_train.toFixed(2)}</strong></td>
+            <td>${g.return_ood.toFixed(2)}</td>
+            <td>${g.latency_ms.toFixed(1)} ms</td>
+            <td>${g.memory_kb.toFixed(1)} KB</td>
+            <td style="font-size:11px; color:#8b949e;">${ops}</td>
+            <td><span class="badge" style="background:#21262d; border:1px solid #30363d; font-size:10px;">${g.evidence_tier}</span></td>
+          </tr>
+        `;
       });
+      tbody.innerHTML = html;
     }
-    drawPareto();
+
+    function renderTransactionTable(txs) {
+      const tbody = document.getElementById('transaction-table-body');
+      if (!txs || txs.length === 0) return;
+      let html = '';
+      txs.forEach(t => {
+        const timeStr = new Date(t.timestamp * 1000).toLocaleTimeString();
+        html += `
+          <tr>
+            <td><code>${t.tx_id}</code></td>
+            <td><span class="badge" style="background:#238636;">${t.status}</span></td>
+            <td>${t.graft_id}</td>
+            <td style="color:#3fb950; font-weight:bold;">${(t.recovery_ratio * 100).toFixed(1)}%</td>
+            <td style="color:#8b949e;">${timeStr}</td>
+            <td style="font-size:11px; color:#8b949e;">${t.details}</td>
+          </tr>
+        `;
+      });
+      tbody.innerHTML = html;
+    }
+
+    async function triggerAction(actionName) {
+      try {
+        const res = await fetch(`/api/action/${actionName}`, { method: 'POST' });
+        const resData = await res.json();
+        // Immediately fetch updated state to show instant UI reaction
+        fetchState();
+      } catch (e) {
+        console.error('Action failed:', e);
+      }
+    }
+
+    function toggleAutoStream() {
+      isStreaming = !isStreaming;
+      const btn = document.getElementById('stream-toggle-btn');
+      if (isStreaming) {
+        btn.innerText = '⏸ Pause Live Stream';
+        btn.style.color = '#c9d1d9';
+      } else {
+        btn.innerText = '▶ Resume Live Stream';
+        btn.style.color = '#3fb950';
+      }
+    }
+
+    // Start 1-second auto-polling loop
+    pollInterval = setInterval(fetchState, 1000);
+    fetchState();
   </script>
 </body>
 </html>
