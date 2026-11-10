@@ -25,7 +25,11 @@ from .evolution.lifecycle import CandidateLifecycle
 from .evolution.transaction_manager import TransactionManager, FailureArchive
 from .evaluation.benchmark_runner import ForageNavigationTask, run_benchmark_episode
 from .evaluation.matched_controls import MatchedControlsFactory
-from .evaluation.statistical_analysis import compute_recovery_fraction, paired_seed_analysis
+from .evaluation.statistical_analysis import (
+    compute_recovery_fraction,
+    holm_bonferroni,
+    paired_seed_analysis,
+)
 from .contracts.receipts import EvaluationResult
 from .contracts.graft_manifest import GraftSpec
 
@@ -234,6 +238,8 @@ def run_discovery(generations: int = 3, population: int = 8) -> int:
 
 
 def run_benchmark_arms(n_seeds: int = 5, use_authentic: bool = False) -> int:
+    if n_seeds < 1:
+        raise ValueError("n_seeds must be at least 1")
     mode_label = "Authentic Scientific" if use_authentic else "Matched Baseline"
     print(f"=== SONAPSE-EVO 10-Arm Evaluation Study ({mode_label}) ===")
     print(f"Evaluating arms A0 - A9 across {n_seeds} paired seeds...")
@@ -276,14 +282,39 @@ def run_benchmark_arms(n_seeds: int = 5, use_authentic: bool = False) -> int:
         arm_results[arm] = returns
         print(f"Arm {arm:2s}: Mean Return = {np.mean(returns):.2f} (+/- {np.std(returns):.2f})")
 
-    # Compare A6 (SONAPSE-EVO Causal) vs A1 (Ordinary Fine-Tuning)
-    stats_a6_a1 = paired_seed_analysis(arm_results["A6"], arm_results["A1"])
-    print("\n--- Statistical Comparison: A6 (Causal Graft) vs A1 (Fine-Tuning) ---")
-    print(f"Mean Difference:    {stats_a6_a1['mean_diff']:+.2f}")
-    print(f"Cohen's d:          {stats_a6_a1['cohens_d']:.3f}")
-    print(f"Paired t-test p:    {stats_a6_a1['p_value_ttest']:.4e}")
-    print(f"95% Bootstrap CI:   [{stats_a6_a1['ci_95_lower']:.2f}, {stats_a6_a1['ci_95_upper']:.2f}]")
-    print(f"Statistically Significant (p < 0.05): {stats_a6_a1['significant_at_005']}")
+    planned_comparisons = {
+        "A6 vs A4 (primary)": ("A6", "A4"),
+        "A6 vs A1 (secondary)": ("A6", "A1"),
+        "A6 vs A3 (secondary)": ("A6", "A3"),
+    }
+    comparison_results = {
+        label: paired_seed_analysis(arm_results[evo_arm], arm_results[control_arm])
+        for label, (evo_arm, control_arm) in planned_comparisons.items()
+    }
+    ttest_holm = holm_bonferroni({
+        label: result["p_value_ttest"]
+        for label, result in comparison_results.items()
+    })
+    wilcoxon_holm = holm_bonferroni({
+        label: result["p_value_wilcoxon"]
+        for label, result in comparison_results.items()
+    })
+
+    print("\n--- Predeclared Paired Comparisons (A6 minus control) ---")
+    print(f"Seed count: N={n_seeds}; confirmatory design target: N=30")
+    if not use_authentic:
+        print("Legacy mode: A4 is the historical fixed-weight scaling demo, not RigL.")
+    print("Holm adjustment is applied separately to paired t-test and Wilcoxon p-values.")
+    print("Bootstrap intervals are unadjusted 95% percentile CIs over paired differences.")
+    for label, result in comparison_results.items():
+        effect_size = result["cohens_d"]
+        effect_text = "undefined (zero paired variance)" if effect_size is None else f"{effect_size:.3f}"
+        print(f"\n{label}")
+        print(f"  Mean paired difference: {result['mean_diff']:+.2f}")
+        print(f"  Cohen's d:              {effect_text}")
+        print(f"  Paired t-test p:        {result['p_value_ttest']:.4e} (Holm {ttest_holm[label]:.4e})")
+        print(f"  Wilcoxon p:             {result['p_value_wilcoxon']:.4e} (Holm {wilcoxon_holm[label]:.4e})")
+        print(f"  95% bootstrap CI:       [{result['ci_95_lower']:.2f}, {result['ci_95_upper']:.2f}]")
     return 0
 
 

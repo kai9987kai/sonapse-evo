@@ -5,7 +5,11 @@ from .benchmark_runner import (
 )
 from .matched_controls import MatchedControlsFactory
 from .retention import RetentionEvaluator
-from .statistical_analysis import compute_recovery_fraction, paired_seed_analysis
+from .statistical_analysis import (
+    compute_recovery_fraction,
+    holm_bonferroni,
+    paired_seed_analysis,
+)
 from .promotion import PromotionGate
 
 __all__ = [
@@ -16,5 +20,6 @@ __all__ = [
     "RetentionEvaluator",
     "compute_recovery_fraction",
     "paired_seed_analysis",
+    "holm_bonferroni",
     "PromotionGate",
 ]

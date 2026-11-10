@@ -27,3 +27,5 @@ An artificial recurrent network can recover damaged functionality more efficient
 - **Secondary Contrasts**: A6 versus A1 (Fine-Tuning) and A6 versus A3 (Matched Adapter).
 - **Statistical Significance**: Two-sided paired $t$-test ($\alpha = 0.05$), non-parametric Wilcoxon signed-rank test, and 95% bootstrap confidence interval of mean difference $\bar{d}$.
 - **Effect Size**: Paired Cohen's $d = \frac{\bar{d}}{\sigma_d}$.
+
+The benchmark CLI reports the predeclared A6–A4 primary contrast and the A6–A1 and A6–A3 secondary contrasts. Holm adjustment is applied separately across the three paired $t$-test p-values and across the three Wilcoxon p-values. The reported bootstrap intervals are percentile intervals over paired seed differences and are not multiplicity-adjusted. A configured seed count of five is exploratory; the confirmatory design target remains 30 independent paired seeds.

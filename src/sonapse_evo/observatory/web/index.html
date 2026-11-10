@@ -248,6 +248,10 @@
       <div class="card-value blue" id="stat-neurons">768</div>
     </div>
     <div class="card">
+      <div class="card-title">Mean Firing Rate</div>
+      <div class="card-value blue" id="stat-mean-rate">0.280</div>
+    </div>
+    <div class="card">
       <div class="card-title">Mode A Status</div>
       <div class="card-value green" id="stat-mode-a">INTACT</div>
     </div>
@@ -415,6 +419,7 @@
   <script>
     let isStreaming = true;
     let pollInterval = null;
+    let fetchInProgress = false;
 
     // Canvas references
     const cPar = document.getElementById('pareto-chart');
@@ -437,22 +442,45 @@
     window.addEventListener('resize', resizeCanvases);
     resizeCanvases();
 
+    function setConnectionStatus(message, color) {
+      const indicator = document.getElementById('live-indicator');
+      indicator.innerText = message;
+      indicator.style.color = color;
+    }
+
     async function fetchState() {
-      if (!isStreaming) return;
+      if (!isStreaming || fetchInProgress) return;
+      fetchInProgress = true;
+      let data;
       try {
-        const res = await fetch('/api/live_state');
-        if (!res.ok) throw new Error('Network error');
-        const data = await res.json();
-        updateUI(data);
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(() => controller.abort(), 5000);
+        try {
+          const res = await fetch('/api/live_state', { signal: controller.signal });
+          if (!res.ok) throw new Error(`Live-state request failed (${res.status})`);
+          data = await res.json();
+        } finally {
+          window.clearTimeout(timeoutId);
+        }
       } catch (err) {
-        document.getElementById('live-indicator').innerText = 'OFFLINE (Reconnecting...)';
-        document.getElementById('live-indicator').style.color = '#f85149';
+        setConnectionStatus('OFFLINE (Reconnecting...)', '#f85149');
+        console.error('Live-state request failed:', err);
+        fetchInProgress = false;
+        return;
+      }
+
+      try {
+        updateUI(data);
+        setConnectionStatus('LIVE LINKED (1.0s Interval)', '#3fb950');
+      } catch (err) {
+        setConnectionStatus('CONNECTED (Display update issue)', '#d29922');
+        console.error('Live data arrived but the dashboard failed to render it:', err);
+      } finally {
+        fetchInProgress = false;
       }
     }
 
     function updateUI(data) {
-      document.getElementById('live-indicator').innerText = 'LIVE LINKED (1.0s Interval)';
-      document.getElementById('live-indicator').style.color = '#3fb950';
       document.getElementById('last-updated').innerText = new Date(data.server_time * 1000).toLocaleTimeString();
 
       // KPIs
