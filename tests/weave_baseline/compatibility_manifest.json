@@ -1,0 +1,6443 @@
+{
+ "cli": {
+  "subcommands": {
+   "benchmark": [
+    "--seeds",
+    "--authentic"
+   ],
+   "benchmark-v2": [
+    "--seeds"
+   ],
+   "criticality": [
+    "--seed"
+   ],
+   "curriculum": [
+    "--seed"
+   ],
+   "discover": [
+    "--generations",
+    "--population"
+   ],
+   "lesion-repair": [
+    "--task",
+    "--severity"
+   ],
+   "serve": [
+    "--port"
+   ],
+   "smoke": []
+  }
+ },
+ "config_files": [
+  "configs/smoke.yaml",
+  "configs/lesion_repair.yaml",
+  "configs/confirmatory_study.yaml"
+ ],
+ "control_arms": [
+  "A0",
+  "A1",
+  "A2",
+  "A3",
+  "A4",
+  "A5",
+  "A6",
+  "A7",
+  "A8",
+  "A9"
+ ],
+ "digest": "210955af0888c46219453135cc310a920bb94fa781fce0d5fefdbb4623a1be65",
+ "dom_ids": [
+  "connectome-network-canvas",
+  "def-policy",
+  "def-pred",
+  "def-rep",
+  "def-stab",
+  "def-task",
+  "def-unc",
+  "genotype-table-body",
+  "last-updated",
+  "live-indicator",
+  "net-tract-label",
+  "pareto-chart",
+  "pop-summary",
+  "r0-act",
+  "r0-bar",
+  "r1-act",
+  "r1-bar",
+  "r2-act",
+  "r2-bar",
+  "stat-ach",
+  "stat-champions",
+  "stat-da",
+  "stat-deficit",
+  "stat-evidence",
+  "stat-generation",
+  "stat-jacobian",
+  "stat-lle",
+  "stat-mean-rate",
+  "stat-mode-a",
+  "stat-neurons",
+  "stat-regime",
+  "stream-toggle-btn",
+  "telemetry-chart",
+  "transaction-table-body"
+ ],
+ "evidence_tiers": [
+  "SYNTHETIC_FIXTURE",
+  "SMOKE_TEST",
+  "SIMULATED_ASSAY",
+  "PAIRED_EXPERIMENT",
+  "CONFIRMATORY_RESULT"
+ ],
+ "graft_types": [
+  "low_rank",
+  "recurrent",
+  "biological",
+  "donor_adapter"
+ ],
+ "http_endpoints": [
+  "/api/action/discovery_step",
+  "/api/action/induce_lesion",
+  "/api/action/repair",
+  "/api/health",
+  "/api/live_state",
+  "/api/telemetry"
+ ],
+ "js_fetch_paths": [
+  "/api/live_state"
+ ],
+ "js_functions": [
+  "drawConnectomeNetwork",
+  "drawHub",
+  "drawPareto",
+  "drawTelemetry",
+  "fetchState",
+  "renderPopulationTable",
+  "renderTransactionTable",
+  "resizeCanvases",
+  "setConnectionStatus",
+  "toggleAutoStream",
+  "triggerAction",
+  "updateUI"
+ ],
+ "lesion_types": [
+  "inter_region_bridge",
+  "random_edges",
+  "recurrent_memory",
+  "sensory_pathway",
+  "targeted_hub"
+ ],
+ "modules": {
+  "sonapse_evo": {
+   "all": [
+    "ActionCommand",
+    "EvaluationResult",
+    "GraftSpec",
+    "GraftType",
+    "ObservationSpec",
+    "SensoryObservation",
+    "SubstrateSnapshot",
+    "TransactionReceipt",
+    "__version__"
+   ],
+   "classes": {},
+   "functions": {}
+  },
+  "sonapse_evo.adapters": {
+   "all": [
+    "AetherAdapter",
+    "BiologicalMotifLibrary",
+    "BrainAdapter",
+    "SonapseAdapter"
+   ],
+   "classes": {},
+   "functions": {}
+  },
+  "sonapse_evo.adapters.aether_adapter": {
+   "all": [],
+   "classes": {
+    "AetherAdapter": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "donor_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "64"
+       ],
+       [
+        "latent_modes",
+        "POSITIONAL_OR_KEYWORD",
+        "16"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "describe": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "encode": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "observation",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "export_state": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "reset": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.adapters.biological_motifs": {
+   "all": [],
+   "classes": {
+    "BiologicalMotifLibrary": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "get_cpg_rhythm_generator": [],
+      "get_cx_ring_attractor": [
+       [
+        "num_wedges",
+        "POSITIONAL_OR_KEYWORD",
+        "16"
+       ]
+      ],
+      "get_lateral_inhibition_motif": [
+       [
+        "size",
+        "POSITIONAL_OR_KEYWORD",
+        "16"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.adapters.sonapse_adapter": {
+   "all": [],
+   "classes": {
+    "BrainAdapter": {
+     "bases": [
+      "Protocol"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "args",
+        "VAR_POSITIONAL",
+        "<required>"
+       ],
+       [
+        "kwargs",
+        "VAR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "apply_lesion": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "lesion",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "clone": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "get_neural_state": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "get_topology_digest": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "restore": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "snapshot",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "snapshot": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "step": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "observation",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "learn",
+        "POSITIONAL_OR_KEYWORD",
+        "False"
+       ]
+      ]
+     }
+    },
+    "SonapseAdapter": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "synapse_path",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "768"
+       ],
+       [
+        "num_regions",
+        "POSITIONAL_OR_KEYWORD",
+        "3"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "apply_lesion": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "lesion",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "clone": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "get_neural_state": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "get_topology_digest": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "restore": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "snapshot",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "snapshot": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "step": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "observation",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "learn",
+        "POSITIONAL_OR_KEYWORD",
+        "False"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.cli": {
+   "all": [],
+   "classes": {},
+   "functions": {
+    "main": [],
+    "run_benchmark_arms": [
+     [
+      "n_seeds",
+      "POSITIONAL_OR_KEYWORD",
+      "5"
+     ],
+     [
+      "use_authentic",
+      "POSITIONAL_OR_KEYWORD",
+      "False"
+     ]
+    ],
+    "run_criticality": [
+     [
+      "seed",
+      "POSITIONAL_OR_KEYWORD",
+      "42"
+     ]
+    ],
+    "run_curriculum": [
+     [
+      "seed",
+      "POSITIONAL_OR_KEYWORD",
+      "42"
+     ]
+    ],
+    "run_discovery": [
+     [
+      "generations",
+      "POSITIONAL_OR_KEYWORD",
+      "3"
+     ],
+     [
+      "population",
+      "POSITIONAL_OR_KEYWORD",
+      "8"
+     ]
+    ],
+    "run_lesion_repair": [
+     [
+      "task_name",
+      "POSITIONAL_OR_KEYWORD",
+      "'forage'"
+     ],
+     [
+      "severity",
+      "POSITIONAL_OR_KEYWORD",
+      "0.25"
+     ]
+    ],
+    "run_smoke_test": []
+   }
+  },
+  "sonapse_evo.contracts": {
+   "all": [
+    "ActionCommand",
+    "EvaluationResult",
+    "EvidenceTier",
+    "GraftSpec",
+    "GraftType",
+    "ObservationSpec",
+    "PROMOTABLE_TIERS",
+    "SensoryObservation",
+    "SubstrateSnapshot",
+    "TEST_TIERS",
+    "TransactionReceipt",
+    "compute_tensor_digest",
+    "is_promotable_evidence"
+   ],
+   "classes": {},
+   "functions": {}
+  },
+  "sonapse_evo.contracts.evidence": {
+   "all": [],
+   "classes": {
+    "EvidenceTier": {
+     "bases": [
+      "str",
+      "Enum"
+     ],
+     "fields": [],
+     "methods": {}
+    }
+   },
+   "functions": {
+    "is_promotable_evidence": [
+     [
+      "tier",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "allow_test_tiers",
+      "POSITIONAL_OR_KEYWORD",
+      "False"
+     ]
+    ]
+   }
+  },
+  "sonapse_evo.contracts.graft_manifest": {
+   "all": [],
+   "classes": {
+    "GraftSpec": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "graft_id",
+      "graft_type",
+      "source_neurons",
+      "target_neurons",
+      "rank",
+      "max_gain",
+      "ramp_steps",
+      "parent_digest",
+      "recurrent_state_dim",
+      "donor_id",
+      "metadata"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graft_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graft_type",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "source_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "target_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rank",
+        "POSITIONAL_OR_KEYWORD",
+        "8"
+       ],
+       [
+        "max_gain",
+        "POSITIONAL_OR_KEYWORD",
+        "0.1"
+       ],
+       [
+        "ramp_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "50"
+       ],
+       [
+        "parent_digest",
+        "POSITIONAL_OR_KEYWORD",
+        "''"
+       ],
+       [
+        "recurrent_state_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "16"
+       ],
+       [
+        "donor_id",
+        "POSITIONAL_OR_KEYWORD",
+        "''"
+       ],
+       [
+        "metadata",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ]
+      ],
+      "compute_spec_digest": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "validate": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.contracts.observations": {
+   "all": [],
+   "classes": {
+    "ActionCommand": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "actions",
+      "raw_logits"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "actions",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "raw_logits",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "to_numpy": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "ObservationSpec": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "sensory_dim",
+      "context_dim",
+      "action_dim",
+      "value_range",
+      "dtype"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "sensory_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "155"
+       ],
+       [
+        "context_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "64"
+       ],
+       [
+        "action_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "5"
+       ],
+       [
+        "value_range",
+        "POSITIONAL_OR_KEYWORD",
+        "(-10.0, 10.0)"
+       ],
+       [
+        "dtype",
+        "POSITIONAL_OR_KEYWORD",
+        "'float32'"
+       ]
+      ],
+      "validate_sensory": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "data",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "SensoryObservation": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "data",
+      "step_idx",
+      "context",
+      "reward",
+      "done",
+      "info"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "data",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "step_idx",
+        "POSITIONAL_OR_KEYWORD",
+        "0"
+       ],
+       [
+        "context",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "reward",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "done",
+        "POSITIONAL_OR_KEYWORD",
+        "False"
+       ],
+       [
+        "info",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.contracts.receipts": {
+   "all": [],
+   "classes": {
+    "EvaluationResult": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "candidate_id",
+      "baseline_returns",
+      "candidate_returns",
+      "causal_tau",
+      "recovery_ratio",
+      "retention_passed",
+      "replay_verified",
+      "resource_passed",
+      "stability_passed",
+      "evidence_kind",
+      "details",
+      "receipt_digest"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "candidate_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "baseline_returns",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "candidate_returns",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "causal_tau",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "recovery_ratio",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "retention_passed",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "replay_verified",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "resource_passed",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "stability_passed",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "evidence_kind",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "details",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "receipt_digest",
+        "POSITIONAL_OR_KEYWORD",
+        "''"
+       ]
+      ]
+     }
+    },
+    "TransactionReceipt": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "transaction_id",
+      "status",
+      "graft_id",
+      "parent_digest",
+      "committed_digest",
+      "timestamp",
+      "reason",
+      "metrics"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "transaction_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "status",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graft_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "parent_digest",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "committed_digest",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "timestamp",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "reason",
+        "POSITIONAL_OR_KEYWORD",
+        "''"
+       ],
+       [
+        "metrics",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.contracts.snapshots": {
+   "all": [],
+   "classes": {
+    "SubstrateSnapshot": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "step_count",
+      "total_neurons",
+      "topology_digest",
+      "state_digest",
+      "rate_vector",
+      "lesion_mask",
+      "active_grafts",
+      "metadata"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "step_count",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "topology_digest",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "state_digest",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rate_vector",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "lesion_mask",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "active_grafts",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "metadata",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ]
+      ],
+      "verify_integrity": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {
+    "compute_tensor_digest": [
+     [
+      "t",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ]
+    ]
+   }
+  },
+  "sonapse_evo.diagnostics": {
+   "all": [
+    "CausalAttributionEngine",
+    "DeficitMonitor",
+    "RegionRanker",
+    "VirtualGradientProbe"
+   ],
+   "classes": {},
+   "functions": {}
+  },
+  "sonapse_evo.diagnostics.causal_attribution": {
+   "all": [],
+   "classes": {
+    "CausalAttributionEngine": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "num_paired_rollouts",
+        "POSITIONAL_OR_KEYWORD",
+        "4"
+       ]
+      ],
+      "evaluate_interventional_effect": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rollout_fn",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "base_seed",
+        "POSITIONAL_OR_KEYWORD",
+        "1000"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.diagnostics.causal_intervention": {
+   "all": [],
+   "classes": {
+    "CausalInterventionReceipt": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "intervention_type",
+      "target_indices",
+      "clamped_value",
+      "average_causal_effect",
+      "indirect_mediation_ratio",
+      "affected_outflow_channels"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "intervention_type",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "target_indices",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "clamped_value",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "average_causal_effect",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "indirect_mediation_ratio",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "affected_outflow_channels",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "PearlianInterventionEngine": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "sample_obs_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "155"
+       ]
+      ],
+      "compute_average_causal_effect": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "port",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "action_readout",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "val_control",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "val_treatment",
+        "POSITIONAL_OR_KEYWORD",
+        "1.0"
+       ],
+       [
+        "num_samples",
+        "POSITIONAL_OR_KEYWORD",
+        "10"
+       ]
+      ],
+      "compute_causal_influence_matrix": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "ports",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "action_readout",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "do_clamp_port": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "port",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "clamp_value",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "obs",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "action_readout",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.diagnostics.covariance": {
+   "all": [],
+   "classes": {
+    "StreamingCovarianceTracker": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "num_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "get_covariance": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "get_highest_covariance_ports": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "region_a_nodes",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "region_b_nodes",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "update": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.diagnostics.criticality": {
+   "all": [],
+   "classes": {
+    "CriticalityDiagnosticsEngine": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "perturbation_magnitude",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0001"
+       ],
+       [
+        "rollout_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "30"
+       ]
+      ],
+      "evaluate_criticality": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "sample_obs",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "measure_lyapunov_exponent": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "sample_obs",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "num_trials",
+        "POSITIONAL_OR_KEYWORD",
+        "5"
+       ]
+      ],
+      "tune_to_edge_of_chaos": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "sample_obs",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "target_lle",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ]
+      ]
+     }
+    },
+    "CriticalityReport": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "largest_lyapunov_exponent",
+      "regime",
+      "jacobian_spectral_radius",
+      "effective_rank",
+      "autocorrelation_time",
+      "is_critical"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "largest_lyapunov_exponent",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "regime",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "jacobian_spectral_radius",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "effective_rank",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "autocorrelation_time",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "is_critical",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.diagnostics.deficit_monitor": {
+   "all": [],
+   "classes": {
+    "DeficitMonitor": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "beta",
+        "POSITIONAL_OR_KEYWORD",
+        "0.9"
+       ],
+       [
+        "threshold",
+        "POSITIONAL_OR_KEYWORD",
+        "0.65"
+       ],
+       [
+        "persistence_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "5"
+       ],
+       [
+        "weights",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "is_repair_justified": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "quick_no_growth_probe": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "baseline_loss",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "perturbed_loss",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "reset": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "update": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "prediction_error",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "policy_error",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "uncertainty",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "representation_collapse",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "task_deficit",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "instability",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.diagnostics.intervention_probes": {
+   "all": [],
+   "classes": {
+    "VirtualGradientProbe": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "evaluate_shadow_gradients": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "source_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "target_upstream_grad",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "rank_port_pairs": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "ports",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "current_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "upstream_loss_grad",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "top_k",
+        "POSITIONAL_OR_KEYWORD",
+        "16"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.diagnostics.region_ranker": {
+   "all": [],
+   "classes": {
+    "RegionRanker": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "topology",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "rank_regions": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "current_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "reference_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.discovery": {
+   "all": [
+    "ArchitectureGenotype",
+    "DiscoveryEngine",
+    "DiscoveryOpportunityMonitor",
+    "GenotypePool",
+    "HardConstraints",
+    "MultiFidelityEvaluator",
+    "OpportunitySignal",
+    "ParetoOptimizer",
+    "StageResult",
+    "UtilityWeights"
+   ],
+   "classes": {},
+   "functions": {}
+  },
+  "sonapse_evo.discovery.discovery_engine": {
+   "all": [],
+   "classes": {
+    "DiscoveryEngine": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "base_graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "population_size",
+        "POSITIONAL_OR_KEYWORD",
+        "12"
+       ],
+       [
+        "constraints",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "weights",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "run_discovery_cycle": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "generations",
+        "POSITIONAL_OR_KEYWORD",
+        "3"
+       ],
+       [
+        "verbose",
+        "POSITIONAL_OR_KEYWORD",
+        "False"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.discovery.genotype_pool": {
+   "all": [],
+   "classes": {
+    "ArchitectureGenotype": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "genotype_id",
+      "parent_id",
+      "graph",
+      "applied_operators",
+      "fitness_vector",
+      "scalar_utility",
+      "pareto_rank",
+      "crowding_distance",
+      "generation",
+      "evidence_tier",
+      "metadata"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "genotype_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "parent_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "applied_operators",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "fitness_vector",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "scalar_utility",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "pareto_rank",
+        "POSITIONAL_OR_KEYWORD",
+        "0"
+       ],
+       [
+        "crowding_distance",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "generation",
+        "POSITIONAL_OR_KEYWORD",
+        "0"
+       ],
+       [
+        "evidence_tier",
+        "POSITIONAL_OR_KEYWORD",
+        "<EvidenceTier.SIMULATED_ASSAY: 'SIMULATED_ASSAY'>"
+       ],
+       [
+        "metadata",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ]
+      ],
+      "clone": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "new_id",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ]
+     }
+    },
+    "GenotypePool": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "base_graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "population_size",
+        "POSITIONAL_OR_KEYWORD",
+        "12"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "crossover": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "p1",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "p2",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "mutate_candidate": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "parent",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "select_parent_tournament": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "k",
+        "POSITIONAL_OR_KEYWORD",
+        "3"
+       ]
+      ],
+      "step_generation": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "elitism_count",
+        "POSITIONAL_OR_KEYWORD",
+        "2"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.discovery.multi_fidelity": {
+   "all": [],
+   "classes": {
+    "MultiFidelityEvaluator": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "constraints",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "max_stage",
+        "POSITIONAL_OR_KEYWORD",
+        "4"
+       ]
+      ],
+      "evaluate_genotype": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "candidate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "parent",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ]
+     }
+    },
+    "StageResult": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "stage_id",
+      "stage_name",
+      "passed",
+      "metrics",
+      "reason"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "stage_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "stage_name",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "passed",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "metrics",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "reason",
+        "POSITIONAL_OR_KEYWORD",
+        "''"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.discovery.opportunity_monitor": {
+   "all": [],
+   "classes": {
+    "DiscoveryOpportunityMonitor": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "beta",
+        "POSITIONAL_OR_KEYWORD",
+        "0.9"
+       ],
+       [
+        "trigger_threshold",
+        "POSITIONAL_OR_KEYWORD",
+        "0.45"
+       ],
+       [
+        "persistence_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "3"
+       ],
+       [
+        "scheduled_exploration",
+        "POSITIONAL_OR_KEYWORD",
+        "False"
+       ]
+      ],
+      "update": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "return_train",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "return_ood",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "jacobian_norm",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "density",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "prior_retention_loss",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ]
+      ]
+     }
+    },
+    "OpportunitySignal": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "perf_plateau",
+      "generalization_gap",
+      "capacity_pressure",
+      "redundancy",
+      "interference"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "perf_plateau",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "generalization_gap",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "capacity_pressure",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "redundancy",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "interference",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.discovery.pareto_optimizer": {
+   "all": [],
+   "classes": {
+    "HardConstraints": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "max_neurons",
+      "max_connections",
+      "max_parameters",
+      "max_memory_mb",
+      "max_jacobian_norm"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "max_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "1024"
+       ],
+       [
+        "max_connections",
+        "POSITIONAL_OR_KEYWORD",
+        "10000"
+       ],
+       [
+        "max_parameters",
+        "POSITIONAL_OR_KEYWORD",
+        "20000"
+       ],
+       [
+        "max_memory_mb",
+        "POSITIONAL_OR_KEYWORD",
+        "100.0"
+       ],
+       [
+        "max_jacobian_norm",
+        "POSITIONAL_OR_KEYWORD",
+        "1.1"
+       ]
+      ]
+     }
+    },
+    "ParetoOptimizer": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "constraints",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "weights",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "check_constraints": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "genotype",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "jacobian_norm",
+        "POSITIONAL_OR_KEYWORD",
+        "0.85"
+       ]
+      ],
+      "compute_scalar_utility": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "fitness",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "dominates": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "f1",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "f2",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "rank_population": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "population",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "UtilityWeights": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "w_train",
+      "w_ood",
+      "w_adapt",
+      "w_forget",
+      "w_cost",
+      "w_instability"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "w_train",
+        "POSITIONAL_OR_KEYWORD",
+        "0.35"
+       ],
+       [
+        "w_ood",
+        "POSITIONAL_OR_KEYWORD",
+        "0.25"
+       ],
+       [
+        "w_adapt",
+        "POSITIONAL_OR_KEYWORD",
+        "0.15"
+       ],
+       [
+        "w_forget",
+        "POSITIONAL_OR_KEYWORD",
+        "0.1"
+       ],
+       [
+        "w_cost",
+        "POSITIONAL_OR_KEYWORD",
+        "0.05"
+       ],
+       [
+        "w_instability",
+        "POSITIONAL_OR_KEYWORD",
+        "0.1"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evaluation": {
+   "all": [
+    "DelayedCueMatchingTask",
+    "ForageNavigationTask",
+    "MatchedControlsFactory",
+    "PromotionGate",
+    "RetentionEvaluator",
+    "compute_recovery_fraction",
+    "holm_bonferroni",
+    "paired_seed_analysis",
+    "run_benchmark_episode"
+   ],
+   "classes": {},
+   "functions": {}
+  },
+  "sonapse_evo.evaluation.benchmark_runner": {
+   "all": [],
+   "classes": {
+    "DelayedCueMatchingTask": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "sensory_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "155"
+       ],
+       [
+        "delay_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "10"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "reset": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "step": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "action",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "ForageNavigationTask": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "sensory_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "155"
+       ],
+       [
+        "max_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "40"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "reset": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "rollout_episode": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "motor_head",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "graft_registry",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "max_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "step": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "action",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {
+    "run_benchmark_episode": [
+     [
+      "env",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "substrate",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "motor_head",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "registry",
+      "POSITIONAL_OR_KEYWORD",
+      "None"
+     ],
+     [
+      "seed",
+      "POSITIONAL_OR_KEYWORD",
+      "42"
+     ],
+     [
+      "enable_grafts",
+      "POSITIONAL_OR_KEYWORD",
+      "True"
+     ],
+     [
+      "motor_offset",
+      "POSITIONAL_OR_KEYWORD",
+      "512"
+     ]
+    ]
+   }
+  },
+  "sonapse_evo.evaluation.curriculum": {
+   "all": [],
+   "classes": {
+    "ContinualCurriculumBenchmark": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "evaluate_curriculum": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "motor_head",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "graft_registry",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ]
+     }
+    },
+    "CurriculumScorecard": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "task_returns",
+      "forward_transfer_score",
+      "backward_retention_score",
+      "catastrophic_forgetting",
+      "continual_learning_index",
+      "passed_curriculum"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "task_returns",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "forward_transfer_score",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "backward_retention_score",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "catastrophic_forgetting",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "continual_learning_index",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "passed_curriculum",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "InvertedSteeringObstacleTask": {
+     "bases": [
+      "ForageNavigationTask"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "sensory_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "155"
+       ],
+       [
+        "max_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "40"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "777"
+       ]
+      ],
+      "step": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "action",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evaluation.generalization": {
+   "all": [],
+   "classes": {
+    "DynamicFrictionForagingTask": {
+     "bases": [
+      "ForageNavigationTask"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "sensory_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "155"
+       ],
+       [
+        "max_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "40"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "999"
+       ]
+      ],
+      "step": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "action",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "MultiTaskContinualBenchmark": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "evaluate_continual_profile": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graft_registry",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evaluation.matched_controls": {
+   "all": [],
+   "classes": {
+    "MatchedControlsFactory": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "build_arm": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "arm_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "trainer",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "lesioned_edges",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "use_authentic",
+        "POSITIONAL_OR_KEYWORD",
+        "False"
+       ]
+      ],
+      "build_authentic_arm": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "arm_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "trainer",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "lesioned_edges",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "legacy_A4_weight_scaled_demo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "clone_sub",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evaluation.promotion": {
+   "all": [],
+   "classes": {
+    "PromotionGate": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "min_recovery_ratio",
+        "POSITIONAL_OR_KEYWORD",
+        "0.25"
+       ],
+       [
+        "min_causal_tau",
+        "POSITIONAL_OR_KEYWORD",
+        "0.1"
+       ],
+       [
+        "max_jacobian_norm",
+        "POSITIONAL_OR_KEYWORD",
+        "1.1"
+       ],
+       [
+        "require_promotable_tier",
+        "POSITIONAL_OR_KEYWORD",
+        "False"
+       ]
+      ],
+      "evaluate_promotion": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "res",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evaluation.retention": {
+   "all": [],
+   "classes": {
+    "RetentionEvaluator": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "max_allowed_forgetting",
+        "POSITIONAL_OR_KEYWORD",
+        "0.15"
+       ]
+      ],
+      "compute_forgetting": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "before_returns",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "after_returns",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evaluation.rigl": {
+   "all": [],
+   "classes": {
+    "AuthenticRigL": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "config",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "get_current_drop_fraction": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "prune_and_regrow": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "loss_fn_grad",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ]
+     }
+    },
+    "RigLConfig": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "initial_drop_fraction",
+      "drop_fraction_decay",
+      "update_frequency",
+      "total_steps",
+      "target_sparsity"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "initial_drop_fraction",
+        "POSITIONAL_OR_KEYWORD",
+        "0.3"
+       ],
+       [
+        "drop_fraction_decay",
+        "POSITIONAL_OR_KEYWORD",
+        "0.5"
+       ],
+       [
+        "update_frequency",
+        "POSITIONAL_OR_KEYWORD",
+        "5"
+       ],
+       [
+        "total_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "30"
+       ],
+       [
+        "target_sparsity",
+        "POSITIONAL_OR_KEYWORD",
+        "0.9"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evaluation.statistical_analysis": {
+   "all": [],
+   "classes": {},
+   "functions": {
+    "compute_recovery_fraction": [
+     [
+      "intact_return",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "damaged_return",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "repaired_return",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "eps",
+      "POSITIONAL_OR_KEYWORD",
+      "1e-05"
+     ]
+    ],
+    "holm_bonferroni": [
+     [
+      "p_values",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ]
+    ],
+    "paired_seed_analysis": [
+     [
+      "evo_returns",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "control_returns",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "alpha",
+      "POSITIONAL_OR_KEYWORD",
+      "0.05"
+     ],
+     [
+      "n_bootstraps",
+      "POSITIONAL_OR_KEYWORD",
+      "1000"
+     ],
+     [
+      "seed",
+      "POSITIONAL_OR_KEYWORD",
+      "42"
+     ]
+    ]
+   }
+  },
+  "sonapse_evo.evolution": {
+   "all": [
+    "CandidateGenerator",
+    "CandidateLifecycle",
+    "CandidateSelector",
+    "CandidateState",
+    "CandidateTrainer",
+    "FailureArchive",
+    "TransactionManager"
+   ],
+   "classes": {},
+   "functions": {}
+  },
+  "sonapse_evo.evolution.candidate_generator": {
+   "all": [],
+   "classes": {
+    "CandidateGenerator": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "default_rank",
+        "POSITIONAL_OR_KEYWORD",
+        "8"
+       ],
+       [
+        "default_max_gain",
+        "POSITIONAL_OR_KEYWORD",
+        "0.1"
+       ],
+       [
+        "ramp_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "50"
+       ],
+       [
+        "recurrent_state_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "16"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "generate_candidates": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "port_pairs",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "parent_digest",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "allowed_types",
+        "POSITIONAL_OR_KEYWORD",
+        "('low_rank', 'recurrent', 'biological')"
+       ],
+       [
+        "max_candidates",
+        "POSITIONAL_OR_KEYWORD",
+        "64"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evolution.candidate_selector": {
+   "all": [],
+   "classes": {
+    "CandidateSelector": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "param_budget",
+        "POSITIONAL_OR_KEYWORD",
+        "2048"
+       ],
+       [
+        "compute_budget",
+        "POSITIONAL_OR_KEYWORD",
+        "4096"
+       ],
+       [
+        "lambda_param",
+        "POSITIONAL_OR_KEYWORD",
+        "0.1"
+       ],
+       [
+        "lambda_compute",
+        "POSITIONAL_OR_KEYWORD",
+        "0.05"
+       ],
+       [
+        "lambda_forgetting",
+        "POSITIONAL_OR_KEYWORD",
+        "0.3"
+       ],
+       [
+        "lambda_stability",
+        "POSITIONAL_OR_KEYWORD",
+        "0.2"
+       ]
+      ],
+      "calculate_utility": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "eval_result",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "param_count",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "compute_ops",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "forgetting",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "stability_penalty",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "rank_evaluated_candidates": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "candidate_evals",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evolution.candidate_trainer": {
+   "all": [],
+   "classes": {
+    "CandidateTrainer": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "learning_rate",
+        "POSITIONAL_OR_KEYWORD",
+        "0.003"
+       ],
+       [
+        "lambda_distill",
+        "POSITIONAL_OR_KEYWORD",
+        "0.5"
+       ],
+       [
+        "lambda_reg",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0001"
+       ],
+       [
+        "lambda_stability",
+        "POSITIONAL_OR_KEYWORD",
+        "0.1"
+       ],
+       [
+        "rho_limit",
+        "POSITIONAL_OR_KEYWORD",
+        "1.05"
+       ]
+      ],
+      "instantiate_graft": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "spec",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "train_candidate": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "candidate_module",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "isolated_substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "training_data",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "retention_data",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "motor_head",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "steps",
+        "POSITIONAL_OR_KEYWORD",
+        "64"
+       ],
+       [
+        "batch_size",
+        "POSITIONAL_OR_KEYWORD",
+        "16"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evolution.lifecycle": {
+   "all": [],
+   "classes": {
+    "CandidateLifecycle": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "candidate_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "transition_to": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "new_state",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "reason",
+        "POSITIONAL_OR_KEYWORD",
+        "''"
+       ]
+      ]
+     }
+    },
+    "CandidateState": {
+     "bases": [
+      "str",
+      "Enum"
+     ],
+     "fields": [],
+     "methods": {}
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.evolution.operators": {
+   "all": [],
+   "classes": {
+    "AdaptiveContextGatingOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "AddLowRankBridgeOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "AddNeuronOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "can_apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "estimate_cost": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "AddSynapseOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "can_apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "estimate_cost": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "BaseStructuralOperator": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "can_apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "estimate_cost": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "DivideModuleOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "can_apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "DuplicateModuleOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "can_apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "GrowMicrocircuitOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "LocalRecurrentCircuitOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "MergeModulesOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "can_apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "ModulateInterModuleRoutingOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "MutationReceipt": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "mutation_id",
+      "operator_name",
+      "applied",
+      "parameters",
+      "undo_state",
+      "resource_delta"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "mutation_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "operator_name",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "applied",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "parameters",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "undo_state",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "resource_delta",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ]
+      ]
+     }
+    },
+    "PruneNeuronOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "can_apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "PruneRedundantComputationOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "can_apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "RemoveSynapseOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "can_apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "estimate_cost": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "RescaleConnectionOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "RewireSynapseOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "can_apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "estimate_cost": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "SpecializeMemoryPathwayOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "SpecializeSensoryPathwayOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "SplitPathwayOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "TransferDonorModuleOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "TunePlasticityOperator": {
+     "bases": [
+      "BaseStructuralOperator"
+     ],
+     "fields": [],
+     "methods": {
+      "apply": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rng",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "undo": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graph",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "receipt",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {
+    "get_operator_by_name": [
+     [
+      "name",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ]
+    ]
+   }
+  },
+  "sonapse_evo.evolution.transaction_manager": {
+   "all": [],
+   "classes": {
+    "FailureArchive": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "record_failure": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "candidate_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "reason",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "details",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "TransactionManager": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "substrate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "registry",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "failure_archive",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "commit_graft": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graft_module",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "spec",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "eval_result",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "lifecycle",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "rollback_graft": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graft_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "reason",
+        "POSITIONAL_OR_KEYWORD",
+        "''"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.grafts": {
+   "all": [
+    "BiologicalMotifGraft",
+    "DonorAdapter",
+    "GraftRegistry",
+    "LowRankBridge",
+    "RecurrentMicrocircuit"
+   ],
+   "classes": {},
+   "functions": {}
+  },
+  "sonapse_evo.grafts.biological_graft": {
+   "all": [],
+   "classes": {
+    "BiologicalMotifGraft": {
+     "bases": [
+      "Module"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "spec",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "motif_nodes",
+        "POSITIONAL_OR_KEYWORD",
+        "16"
+       ],
+       [
+        "excitatory_ratio",
+        "POSITIONAL_OR_KEYWORD",
+        "0.8"
+       ],
+       [
+        "freeze_motif",
+        "POSITIONAL_OR_KEYWORD",
+        "True"
+       ]
+      ],
+      "forward": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "full_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "context",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "get_parameter_count": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "reset_ramp": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "start_gain",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ]
+      ],
+      "reset_state": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "step_ramp": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.grafts.donor_adapter": {
+   "all": [],
+   "classes": {
+    "DonorAdapter": {
+     "bases": [
+      "Module"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "spec",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "donor_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "64"
+       ]
+      ],
+      "fit_ridge_regression": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "donor_features",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "target_activations",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "reg_lambda",
+        "POSITIONAL_OR_KEYWORD",
+        "0.01"
+       ]
+      ],
+      "forward": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "full_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "donor_representation",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "context",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "get_parameter_count": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "reset_ramp": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "start_gain",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ]
+      ],
+      "step_ramp": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.grafts.graft_registry": {
+   "all": [],
+   "classes": {
+    "GraftRegistry": {
+     "bases": [
+      "Module"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "global_cap",
+        "POSITIONAL_OR_KEYWORD",
+        "0.1"
+       ]
+      ],
+      "clear": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "compute_total_current": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "full_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "context",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "donor_features",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "count_parameters": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "get_summary": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "register_graft": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graft",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "spec",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "reset_states": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "step_ramps": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "unregister_graft": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "graft_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.grafts.low_rank_bridge": {
+   "all": [],
+   "classes": {
+    "LowRankBridge": {
+     "bases": [
+      "Module"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "spec",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "context_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "64"
+       ]
+      ],
+      "forward": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "full_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "context",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "get_parameter_count": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "reset_ramp": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "start_gain",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ]
+      ],
+      "step_ramp": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.grafts.recurrent_microcircuit": {
+   "all": [],
+   "classes": {
+    "RecurrentMicrocircuit": {
+     "bases": [
+      "Module"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "spec",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "context_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "64"
+       ],
+       [
+        "leak_nu",
+        "POSITIONAL_OR_KEYWORD",
+        "0.4"
+       ]
+      ],
+      "forward": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "full_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "context",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "get_parameter_count": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "reset_ramp": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "start_gain",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ]
+      ],
+      "reset_state": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "step_ramp": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.observatory": {
+   "all": [
+    "LiveObservatoryState",
+    "TelemetryLogger",
+    "run_server"
+   ],
+   "classes": {},
+   "functions": {}
+  },
+  "sonapse_evo.observatory.live_state": {
+   "all": [],
+   "classes": {
+    "LiveObservatoryState": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "get_full_state": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "tick_simulation": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "trigger_discovery_step": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "trigger_lesion_event": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "trigger_repair_event": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.observatory.server": {
+   "all": [],
+   "classes": {},
+   "functions": {
+    "create_handler": [
+     [
+      "live_state",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ]
+    ],
+    "run_server": [
+     [
+      "port",
+      "POSITIONAL_OR_KEYWORD",
+      "8890"
+     ],
+     [
+      "live_state",
+      "POSITIONAL_OR_KEYWORD",
+      "None"
+     ]
+    ]
+   }
+  },
+  "sonapse_evo.observatory.telemetry": {
+   "all": [],
+   "classes": {
+    "TelemetryLogger": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "max_history",
+        "POSITIONAL_OR_KEYWORD",
+        "500"
+       ]
+      ],
+      "export_json": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "get_latest": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "record_step": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "step",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "mean_rate",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "deficit_score",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "jacobian_norm",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "max_aux_current",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "active_graft_count",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "task_return",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.substrate": {
+   "all": [
+    "LesionEngine",
+    "LesionSpec",
+    "NeuralPort",
+    "RecurrentSubstrate",
+    "TopologyState",
+    "create_uniform_ports"
+   ],
+   "classes": {},
+   "functions": {}
+  },
+  "sonapse_evo.substrate.graph_topology": {
+   "all": [],
+   "classes": {
+    "EdgeMetadata": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "pre",
+      "post",
+      "weight",
+      "edge_type",
+      "delay",
+      "utilization",
+      "age_steps",
+      "plasticity_rate",
+      "frozen"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "pre",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "post",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "weight",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "edge_type",
+        "POSITIONAL_OR_KEYWORD",
+        "'synapse'"
+       ],
+       [
+        "delay",
+        "POSITIONAL_OR_KEYWORD",
+        "0"
+       ],
+       [
+        "utilization",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "age_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "0"
+       ],
+       [
+        "plasticity_rate",
+        "POSITIONAL_OR_KEYWORD",
+        "0.01"
+       ],
+       [
+        "frozen",
+        "POSITIONAL_OR_KEYWORD",
+        "False"
+       ]
+      ]
+     }
+    },
+    "GraphTopology": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "768"
+       ],
+       [
+        "num_regions",
+        "POSITIONAL_OR_KEYWORD",
+        "3"
+       ],
+       [
+        "region_names",
+        "POSITIONAL_OR_KEYWORD",
+        "('flywire', 'manc', 'optic-lobe')"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "add_edge": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "pre",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "post",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "weight",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "edge_type",
+        "POSITIONAL_OR_KEYWORD",
+        "'synapse'"
+       ],
+       [
+        "frozen",
+        "POSITIONAL_OR_KEYWORD",
+        "False"
+       ]
+      ],
+      "clone": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "compute_digest": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "remove_edge": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "pre",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "post",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "to_topology_state": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "ModuleMetadata": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "module_id",
+      "region_id",
+      "name",
+      "node_indices",
+      "specialized_role"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "module_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "region_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "name",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "node_indices",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "specialized_role",
+        "POSITIONAL_OR_KEYWORD",
+        "'general'"
+       ]
+      ]
+     }
+    },
+    "NodeMetadata": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "node_id",
+      "region_id",
+      "module_id",
+      "node_type",
+      "sign",
+      "delay_steps",
+      "mean_activity",
+      "activity_variance",
+      "plasticity_eligible",
+      "age_steps",
+      "functional_contribution",
+      "stability_score"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "node_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "region_id",
+        "POSITIONAL_OR_KEYWORD",
+        "0"
+       ],
+       [
+        "module_id",
+        "POSITIONAL_OR_KEYWORD",
+        "0"
+       ],
+       [
+        "node_type",
+        "POSITIONAL_OR_KEYWORD",
+        "'interneuron'"
+       ],
+       [
+        "sign",
+        "POSITIONAL_OR_KEYWORD",
+        "1"
+       ],
+       [
+        "delay_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "0"
+       ],
+       [
+        "mean_activity",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "activity_variance",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "plasticity_eligible",
+        "POSITIONAL_OR_KEYWORD",
+        "True"
+       ],
+       [
+        "age_steps",
+        "POSITIONAL_OR_KEYWORD",
+        "0"
+       ],
+       [
+        "functional_contribution",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "stability_score",
+        "POSITIONAL_OR_KEYWORD",
+        "1.0"
+       ]
+      ]
+     }
+    },
+    "PlasticityParameters": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "hebbian_rate",
+      "homeostatic_target",
+      "tau_eligibility",
+      "prune_threshold",
+      "max_weight_norm"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "hebbian_rate",
+        "POSITIONAL_OR_KEYWORD",
+        "0.001"
+       ],
+       [
+        "homeostatic_target",
+        "POSITIONAL_OR_KEYWORD",
+        "0.2"
+       ],
+       [
+        "tau_eligibility",
+        "POSITIONAL_OR_KEYWORD",
+        "20.0"
+       ],
+       [
+        "prune_threshold",
+        "POSITIONAL_OR_KEYWORD",
+        "0.005"
+       ],
+       [
+        "max_weight_norm",
+        "POSITIONAL_OR_KEYWORD",
+        "2.0"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.substrate.lesions": {
+   "all": [],
+   "classes": {
+    "LesionEngine": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "create_lesion_mask": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "topology",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "spec",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "LesionSpec": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "lesion_id",
+      "lesion_type",
+      "severity",
+      "seed",
+      "metadata"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "lesion_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "lesion_type",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "severity",
+        "POSITIONAL_OR_KEYWORD",
+        "0.2"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ],
+       [
+        "metadata",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ]
+      ],
+      "compute_digest": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.substrate.neural_ports": {
+   "all": [],
+   "classes": {
+    "NeuralPort": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "port_id",
+      "indices",
+      "region_id",
+      "name"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "port_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "indices",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "region_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "name",
+        "POSITIONAL_OR_KEYWORD",
+        "''"
+       ]
+      ],
+      "extract": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "project": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "local_current",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {
+    "create_uniform_ports": [
+     [
+      "total_neurons",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "num_regions",
+      "POSITIONAL_OR_KEYWORD",
+      "<required>"
+     ],
+     [
+      "port_width",
+      "POSITIONAL_OR_KEYWORD",
+      "32"
+     ],
+     [
+      "ports_per_region",
+      "POSITIONAL_OR_KEYWORD",
+      "2"
+     ],
+     [
+      "seed",
+      "POSITIONAL_OR_KEYWORD",
+      "42"
+     ]
+    ]
+   }
+  },
+  "sonapse_evo.substrate.plasticity": {
+   "all": [],
+   "classes": {
+    "NeuromodulatedPlasticityEngine": {
+     "bases": [
+      "object"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "num_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "768"
+       ],
+       [
+        "eta",
+        "POSITIONAL_OR_KEYWORD",
+        "0.005"
+       ],
+       [
+        "tau_eligibility",
+        "POSITIONAL_OR_KEYWORD",
+        "20.0"
+       ],
+       [
+        "decay_rate",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0005"
+       ],
+       [
+        "target_rate",
+        "POSITIONAL_OR_KEYWORD",
+        "0.2"
+       ],
+       [
+        "homeostatic_gain",
+        "POSITIONAL_OR_KEYWORD",
+        "0.001"
+       ],
+       [
+        "max_weight_bound",
+        "POSITIONAL_OR_KEYWORD",
+        "1.5"
+       ]
+      ],
+      "compute_plastic_current": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "reset_traces": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "step_plasticity": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "pre_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "post_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "reward",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "uncertainty",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ]
+      ],
+      "update_eligibility": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "pre_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "post_rates",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    },
+    "NeuromodulatoryState": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "dopamine_rpe",
+      "acetylcholine_unc",
+      "serotonin_risk",
+      "noradrenaline_gain"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "dopamine_rpe",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "acetylcholine_unc",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "serotonin_risk",
+        "POSITIONAL_OR_KEYWORD",
+        "0.0"
+       ],
+       [
+        "noradrenaline_gain",
+        "POSITIONAL_OR_KEYWORD",
+        "1.0"
+       ]
+      ],
+      "compute_plasticity_multiplier": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.substrate.recurrent_runtime": {
+   "all": [],
+   "classes": {
+    "RecurrentSubstrate": {
+     "bases": [
+      "Module"
+     ],
+     "fields": [],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "topology",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "sensory_dim",
+        "POSITIONAL_OR_KEYWORD",
+        "155"
+       ],
+       [
+        "leak",
+        "POSITIONAL_OR_KEYWORD",
+        "0.35"
+       ],
+       [
+        "microsteps",
+        "POSITIONAL_OR_KEYWORD",
+        "2"
+       ],
+       [
+        "current_cap",
+        "POSITIONAL_OR_KEYWORD",
+        "0.1"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "activation_phi": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "x",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "apply_lesion": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "spec",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "clear_lesion": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "clone_substrate": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "compute_recurrent_input": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "r",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "create_snapshot": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "d_phi": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "x",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "estimate_jacobian_norm": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "observation",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "forward_step": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "observation",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "aux_current",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "microstep": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "observation",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "aux_current",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ]
+      ],
+      "reset_state": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "restore_snapshot": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "snapshot",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  },
+  "sonapse_evo.substrate.topology_state": {
+   "all": [],
+   "classes": {
+    "TopologyState": {
+     "bases": [
+      "object"
+     ],
+     "fields": [
+      "total_neurons",
+      "num_regions",
+      "region_names",
+      "region_assignments",
+      "base_pre",
+      "base_post",
+      "base_w",
+      "seed"
+     ],
+     "methods": {
+      "__init__": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "total_neurons",
+        "POSITIONAL_OR_KEYWORD",
+        "768"
+       ],
+       [
+        "num_regions",
+        "POSITIONAL_OR_KEYWORD",
+        "3"
+       ],
+       [
+        "region_names",
+        "POSITIONAL_OR_KEYWORD",
+        "('flywire', 'manc', 'optic-lobe')"
+       ],
+       [
+        "region_assignments",
+        "POSITIONAL_OR_KEYWORD",
+        "None"
+       ],
+       [
+        "base_pre",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "base_post",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "base_w",
+        "POSITIONAL_OR_KEYWORD",
+        "<factory>"
+       ],
+       [
+        "seed",
+        "POSITIONAL_OR_KEYWORD",
+        "42"
+       ]
+      ],
+      "compute_digest": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ],
+      "get_region_nodes": [
+       [
+        "self",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ],
+       [
+        "region_id",
+        "POSITIONAL_OR_KEYWORD",
+        "<required>"
+       ]
+      ]
+     }
+    }
+   },
+   "functions": {}
+  }
+ },
+ "package": "sonapse_evo",
+ "package_version": "2.0.0",
+ "structural_operators": [
+  "add_synapse",
+  "remove_synapse",
+  "rewire_synapse",
+  "rescale_connection",
+  "add_neuron",
+  "prune_neuron",
+  "split_pathway",
+  "local_recurrent_circuit",
+  "grow_microcircuit",
+  "add_low_rank_bridge",
+  "duplicate_module",
+  "divide_module",
+  "merge_modules",
+  "specialize_sensory_pathway",
+  "specialize_memory_pathway",
+  "modulate_inter_module_routing",
+  "tune_plasticity",
+  "adaptive_context_gating",
+  "prune_redundant_computation",
+  "transfer_donor_module"
+ ]
+}

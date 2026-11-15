@@ -1,0 +1,94 @@
+{
+ "topology_digest": "1fe0a8c34c9f358b94febe54386846db38511a2ab9a7cb1c939edc08dac9e9f8",
+ "edges": 5727,
+ "trace": {
+  "digest": "7d4eedc7103ca01b34516887a110c48351b647d196862af4f61bc04f18e360fb",
+  "mean_rates": [
+   0.04738073,
+   0.07446676,
+   0.09230006,
+   0.10359111,
+   0.11165177,
+   0.11652157,
+   0.12241199,
+   0.12385249,
+   0.1266848,
+   0.13075615,
+   0.13052271,
+   0.13262063,
+   0.13406961,
+   0.13281868,
+   0.13252246,
+   0.13262938,
+   0.13254203,
+   0.13102494,
+   0.13058798,
+   0.13119282,
+   0.13052404,
+   0.13152198,
+   0.13167886,
+   0.1297776,
+   0.13327359
+  ]
+ },
+ "lesion_masks": {
+  "random_edges": "bee03a6e04601280b07aa36fe213e53c830b857ab12546fbe13296a6e6e193dd",
+  "inter_region_bridge": "709b7d65840c523b51c0772c6c77f3cb5e900ab21e435b1aa7de39499d4e83de",
+  "sensory_pathway": "71ed9d7157453ed1b7d1a9fa059a07fcb66bdc8afd7d62c7a2374bc9dd4298ed",
+  "recurrent_memory": "465d718891b8a81a4ed99861c5864af230fa7408de36dd9811fe514c925d7b60",
+  "targeted_hub": "b1a2c4a1f18086e535690c077225fff45aad467a1d539608658712975445add2"
+ },
+ "forage_returns": {
+  "100": 33.435334695647235,
+  "237": 36.017915757502564,
+  "374": 31.209757856604583
+ },
+ "delayed_cue_return": 10.0,
+ "snapshot_state_digest": "742b45c3f8ba076ee9379ac5c96e6ad2d3439d6428d2a20d7ca6aaa4e5e27e69",
+ "cli": {
+  "lesion_repair": [
+   "=== SONAPSE-EVO Lesion Repair Assay ===",
+   "Task: forage | Lesion Severity: 25%",
+   "1/4 Intact Baseline Return: 33.44",
+   "2/4 Damaged Return:         16.92 (Performance drop: -16.52)",
+   "3/4 Causal Site Identified: R0_P0 (Sensory) -> R2_P0 (Motor)",
+   "4/4 Repaired Return:        34.66 (Restoration: +17.74)",
+   "",
+   "=> Calculated Recovery Fraction R: 107.4%"
+  ],
+  "curriculum": [
+   "=== SONAPSE-EVO 4-Stage Continual Learning Curriculum ===",
+   "Stage 1 (Sensory-Motor Navigation): 31.22",
+   "Stage 2 (Temporal Working Memory):   10.00",
+   "Stage 3 (Physical Parameter Drift):  15.59",
+   "Stage 4 (Inverted Context Maneuver): 43.45",
+   "",
+   "Forward Transfer Score:      +0.945",
+   "Backward Retention Score:     1.000",
+   "Catastrophic Forgetting:     0.000",
+   "Continual Learning Index:    0.973",
+   "Curriculum Benchmark Passed: True"
+  ],
+  "criticality": [
+   "=== SONAPSE-EVO Phase-Space Criticality Diagnostics ===",
+   "Largest Local Lyapunov Exponent (LLE): -0.3086",
+   "Dynamical Regime:                      SUBCRITICAL_ORDER",
+   "Spectral Radius:                       0.5651",
+   "Singular Value Effective Rank:         2.02",
+   "Operating at Edge of Chaos:            False"
+  ],
+  "benchmark_arm_means": [
+   "Arm A0: Mean Return = 32.27 (+/- 13.80)",
+   "Arm A1: Mean Return = 32.27 (+/- 13.80)",
+   "Arm A2: Mean Return = 32.27 (+/- 13.79)",
+   "Arm A3: Mean Return = 32.29 (+/- 13.81)",
+   "Arm A4: Mean Return = 32.07 (+/- 13.88)",
+   "Arm A5: Mean Return = 32.26 (+/- 13.83)",
+   "Arm A6: Mean Return = 31.45 (+/- 2.93)",
+   "Arm A7: Mean Return = 26.45 (+/- 10.10)",
+   "Arm A8: Mean Return = 33.29 (+/- 2.91)",
+   "Arm A9: Mean Return = 31.33 (+/- 2.80)"
+  ]
+ },
+ "note": "generated from the untouched SONAPSE-EVO 2.0.0 code (git tag baseline/sonapse-evo-2.0.0)"
+}

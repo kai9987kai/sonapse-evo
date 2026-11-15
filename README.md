@@ -226,3 +226,47 @@ SONAPSE-EVO 2.0 adheres to strict scientific standards:
 - **No Biological Equivalence**: Neural nodes represent continuous rate abstractions ($\phi(x) = \max(0, \tanh(x))$), not biophysical multi-compartment spiking cells.
 - **No AGI or Sentience Claims**: The architecture is a constrained topological search and adaptation mechanism for recurrent networks under objective task reward signals.
 - **Transparent Matched Comparisons**: All structural modifications are compared against matched-resource controls (RigL, fine-tuning, random expansion) with explicit reporting of confidence intervals and effect sizes.
+
+---
+
+## 6. NeuroWeave Evolution Layer (additive, off by default)
+
+Layer version 3.0.0 adds a second research layer next to everything above, adapted from
+[NEUROWEAVE-LAB](https://github.com/kai9987kai/NEUROWEAVE-LAB) and extended. **Nothing in sections 1-5
+changed**: all new mechanisms are independent switches that start disabled, and with all of them off the
+model is bit-identical to SONAPSE-EVO 2.0 (this is tested, and the original baseline is kept at git tag
+`baseline/sonapse-evo-2.0.0`).
+
+- **42 switchable mechanisms** in `src/sonapse_evo/neuroweave/`: multi-compartment / multi-soma neurons
+  (four dendrites, eight soma populations, membrane, axon branches, glia), delay lines and adaptive
+  routing, NeuroWave-X2 multi-representation packets, sparse three-factor plasticity, STDP,
+  meta-plasticity, sleep consolidation, structural turnover and neurogenesis, six neuromodulators with
+  receptor profiles, affective control, a sixteen-channel sensory system with cross-modal fusion, the
+  Micro-Collective and a specialist graft, an ensemble world model with counterfactuals, multi-horizon
+  prediction, an action-grounded self-model, and a provenance-tracked memory ecology.
+- **Connectomes**: ten-region and custom layouts, thirteen topology families, graph metrics, region
+  routing and an extended lesion library.
+- **Environments**: a 1200 x 660 ecology with twelve presets and a multi-agent variant (the two existing
+  tasks are kept in the same registry).
+- **Laboratory**: 24 catalogued experiments with matched baselines, ablations, held-out evaluation,
+  receipts and CSV; topology and lesion assays; evidence-gated promotion with rollback.
+- **Portability**: versioned model packages with read-only validation, exact re-import, a standalone
+  HTML inference runner and an FPGA mapping manifest (a mapping description, not hardware).
+- **Observatory**: `sonapse-evo serve` also serves `/weave.html` with laboratory, neural,
+  neuromodulation, sensory, learning, environment and model-studio panels.
+
+```bash
+sonapse-evo weave-mechanisms     # list the switches and profiles
+sonapse-evo weave-smoke          # identity, every mechanism, MAX episode, package round trip
+sonapse-evo max                  # MAX mode: all 42 mechanisms versus the legacy model
+sonapse-evo weave-experiment --list
+sonapse-evo weave-compat         # original API surface, golden values, all-off identity
+pytest -q                        # 233 tests: the original 60 plus 173 for the new layer
+```
+
+These are synthetic computational abstractions, not validated biology, and no mechanism is promoted by
+default. What the evidence does and does not support is recorded in
+[docs/NEUROWEAVE_RESULTS.md](docs/NEUROWEAVE_RESULTS.md). Full description:
+[docs/NEUROWEAVE_EVOLUTION.md](docs/NEUROWEAVE_EVOLUTION.md), requirement coverage:
+[docs/NEUROWEAVE_FEATURE_MATRIX.md](docs/NEUROWEAVE_FEATURE_MATRIX.md), catalogue:
+[docs/NEUROWEAVE_MECHANISMS.md](docs/NEUROWEAVE_MECHANISMS.md).

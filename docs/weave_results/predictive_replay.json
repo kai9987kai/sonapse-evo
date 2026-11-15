@@ -1,0 +1,586 @@
+{
+  "receipt_version": "1.0",
+  "weave_version": "3.0.0",
+  "experiment_id": "predictive_replay",
+  "title": "Predictive replay",
+  "hypothesis": "Surprise-prioritised replay improves consolidation over sleep consolidation without it.",
+  "kind": "paired",
+  "spec": {
+    "experiment_id": "predictive_replay",
+    "title": "Predictive replay",
+    "hypothesis": "Surprise-prioritised replay improves consolidation over sleep consolidation without it.",
+    "candidate": [
+      "reward_gated_plasticity",
+      "sleep_consolidation",
+      "predictive_replay"
+    ],
+    "baseline": [
+      "reward_gated_plasticity",
+      "sleep_consolidation"
+    ],
+    "environment": "forage",
+    "env_options": {},
+    "topology_kind": null,
+    "total_neurons": 768,
+    "episodes_train": 3,
+    "episodes_eval": 2,
+    "seeds": [
+      11,
+      23,
+      37
+    ],
+    "params": {
+      "sleep_consolidation": {
+        "period": 40
+      },
+      "predictive_replay": {
+        "period": 20
+      }
+    },
+    "ablations": [],
+    "kind": "paired",
+    "notes": "",
+    "primary_metric": "auto",
+    "smoke": false
+  },
+  "seeds": [
+    11,
+    23,
+    37,
+    51,
+    67
+  ],
+  "held_out_seed_offset": 1000,
+  "primary_metric": "efficiency",
+  "smoke": false,
+  "matched_conditions": {
+    "same_topology_seed_environment_schedule": true,
+    "candidate_cost_ratio_measured": 1.0341760590639897,
+    "note": "arms differ only in enabled mechanisms; compute is reported, not equalised"
+  },
+  "results": {
+    "summary": {
+      "baseline": {
+        "mechanisms": [
+          "reward_gated_plasticity",
+          "sleep_consolidation"
+        ],
+        "heldout_mean": 27.263553590031385,
+        "heldout_std": 2.3386841247265124,
+        "train_mean": 27.501271489302717,
+        "heldout_success_rate": 1.0,
+        "heldout_mean_steps": 11.2,
+        "heldout_efficiency": 0.7449999999999999,
+        "measured_ms_per_step": 5.610232456215142,
+        "measured_state_bytes": 1224861,
+        "faults": 0
+      },
+      "candidate": {
+        "mechanisms": [
+          "reward_gated_plasticity",
+          "sleep_consolidation",
+          "predictive_replay"
+        ],
+        "heldout_mean": 27.263633225751374,
+        "heldout_std": 2.3387507053167744,
+        "train_mean": 27.500778893394045,
+        "heldout_success_rate": 1.0,
+        "heldout_mean_steps": 11.2,
+        "heldout_efficiency": 0.7449999999999999,
+        "measured_ms_per_step": 5.801968092001462,
+        "measured_state_bytes": 1336221,
+        "faults": 0
+      }
+    },
+    "comparisons": {
+      "candidate_vs_baseline": {
+        "n_seeds": 5,
+        "alpha": 0.05,
+        "mean_diff": 0.0,
+        "std_diff": 0.0,
+        "cohens_d": null,
+        "t_statistic": 0.0,
+        "p_value_ttest": 1.0,
+        "wilcoxon_stat": 0.0,
+        "p_value_wilcoxon": 1.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "significant_at_alpha": false,
+        "significant_at_005": false,
+        "wins": 0,
+        "verdict": "inconclusive",
+        "reason": "CI includes zero",
+        "evidence_tier": "PAIRED_EXPERIMENT",
+        "metric": "efficiency"
+      },
+      "candidate_vs_baseline_return": {
+        "n_seeds": 5,
+        "alpha": 0.05,
+        "mean_diff": 7.96357199831732e-05,
+        "std_diff": 0.00014173360866541926,
+        "cohens_d": 0.5618689930569942,
+        "t_statistic": 1.2563772629247965,
+        "p_value_ttest": 0.2773497972000376,
+        "wilcoxon_stat": 1.0,
+        "p_value_wilcoxon": 0.5,
+        "ci_lower": -2.5809946083654723e-05,
+        "ci_upper": 0.00019333824374712094,
+        "ci_95_lower": -2.5809946083654723e-05,
+        "ci_95_upper": 0.00019333824374712094,
+        "significant_at_alpha": false,
+        "significant_at_005": false,
+        "wins": 2,
+        "verdict": "inconclusive",
+        "reason": "CI includes zero",
+        "evidence_tier": "PAIRED_EXPERIMENT",
+        "metric": "return"
+      }
+    },
+    "runs": {
+      "baseline": [
+        {
+          "mechanisms": [
+            "reward_gated_plasticity",
+            "sleep_consolidation"
+          ],
+          "seed": 11,
+          "train_returns": [
+            32.64715911475507,
+            25.33103203332721,
+            32.005713939022684
+          ],
+          "heldout_returns": [
+            25.27146776505821,
+            28.280598834168153
+          ],
+          "heldout_mean": 26.776033299613182,
+          "train_mean": 29.994635029034992,
+          "heldout_success_rate": 1.0,
+          "heldout_mean_steps": 10.5,
+          "heldout_efficiency": 0.7625,
+          "cost": {
+            "measured_ms_per_step": 5.9875820897199885,
+            "steps": 67,
+            "measured_state_bytes": 1225436,
+            "synapses": {
+              "base": 5711,
+              "legacy_plastic": 0,
+              "grown": 0,
+              "alive": 5711,
+              "mean_abs_weight": 0.13943107426166534,
+              "mean_abs_delta": 0.0019378031138330698,
+              "routing_gain_mean": 1.0
+            },
+            "neurons": 768
+          },
+          "learned": {
+            "mean_abs_weight_delta": 0.0019378031138330698,
+            "grown_synapses": 0
+          },
+          "faults": [],
+          "config_digest": "46ffc0973aa8d89ae2ce202097afee621d743db6a77ec3f45b45c0662f95fb52"
+        },
+        {
+          "mechanisms": [
+            "reward_gated_plasticity",
+            "sleep_consolidation"
+          ],
+          "seed": 23,
+          "train_returns": [
+            27.51567838672672,
+            19.01439114901742,
+            20.375723401889246
+          ],
+          "heldout_returns": [
+            30.831532693284334,
+            28.693287936408808
+          ],
+          "heldout_mean": 29.76241031484657,
+          "train_mean": 22.301930979211125,
+          "heldout_success_rate": 1.0,
+          "heldout_mean_steps": 13.5,
+          "heldout_efficiency": 0.6875,
+          "cost": {
+            "measured_ms_per_step": 4.830844445516252,
+            "steps": 45,
+            "measured_state_bytes": 1222564,
+            "synapses": {
+              "base": 5713,
+              "legacy_plastic": 0,
+              "grown": 0,
+              "alive": 5713,
+              "mean_abs_weight": 0.1390790194272995,
+              "mean_abs_delta": 0.0006706123822368681,
+              "routing_gain_mean": 1.0
+            },
+            "neurons": 768
+          },
+          "learned": {
+            "mean_abs_weight_delta": 0.0006706123822368681,
+            "grown_synapses": 0
+          },
+          "faults": [],
+          "config_digest": "f9899f2fa0d70a2f3270440ce3871c68e0c869f6ba5ca8c6397dbcabe69dbeb1"
+        },
+        {
+          "mechanisms": [
+            "reward_gated_plasticity",
+            "sleep_consolidation"
+          ],
+          "seed": 37,
+          "train_returns": [
+            24.95484320819977,
+            27.92144758074835,
+            22.982495623472865
+          ],
+          "heldout_returns": [
+            20.20615871840009,
+            28.906047331736758
+          ],
+          "heldout_mean": 24.556103025068424,
+          "train_mean": 25.28626213747366,
+          "heldout_success_rate": 1.0,
+          "heldout_mean_steps": 8.0,
+          "heldout_efficiency": 0.825,
+          "cost": {
+            "measured_ms_per_step": 6.8143285711162855,
+            "steps": 42,
+            "measured_state_bytes": 1226236,
+            "synapses": {
+              "base": 5719,
+              "legacy_plastic": 0,
+              "grown": 0,
+              "alive": 5719,
+              "mean_abs_weight": 0.13993681967258453,
+              "mean_abs_delta": 0.0010707001201808453,
+              "routing_gain_mean": 1.0
+            },
+            "neurons": 768
+          },
+          "learned": {
+            "mean_abs_weight_delta": 0.0010707001201808453,
+            "grown_synapses": 0
+          },
+          "faults": [],
+          "config_digest": "fe56d269da970f9fc8831c4b99c670a21f0443114481d35b453b0248004d8c12"
+        },
+        {
+          "mechanisms": [
+            "reward_gated_plasticity",
+            "sleep_consolidation"
+          ],
+          "seed": 51,
+          "train_returns": [
+            33.015026457983055,
+            36.329130291199654,
+            30.74730892762408
+          ],
+          "heldout_returns": [
+            31.425856155898423,
+            28.953464495978622
+          ],
+          "heldout_mean": 30.189660325938522,
+          "train_mean": 33.36382189226892,
+          "heldout_success_rate": 1.0,
+          "heldout_mean_steps": 15.5,
+          "heldout_efficiency": 0.6375,
+          "cost": {
+            "measured_ms_per_step": 5.350127174017911,
+            "steps": 92,
+            "measured_state_bytes": 1225936,
+            "synapses": {
+              "base": 5716,
+              "legacy_plastic": 0,
+              "grown": 0,
+              "alive": 5716,
+              "mean_abs_weight": 0.13910147547721863,
+              "mean_abs_delta": 0.002525803865864873,
+              "routing_gain_mean": 1.0
+            },
+            "neurons": 768
+          },
+          "learned": {
+            "mean_abs_weight_delta": 0.002525803865864873,
+            "grown_synapses": 0
+          },
+          "faults": [],
+          "config_digest": "e4b9fb184fe05127f01d7a2c629b8cd9b2cce6931f92aa66cfdf081598730e99"
+        },
+        {
+          "mechanisms": [
+            "reward_gated_plasticity",
+            "sleep_consolidation"
+          ],
+          "seed": 67,
+          "train_returns": [
+            28.762462820669008,
+            21.577137059780018,
+            29.339522345125665
+          ],
+          "heldout_returns": [
+            24.751761474947994,
+            25.315360494432493
+          ],
+          "heldout_mean": 25.033560984690244,
+          "train_mean": 26.5597074085249,
+          "heldout_success_rate": 1.0,
+          "heldout_mean_steps": 8.5,
+          "heldout_efficiency": 0.8125,
+          "cost": {
+            "measured_ms_per_step": 5.068280000705272,
+            "steps": 45,
+            "measured_state_bytes": 1224136,
+            "synapses": {
+              "base": 5698,
+              "legacy_plastic": 0,
+              "grown": 0,
+              "alive": 5698,
+              "mean_abs_weight": 0.14088240265846252,
+              "mean_abs_delta": 0.0012035160325467587,
+              "routing_gain_mean": 1.0
+            },
+            "neurons": 768
+          },
+          "learned": {
+            "mean_abs_weight_delta": 0.0012035160325467587,
+            "grown_synapses": 0
+          },
+          "faults": [],
+          "config_digest": "8b66fdd865e53341ee6ff53b53004e85c8d4d7c4d598e26bf3971c06982f60c4"
+        }
+      ],
+      "candidate": [
+        {
+          "mechanisms": [
+            "reward_gated_plasticity",
+            "sleep_consolidation",
+            "predictive_replay"
+          ],
+          "seed": 11,
+          "train_returns": [
+            32.64715911475507,
+            25.332065609771632,
+            32.00723734581823
+          ],
+          "heldout_returns": [
+            25.271785704015244,
+            28.28070231438776
+          ],
+          "heldout_mean": 26.776244009201502,
+          "train_mean": 29.99548735678165,
+          "heldout_success_rate": 1.0,
+          "heldout_mean_steps": 10.5,
+          "heldout_efficiency": 0.7625,
+          "cost": {
+            "measured_ms_per_step": 6.2912701491836405,
+            "steps": 67,
+            "measured_state_bytes": 1369436,
+            "synapses": {
+              "base": 5711,
+              "legacy_plastic": 0,
+              "grown": 0,
+              "alive": 5711,
+              "mean_abs_weight": 0.1394282728433609,
+              "mean_abs_delta": 0.0019405246712267399,
+              "routing_gain_mean": 1.0
+            },
+            "neurons": 768
+          },
+          "learned": {
+            "mean_abs_weight_delta": 0.0019405246712267399,
+            "grown_synapses": 0
+          },
+          "faults": [],
+          "config_digest": "9c52568dd9a0381d0623bfc60f151d54f61391d34ea6e20b69e579fa444485ce"
+        },
+        {
+          "mechanisms": [
+            "reward_gated_plasticity",
+            "sleep_consolidation",
+            "predictive_replay"
+          ],
+          "seed": 23,
+          "train_returns": [
+            27.51567838672672,
+            19.01439114901742,
+            20.375723401889246
+          ],
+          "heldout_returns": [
+            30.831532693284334,
+            28.693287936408808
+          ],
+          "heldout_mean": 29.76241031484657,
+          "train_mean": 22.301930979211125,
+          "heldout_success_rate": 1.0,
+          "heldout_mean_steps": 13.5,
+          "heldout_efficiency": 0.6875,
+          "cost": {
+            "measured_ms_per_step": 5.137460001019968,
+            "steps": 45,
+            "measured_state_bytes": 1273764,
+            "synapses": {
+              "base": 5713,
+              "legacy_plastic": 0,
+              "grown": 0,
+              "alive": 5713,
+              "mean_abs_weight": 0.1390790194272995,
+              "mean_abs_delta": 0.0006706123822368681,
+              "routing_gain_mean": 1.0
+            },
+            "neurons": 768
+          },
+          "learned": {
+            "mean_abs_weight_delta": 0.0006706123822368681,
+            "grown_synapses": 0
+          },
+          "faults": [],
+          "config_digest": "e373f142f3c288f3b484bcfc9f641d7b807d79edde836590d7cb12874b829f96"
+        },
+        {
+          "mechanisms": [
+            "reward_gated_plasticity",
+            "sleep_consolidation",
+            "predictive_replay"
+          ],
+          "seed": 37,
+          "train_returns": [
+            24.95484320819977,
+            27.92144758074835,
+            22.982495623472865
+          ],
+          "heldout_returns": [
+            20.20615871840009,
+            28.906047331736758
+          ],
+          "heldout_mean": 24.556103025068424,
+          "train_mean": 25.28626213747366,
+          "heldout_success_rate": 1.0,
+          "heldout_mean_steps": 8.0,
+          "heldout_efficiency": 0.825,
+          "cost": {
+            "measured_ms_per_step": 5.555461904372177,
+            "steps": 42,
+            "measured_state_bytes": 1309436,
+            "synapses": {
+              "base": 5719,
+              "legacy_plastic": 0,
+              "grown": 0,
+              "alive": 5719,
+              "mean_abs_weight": 0.13993681967258453,
+              "mean_abs_delta": 0.0010707001201808453,
+              "routing_gain_mean": 1.0
+            },
+            "neurons": 768
+          },
+          "learned": {
+            "mean_abs_weight_delta": 0.0010707001201808453,
+            "grown_synapses": 0
+          },
+          "faults": [],
+          "config_digest": "254ca4bc57d79b8146536e765b5272afc1a94d1fb4da91b3aaac3b4a1b61003e"
+        },
+        {
+          "mechanisms": [
+            "reward_gated_plasticity",
+            "sleep_consolidation",
+            "predictive_replay"
+          ],
+          "seed": 51,
+          "train_returns": [
+            33.015026457983055,
+            36.329692726155166,
+            30.747172147740507
+          ],
+          "heldout_returns": [
+            31.42604607739856,
+            28.953778562232095
+          ],
+          "heldout_mean": 30.189912319815328,
+          "train_mean": 33.363963777292916,
+          "heldout_success_rate": 1.0,
+          "heldout_mean_steps": 15.5,
+          "heldout_efficiency": 0.6375,
+          "cost": {
+            "measured_ms_per_step": 5.724421739337824,
+            "steps": 92,
+            "measured_state_bytes": 1417936,
+            "synapses": {
+              "base": 5716,
+              "legacy_plastic": 0,
+              "grown": 0,
+              "alive": 5716,
+              "mean_abs_weight": 0.13910439610481262,
+              "mean_abs_delta": 0.0025245859287679195,
+              "routing_gain_mean": 1.0
+            },
+            "neurons": 768
+          },
+          "learned": {
+            "mean_abs_weight_delta": 0.0025245859287679195,
+            "grown_synapses": 0
+          },
+          "faults": [],
+          "config_digest": "02da033ad0d45efbdce763057632c75d74adb4cdce6d1f5d43ec7f4cf2d404dd"
+        },
+        {
+          "mechanisms": [
+            "reward_gated_plasticity",
+            "sleep_consolidation",
+            "predictive_replay"
+          ],
+          "seed": 67,
+          "train_returns": [
+            28.762462820669008,
+            21.577137059780018,
+            29.329150768183602
+          ],
+          "heldout_returns": [
+            24.751711171342695,
+            25.315281748307374
+          ],
+          "heldout_mean": 25.033496459825034,
+          "train_mean": 26.556250216210874,
+          "heldout_success_rate": 1.0,
+          "heldout_mean_steps": 8.5,
+          "heldout_efficiency": 0.8125,
+          "cost": {
+            "measured_ms_per_step": 6.301226666093701,
+            "steps": 45,
+            "measured_state_bytes": 1310536,
+            "synapses": {
+              "base": 5698,
+              "legacy_plastic": 0,
+              "grown": 0,
+              "alive": 5698,
+              "mean_abs_weight": 0.14088307321071625,
+              "mean_abs_delta": 0.0012030707439407706,
+              "routing_gain_mean": 1.0
+            },
+            "neurons": 768
+          },
+          "learned": {
+            "mean_abs_weight_delta": 0.0012030707439407706,
+            "grown_synapses": 0
+          },
+          "faults": [],
+          "config_digest": "707504b7777748265df9c89c8bc254228e7358561650da0380d34111d5b21a8e"
+        }
+      ]
+    }
+  },
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": {
+    "python": "3.12.10",
+    "torch": "2.11.0+cpu",
+    "numpy": "2.4.3",
+    "platform": "Windows",
+    "torch_threads": 8
+  },
+  "created_unix": 1794731297.9035923,
+  "result_digest": "9761d2cd475cf138cb575f2d0eaf59eb31d94f6928f87a090755a147690c04ac",
+  "secondary_metrics_note": "the verdict uses the primary metric (efficiency); the return comparison is reported alongside. On tasks that pay reward every step a slower agent collects more return, so return alone is not a measure of competence there",
+  "disclaimer": "synthetic benchmark; a verdict describes this task, these seeds and this budget only"
+}

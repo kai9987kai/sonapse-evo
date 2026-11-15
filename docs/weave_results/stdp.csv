@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+stdp,baseline,11,membrane_spiking,30.135610,26.743136,1.000,5.8925,1173212,0.00000000,0,0.762500,10.50
+stdp,baseline,23,membrane_spiking,22.326187,29.857254,1.000,6.6026,1173412,0.00000000,0,0.687500,13.50
+stdp,baseline,37,membrane_spiking,24.404672,24.586225,1.000,5.5417,1174012,0.00000000,0,0.825000,8.00
+stdp,baseline,51,membrane_spiking,33.081773,30.070934,1.000,5.5604,1173712,0.00000000,0,0.637500,15.50
+stdp,baseline,67,membrane_spiking,26.613245,25.066942,1.000,5.7684,1171912,0.00000000,0,0.812500,8.50
+stdp,candidate,11,membrane_spiking+pair_stdp,30.134553,26.741568,1.000,7.2619,1173212,0.00002531,0,0.762500,10.50
+stdp,candidate,23,membrane_spiking+pair_stdp,22.326237,29.856729,1.000,13.3008,1173412,0.00000552,0,0.687500,13.50
+stdp,candidate,37,membrane_spiking+pair_stdp,24.404672,24.586225,1.000,6.3485,1174012,0.00000105,0,0.825000,8.00
+stdp,candidate,51,membrane_spiking+pair_stdp,33.081773,30.070966,1.000,6.8490,1173712,0.00000089,0,0.637500,15.50
+stdp,candidate,67,membrane_spiking+pair_stdp,26.613245,25.066941,1.000,6.2497,1171912,0.00000275,0,0.812500,8.50

@@ -62,8 +62,18 @@ def create_handler(live_state: LiveObservatoryState):
     return ObservatoryHandler
 
 
-def run_server(port: int = 8890, live_state: Optional[LiveObservatoryState] = None) -> None:
-    state = live_state or LiveObservatoryState()
+def run_server(port: int = 8890, live_state: Optional[LiveObservatoryState] = None, host: str = "") -> None:
+    """Serve the observatory.  The original dashboard and endpoints are unchanged; when the NeuroWeave
+    layer is available its page (``/weave.html``) and ``/api/weave/*`` endpoints are served as well.
+    ``host`` defaults to the original behaviour (all interfaces); pass ``"127.0.0.1"`` to stay local."""
+    state = live_state
+    if state is None:
+        try:
+            from .weave_state import WeaveObservatoryState
+
+            state = WeaveObservatoryState()
+        except Exception:      # graceful degradation: the original observatory always works
+            state = LiveObservatoryState()
 
     # Start background simulation worker thread (1-second tick)
     def worker():
@@ -74,8 +84,20 @@ def run_server(port: int = 8890, live_state: Optional[LiveObservatoryState] = No
     sim_thread = threading.Thread(target=worker, daemon=True)
     sim_thread.start()
 
-    handler = create_handler(state)
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("", port), handler) as httpd:
+    server_cls = socketserver.TCPServer
+    if hasattr(state, "weave_state"):
+        from .weave_server import create_weave_handler
+
+        handler = create_weave_handler(state)
+        # threaded only for the extended observatory, so a running experiment never blocks dashboard polling;
+        # all shared state is protected by the state objects' own locks
+        server_cls = socketserver.ThreadingTCPServer
+        server_cls.daemon_threads = True
+    else:
+        handler = create_handler(state)
+    server_cls.allow_reuse_address = True
+    with server_cls((host, port), handler) as httpd:
         print(f"SONAPSE-EVO 2.0 Live Observatory running on http://localhost:{port}")
+        if hasattr(state, "weave_state"):
+            print(f"NeuroWeave Observatory: http://localhost:{port}/weave.html")
         httpd.serve_forever()

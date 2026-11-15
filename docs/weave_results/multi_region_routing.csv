@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+multi_region_routing,baseline,11,legacy,30.359485,26.021745,1.000,2.5954,2141896,0.00000000,0,0.775000,10.00
+multi_region_routing,baseline,23,legacy,21.848943,27.931960,0.500,1.4752,2143396,0.00000000,0,0.362500,26.00
+multi_region_routing,baseline,37,legacy,24.866543,25.208727,1.000,1.7852,2142896,0.00000000,0,0.812500,8.50
+multi_region_routing,baseline,51,legacy,18.866101,29.968801,0.000,1.4280,2141096,0.00000000,0,0.000000,40.00
+multi_region_routing,baseline,67,legacy,26.802221,24.380988,1.000,1.7226,2142596,0.00000000,0,0.825000,8.00
+multi_region_routing,candidate,11,multi_region_routing,26.168859,26.006072,1.000,5.6874,2151912,0.00000000,0,0.775000,10.00
+multi_region_routing,candidate,23,multi_region_routing,21.862473,26.152269,0.500,5.8149,2153412,0.00000000,0,0.350000,26.50
+multi_region_routing,candidate,37,multi_region_routing,24.563799,28.078415,0.500,5.1324,2152912,0.00000000,0,0.462500,22.00
+multi_region_routing,candidate,51,multi_region_routing,19.207351,27.718817,0.000,5.2684,2151112,0.00000000,0,0.000000,40.00
+multi_region_routing,candidate,67,multi_region_routing,25.037190,24.387795,1.000,9.5256,2152612,0.00000000,0,0.825000,8.00

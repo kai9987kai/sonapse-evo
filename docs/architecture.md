@@ -46,3 +46,7 @@ flowchart TD
 
 7. **Evolution Controller (`sonapse_evo.evolution.transaction_manager`)**:
    Enforces atomic transactions: parent digest check, zero-gain initialisation ($\alpha_g(0)=0$), and non-destructive rollbacks upon any assertion failure.
+
+## Additive NeuroWeave Layer
+
+The seven subsystems above are unchanged. An optional, default-off layer (`sonapse_evo.neuroweave`) subclasses the substrate and adds multi-compartment neurons, expanded connectomes, sensing, learning, memory, prediction, environments and a laboratory. See [NEUROWEAVE_EVOLUTION.md](NEUROWEAVE_EVOLUTION.md).

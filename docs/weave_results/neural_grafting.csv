@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+neural_grafting,baseline,11,multimodal_sensory,8.356373,26.595006,0.000,5.4747,1173596,0.00000000,0,0.000000,80.00
+neural_grafting,baseline,23,multimodal_sensory,-30.769457,-30.757488,0.000,5.3641,1173796,0.00000000,0,0.000000,80.00
+neural_grafting,baseline,37,multimodal_sensory,-31.146144,-31.200849,0.000,5.5356,1174396,0.00000000,0,0.000000,80.00
+neural_grafting,baseline,51,multimodal_sensory,-13.826235,-30.362440,0.000,5.7770,1174096,0.00000000,0,0.000000,80.00
+neural_grafting,baseline,67,multimodal_sensory,-13.959370,17.495503,0.000,5.4003,1172296,0.00000000,0,0.000000,80.00
+neural_grafting,candidate,11,multimodal_sensory+specialist_graft,8.365327,-1.697152,0.000,7.3192,1231580,0.00000000,0,0.000000,80.00
+neural_grafting,candidate,23,multimodal_sensory+specialist_graft,-30.723714,-30.688945,0.000,7.2355,1231780,0.00000000,0,0.000000,80.00
+neural_grafting,candidate,37,multimodal_sensory+specialist_graft,-31.092839,-31.095359,0.000,7.2642,1232380,0.00000000,0,0.000000,80.00
+neural_grafting,candidate,51,multimodal_sensory+specialist_graft,-13.839252,-28.984596,0.000,7.9390,1232080,0.00000000,0,0.000000,80.00
+neural_grafting,candidate,67,multimodal_sensory+specialist_graft,4.019888,21.385709,0.000,7.1095,1230280,0.00000000,0,0.000000,80.00

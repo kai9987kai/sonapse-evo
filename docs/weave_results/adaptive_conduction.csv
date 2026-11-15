@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+adaptive_conduction,baseline,11,synaptic_delays,43.358626,37.001681,1.000,5.9364,1173212,0.00000000,0,0.550000,19.00
+adaptive_conduction,baseline,23,synaptic_delays,29.334194,31.411783,1.000,4.6743,1173412,0.00000000,0,0.650000,15.00
+adaptive_conduction,baseline,37,synaptic_delays,30.534663,25.735953,1.000,4.7689,1174012,0.00000000,0,0.800000,9.00
+adaptive_conduction,baseline,51,synaptic_delays,35.592837,32.014678,1.000,4.5612,1173712,0.00000000,0,0.575000,18.00
+adaptive_conduction,baseline,67,synaptic_delays,27.707099,25.460800,1.000,4.5749,1171912,0.00000000,0,0.800000,9.00
+adaptive_conduction,candidate,11,synaptic_delays+adaptive_conduction,43.353635,36.998952,1.000,5.0869,1173212,0.00000000,0,0.550000,19.00
+adaptive_conduction,candidate,23,synaptic_delays+adaptive_conduction,29.337826,31.412896,1.000,4.8734,1173412,0.00000000,0,0.650000,15.00
+adaptive_conduction,candidate,37,synaptic_delays+adaptive_conduction,28.807066,25.849062,1.000,4.9391,1174012,0.00000000,0,0.800000,9.00
+adaptive_conduction,candidate,51,synaptic_delays+adaptive_conduction,34.998747,32.274703,1.000,5.1483,1173712,0.00000000,0,0.575000,18.00
+adaptive_conduction,candidate,67,synaptic_delays+adaptive_conduction,27.336543,24.950398,1.000,5.3678,1171912,0.00000000,0,0.812500,8.50

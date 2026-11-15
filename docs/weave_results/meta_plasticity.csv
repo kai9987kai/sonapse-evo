@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+meta_plasticity,baseline,11,reward_gated_plasticity,29.994394,26.772101,1.000,5.6757,1176284,0.00189768,0,0.762500,10.50
+meta_plasticity,baseline,23,reward_gated_plasticity,22.301931,29.762410,1.000,5.3392,1176484,0.00067061,0,0.687500,13.50
+meta_plasticity,baseline,37,reward_gated_plasticity,25.286262,24.556103,1.000,6.1130,1177084,0.00107070,0,0.825000,8.00
+meta_plasticity,baseline,51,reward_gated_plasticity,33.359585,30.183213,1.000,5.3762,1176784,0.00248109,0,0.637500,15.50
+meta_plasticity,baseline,67,reward_gated_plasticity,26.559707,25.033561,1.000,5.3947,1174984,0.00120352,0,0.812500,8.50
+meta_plasticity,candidate,11,reward_gated_plasticity+meta_plasticity,30.462190,26.738286,1.000,5.4653,1244816,0.00321292,0,0.762500,10.50
+meta_plasticity,candidate,23,reward_gated_plasticity+meta_plasticity,22.301505,29.749632,1.000,5.6223,1245040,0.00085829,0,0.687500,13.50
+meta_plasticity,candidate,37,reward_gated_plasticity+meta_plasticity,25.285247,24.544395,1.000,5.5428,1245712,0.00155683,0,0.825000,8.00
+meta_plasticity,candidate,51,reward_gated_plasticity+meta_plasticity,33.320631,30.068689,1.000,6.7841,1245376,0.00460646,0,0.637500,15.50
+meta_plasticity,candidate,67,reward_gated_plasticity+meta_plasticity,26.559593,25.026193,1.000,5.3423,1243360,0.00173753,0,0.812500,8.50

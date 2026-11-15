@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+hierarchical_temporal_memory,baseline,11,multi_soma,-1.433218,-1.289623,0.000,5.5149,1173212,0.00000000,0,0.000000,80.00
+hierarchical_temporal_memory,baseline,23,multi_soma,13.349219,11.527469,0.000,5.5940,1173412,0.00000000,0,0.000000,80.00
+hierarchical_temporal_memory,baseline,37,multi_soma,3.141909,3.842515,0.000,5.2598,1174012,0.00000000,0,0.000000,80.00
+hierarchical_temporal_memory,baseline,51,multi_soma,4.154624,8.834346,0.000,5.2607,1173712,0.00000000,0,0.000000,80.00
+hierarchical_temporal_memory,baseline,67,multi_soma,1.219086,1.761497,0.000,5.1915,1171912,0.00000000,0,0.000000,80.00
+hierarchical_temporal_memory,candidate,11,multi_soma+hierarchical_temporal_memory,-1.452752,-1.049431,0.000,5.7492,1173212,0.00000000,0,0.000000,80.00
+hierarchical_temporal_memory,candidate,23,multi_soma+hierarchical_temporal_memory,13.435376,11.527571,0.000,5.7519,1173412,0.00000000,0,0.000000,80.00
+hierarchical_temporal_memory,candidate,37,multi_soma+hierarchical_temporal_memory,2.985322,3.840568,0.000,5.7641,1174012,0.00000000,0,0.000000,80.00
+hierarchical_temporal_memory,candidate,51,multi_soma+hierarchical_temporal_memory,4.237665,9.039829,0.000,6.0079,1173712,0.00000000,0,0.000000,80.00
+hierarchical_temporal_memory,candidate,67,multi_soma+hierarchical_temporal_memory,1.208722,1.751057,0.000,5.9429,1171912,0.00000000,0,0.000000,80.00

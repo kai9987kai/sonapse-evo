@@ -1,0 +1,1887 @@
+{
+ "receipt_version": "1.0",
+ "weave_version": "3.0.0",
+ "experiment_id": "lesion_robustness",
+ "kind": "lesion",
+ "title": "Lesion robustness assay",
+ "seeds": [
+  11,
+  23,
+  37,
+  51,
+  67
+ ],
+ "severity": 0.6,
+ "topology_kind": "multi_region",
+ "total_neurons": 768,
+ "mechanisms": [
+  "reward_gated_plasticity"
+ ],
+ "environment": "forage",
+ "episodes": 2,
+ "recovery_episodes": 2,
+ "matched_conditions": {
+  "random_control_removes_same_edge_count": true,
+  "intact_substrate_untouched": true,
+  "canonical_pathway_protected": false
+ },
+ "results": {
+  "summary": {
+   "hub_targeted": {
+    "targeted_mean": 29.57558117576658,
+    "matched_random_mean": 26.469446292774155,
+    "intact_mean": 26.70244405524186,
+    "intact_success_rate": 0.7,
+    "targeted_success_rate": 0.4,
+    "random_success_rate": 0.6,
+    "targeted_mean_steps": 27.6,
+    "intact_efficiency": 0.5549999999999999,
+    "targeted_efficiency": 0.32,
+    "random_efficiency": 0.45999999999999996,
+    "targeted_retention": 1.109966096606975,
+    "random_retention": 0.999191641477869,
+    "edges_removed_mean": 1216.8
+   },
+   "region_targeted": {
+    "targeted_mean": 26.90849384212106,
+    "matched_random_mean": 25.276763119218554,
+    "intact_mean": 26.70244405524186,
+    "intact_success_rate": 0.7,
+    "targeted_success_rate": 0.7,
+    "random_success_rate": 0.7,
+    "targeted_mean_steps": 18.5,
+    "intact_efficiency": 0.5549999999999999,
+    "targeted_efficiency": 0.5549999999999999,
+    "random_efficiency": 0.5425,
+    "targeted_retention": 1.007224026206712,
+    "random_retention": 0.9531501163852429,
+    "edges_removed_mean": 964.6
+   },
+   "sensory_pathway": {
+    "targeted_mean": 29.143745471940502,
+    "matched_random_mean": 34.71801210810864,
+    "intact_mean": 26.70244405524186,
+    "intact_success_rate": 0.7,
+    "targeted_success_rate": 0.4,
+    "random_success_rate": 0.7,
+    "targeted_mean_steps": 29.2,
+    "intact_efficiency": 0.5549999999999999,
+    "targeted_efficiency": 0.27999999999999997,
+    "random_efficiency": 0.3825,
+    "targeted_retention": 1.1018947185619816,
+    "random_retention": 1.296214961861483,
+    "edges_removed_mean": 4812.8
+   },
+   "memory_pathway": {
+    "targeted_mean": 27.91745678382698,
+    "matched_random_mean": 27.678951543808818,
+    "intact_mean": 26.70244405524186,
+    "intact_success_rate": 0.7,
+    "targeted_success_rate": 0.7,
+    "random_success_rate": 0.5,
+    "targeted_mean_steps": 18.6,
+    "intact_efficiency": 0.5549999999999999,
+    "targeted_efficiency": 0.5525,
+    "random_efficiency": 0.38249999999999995,
+    "targeted_retention": 1.0429369662884984,
+    "random_retention": 1.044416555664211,
+    "edges_removed_mean": 2288.8
+   },
+   "cross_region_communication": {
+    "targeted_mean": 35.39758176333256,
+    "matched_random_mean": 40.480362086849105,
+    "intact_mean": 26.70244405524186,
+    "intact_success_rate": 0.7,
+    "targeted_success_rate": 0.4,
+    "random_success_rate": 0.5,
+    "targeted_mean_steps": 31.9,
+    "intact_efficiency": 0.5549999999999999,
+    "targeted_efficiency": 0.2125,
+    "random_efficiency": 0.1975,
+    "targeted_retention": 1.3311856241248576,
+    "random_retention": 1.5107625005819787,
+    "edges_removed_mean": 5847.2
+   }
+  },
+  "comparisons": {
+   "hub_targeted_targeted_vs_matched_random": {
+    "n_seeds": 5,
+    "alpha": 0.05,
+    "mean_diff": 3.1061348829924262,
+    "std_diff": 4.091298519838594,
+    "cohens_d": 0.7592051442667563,
+    "t_statistic": 1.697634311448002,
+    "p_value_ttest": 0.16481124561325064,
+    "wilcoxon_stat": 1.0,
+    "p_value_wilcoxon": 0.125,
+    "ci_lower": 0.3732410354734057,
+    "ci_upper": 6.653894662776898,
+    "ci_95_lower": 0.3732410354734057,
+    "ci_95_upper": 6.653894662776898,
+    "significant_at_alpha": false,
+    "significant_at_005": false,
+    "wins": 4,
+    "verdict": "supported",
+    "reason": "95% bootstrap CI of the paired difference lies above zero",
+    "evidence_tier": "PAIRED_EXPERIMENT",
+    "metric": "return"
+   },
+   "hub_targeted_targeted_damage_exceeds_random": {
+    "n_seeds": 5,
+    "alpha": 0.05,
+    "mean_diff": 0.13999999999999999,
+    "std_diff": 0.19170289512680813,
+    "cohens_d": 0.7302967433402214,
+    "t_statistic": 1.6329931618554518,
+    "p_value_ttest": 0.17780780835622137,
+    "wilcoxon_stat": 0.0,
+    "p_value_wilcoxon": 0.5,
+    "ci_lower": 0.0,
+    "ci_upper": 0.27999999999999997,
+    "ci_95_lower": 0.0,
+    "ci_95_upper": 0.27999999999999997,
+    "significant_at_alpha": false,
+    "significant_at_005": false,
+    "wins": 2,
+    "verdict": "inconclusive",
+    "reason": "CI includes zero",
+    "evidence_tier": "PAIRED_EXPERIMENT",
+    "metric": "efficiency"
+   },
+   "region_targeted_targeted_vs_matched_random": {
+    "n_seeds": 5,
+    "alpha": 0.05,
+    "mean_diff": 1.6317307229025004,
+    "std_diff": 4.102621328301054,
+    "cohens_d": 0.39772881587836434,
+    "t_statistic": 0.8893486689145204,
+    "p_value_ttest": 0.42406857110998747,
+    "wilcoxon_stat": 4.0,
+    "p_value_wilcoxon": 0.4375,
+    "ci_lower": -1.270105148320028,
+    "ci_upper": 4.609507522484778,
+    "ci_95_lower": -1.270105148320028,
+    "ci_95_upper": 4.609507522484778,
+    "significant_at_alpha": false,
+    "significant_at_005": false,
+    "wins": 3,
+    "verdict": "inconclusive",
+    "reason": "CI includes zero",
+    "evidence_tier": "PAIRED_EXPERIMENT",
+    "metric": "return"
+   },
+   "region_targeted_targeted_damage_exceeds_random": {
+    "n_seeds": 5,
+    "alpha": 0.05,
+    "mean_diff": -0.0125,
+    "std_diff": 0.027950849718747377,
+    "cohens_d": -0.44721359549995787,
+    "t_statistic": -0.9999999999999999,
+    "p_value_ttest": 0.37390096630005887,
+    "wilcoxon_stat": 0.0,
+    "p_value_wilcoxon": 1.0,
+    "ci_lower": -0.0375,
+    "ci_upper": 0.0,
+    "ci_95_lower": -0.0375,
+    "ci_95_upper": 0.0,
+    "significant_at_alpha": false,
+    "significant_at_005": false,
+    "wins": 0,
+    "verdict": "inconclusive",
+    "reason": "CI includes zero",
+    "evidence_tier": "PAIRED_EXPERIMENT",
+    "metric": "efficiency"
+   },
+   "sensory_pathway_targeted_vs_matched_random": {
+    "n_seeds": 5,
+    "alpha": 0.05,
+    "mean_diff": -5.57426663616814,
+    "std_diff": 6.788861976279331,
+    "cohens_d": -0.8210899935283622,
+    "t_statistic": -1.83601304117428,
+    "p_value_ttest": 0.14024553206900525,
+    "wilcoxon_stat": 2.0,
+    "p_value_wilcoxon": 0.1875,
+    "ci_lower": -11.09434353419698,
+    "ci_upper": -0.5453694105879358,
+    "ci_95_lower": -11.09434353419698,
+    "ci_95_upper": -0.5453694105879358,
+    "significant_at_alpha": false,
+    "significant_at_005": false,
+    "wins": 1,
+    "verdict": "not_supported",
+    "reason": "95% bootstrap CI of the paired difference lies below zero",
+    "evidence_tier": "PAIRED_EXPERIMENT",
+    "metric": "return"
+   },
+   "sensory_pathway_targeted_damage_exceeds_random": {
+    "n_seeds": 5,
+    "alpha": 0.05,
+    "mean_diff": 0.1025,
+    "std_diff": 0.19149902088522539,
+    "cohens_d": 0.5352507784435786,
+    "t_statistic": 1.1968571256095206,
+    "p_value_ttest": 0.29744608959801816,
+    "wilcoxon_stat": 3.0,
+    "p_value_wilcoxon": 0.625,
+    "ci_lower": -0.039999999999999966,
+    "ci_upper": 0.25999999999999995,
+    "ci_95_lower": -0.039999999999999966,
+    "ci_95_upper": 0.25999999999999995,
+    "significant_at_alpha": false,
+    "significant_at_005": false,
+    "wins": 2,
+    "verdict": "inconclusive",
+    "reason": "CI includes zero",
+    "evidence_tier": "PAIRED_EXPERIMENT",
+    "metric": "efficiency"
+   },
+   "memory_pathway_targeted_vs_matched_random": {
+    "n_seeds": 5,
+    "alpha": 0.05,
+    "mean_diff": 0.2385052400181614,
+    "std_diff": 7.070397929268705,
+    "cohens_d": 0.03373293022601206,
+    "t_statistic": 0.07542912506562031,
+    "p_value_ttest": 0.943495112141792,
+    "wilcoxon_stat": 7.0,
+    "p_value_wilcoxon": 1.0,
+    "ci_lower": -4.954991420339497,
+    "ci_upper": 5.619521109504387,
+    "ci_95_lower": -4.954991420339497,
+    "ci_95_upper": 5.619521109504387,
+    "significant_at_alpha": false,
+    "significant_at_005": false,
+    "wins": 2,
+    "verdict": "inconclusive",
+    "reason": "CI includes zero",
+    "evidence_tier": "PAIRED_EXPERIMENT",
+    "metric": "return"
+   },
+   "memory_pathway_targeted_damage_exceeds_random": {
+    "n_seeds": 5,
+    "alpha": 0.05,
+    "mean_diff": -0.16999999999999998,
+    "std_diff": 0.22752060346263148,
+    "cohens_d": -0.7471850786819892,
+    "t_statistic": -1.6707566277064572,
+    "p_value_ttest": 0.1700900365030649,
+    "wilcoxon_stat": 0.0,
+    "p_value_wilcoxon": 0.25,
+    "ci_lower": -0.34249999999999997,
+    "ci_upper": -0.002499999999999991,
+    "ci_95_lower": -0.34249999999999997,
+    "ci_95_upper": -0.002499999999999991,
+    "significant_at_alpha": false,
+    "significant_at_005": false,
+    "wins": 0,
+    "verdict": "not_supported",
+    "reason": "95% bootstrap CI of the paired difference lies below zero",
+    "evidence_tier": "PAIRED_EXPERIMENT",
+    "metric": "efficiency"
+   },
+   "cross_region_communication_targeted_vs_matched_random": {
+    "n_seeds": 5,
+    "alpha": 0.05,
+    "mean_diff": -5.08278032351655,
+    "std_diff": 5.608741010219122,
+    "cohens_d": -0.9062248219797863,
+    "t_statistic": -2.0263803048444475,
+    "p_value_ttest": 0.11267599351274202,
+    "wilcoxon_stat": 2.0,
+    "p_value_wilcoxon": 0.1875,
+    "ci_lower": -9.335714045322451,
+    "ci_upper": -0.8298466017106492,
+    "ci_95_lower": -9.335714045322451,
+    "ci_95_upper": -0.8298466017106492,
+    "significant_at_alpha": false,
+    "significant_at_005": false,
+    "wins": 1,
+    "verdict": "not_supported",
+    "reason": "95% bootstrap CI of the paired difference lies below zero",
+    "evidence_tier": "PAIRED_EXPERIMENT",
+    "metric": "return"
+   },
+   "cross_region_communication_targeted_damage_exceeds_random": {
+    "n_seeds": 5,
+    "alpha": 0.05,
+    "mean_diff": -0.015000000000000003,
+    "std_diff": 0.2802621540629416,
+    "cohens_d": -0.05352131846039864,
+    "t_statistic": -0.11967730632286575,
+    "p_value_ttest": 0.9105088448249605,
+    "wilcoxon_stat": 5.0,
+    "p_value_wilcoxon": 1.0,
+    "ci_lower": -0.2325,
+    "ci_upper": 0.2125,
+    "ci_95_lower": -0.2325,
+    "ci_95_upper": 0.2125,
+    "significant_at_alpha": false,
+    "significant_at_005": false,
+    "wins": 2,
+    "verdict": "inconclusive",
+    "reason": "CI includes zero",
+    "evidence_tier": "PAIRED_EXPERIMENT",
+    "metric": "efficiency"
+   }
+  },
+  "runs": [
+   {
+    "seed": 11,
+    "intact_return": 26.02174504677587,
+    "intact_success_rate": 1.0,
+    "intact_efficiency": 0.775,
+    "intact_mean_steps": 10.0,
+    "conditions": {
+     "hub_targeted": {
+      "receipt": {
+       "kind": "hub_targeted",
+       "severity": 0.6,
+       "seed": 18,
+       "edges_total": 15490,
+       "edges_removed": 1216,
+       "fraction_removed": 0.07850225952227244,
+       "mask_digest": "1a8d31a1affd15a22ec9a3755f60efff78e18787ae3dd64a62371c7dd3c8dd09"
+      },
+      "edges_removed": 1216,
+      "targeted": {
+       "return": 26.038236781228214,
+       "success_rate": 1.0,
+       "mean_steps": 10.0,
+       "efficiency": 0.775,
+       "retention": 1.0006337674288446,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        27.37160876774268,
+        23.886327853453416
+       ],
+       "post_recovery_return": 24.27429628724161,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.9328465959376245,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 786.81494140625,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 26.01993245322209,
+       "success_rate": 1.0,
+       "mean_steps": 10.0,
+       "efficiency": 0.775,
+       "retention": 0.9999303431207046,
+       "functional_redundancy": 0.9999303431207046,
+       "recovery_curve": [
+        27.353928061613303,
+        26.538543119238195
+       ],
+       "post_recovery_return": 24.118275037513712,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.9268507932177285,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 822.0438232421875,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 0.018304328006124138
+     },
+     "region_targeted": {
+      "receipt": {
+       "kind": "region_targeted",
+       "severity": 0.6,
+       "seed": 18,
+       "edges_total": 15490,
+       "edges_removed": 947,
+       "fraction_removed": 0.061136216914138154,
+       "mask_digest": "0bd5595df54ce28c38a843b12af7a7259aa1d74fad2aeae43224e9f87c27b6a2"
+      },
+      "edges_removed": 947,
+      "targeted": {
+       "return": 26.019838284663926,
+       "success_rate": 1.0,
+       "mean_steps": 10.0,
+       "efficiency": 0.775,
+       "retention": 0.9999267242796932,
+       "functional_redundancy": 0.9999267242796932,
+       "recovery_curve": [
+        28.75224462021947,
+        20.575025141768705
+       ],
+       "post_recovery_return": 24.144140316240453,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.4,
+       "recovered_fraction": 0.9278447803112245,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 767.7833862304688,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 26.020153548915818,
+       "success_rate": 1.0,
+       "mean_steps": 10.0,
+       "efficiency": 0.775,
+       "retention": 0.99993883969514,
+       "functional_redundancy": 0.99993883969514,
+       "recovery_curve": [
+        27.37025210175566,
+        23.475937962197783
+       ],
+       "post_recovery_return": 24.287293956049197,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.9333460885267734,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 719.021240234375,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -0.00031526425189198903
+     },
+     "sensory_pathway": {
+      "receipt": {
+       "kind": "sensory_pathway",
+       "severity": 0.6,
+       "seed": 18,
+       "edges_total": 15490,
+       "edges_removed": 4803,
+       "fraction_removed": 0.3100710135571336,
+       "mask_digest": "f78f02509a486ddb80e840d4fb5b9f8da0da9004d5827a1d392d300139071123"
+      },
+      "edges_removed": 4803,
+      "targeted": {
+       "return": 30.728898752699894,
+       "success_rate": 0.5,
+       "mean_steps": 31.0,
+       "efficiency": 0.2375,
+       "retention": 1.1808930837444835,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        22.15486193836559,
+        8.845788476224694
+       ],
+       "post_recovery_return": 25.499862718699095,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.3,
+       "recovered_fraction": 0.9799443762461489,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 181.45504760742188,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 36.739866859903906,
+       "success_rate": 0.5,
+       "mean_steps": 34.5,
+       "efficiency": 0.15000000000000002,
+       "retention": 1.4118909701813418,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        25.926107393850106,
+        12.744325392802894
+       ],
+       "post_recovery_return": 37.233269817474024,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.1375,
+       "recovered_fraction": 1.4308521488679822,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 47.17024230957031,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -6.010968107204011
+     },
+     "memory_pathway": {
+      "receipt": {
+       "kind": "memory_pathway",
+       "severity": 0.6,
+       "seed": 18,
+       "edges_total": 15490,
+       "edges_removed": 2283,
+       "fraction_removed": 0.147385409941898,
+       "mask_digest": "ae6605ee38c96103605d4fe9e2c74f69d10c2d5202f2ecfbf59e73ab0e983c21"
+      },
+      "edges_removed": 2283,
+      "targeted": {
+       "return": 26.70065981192397,
+       "success_rate": 1.0,
+       "mean_steps": 10.5,
+       "efficiency": 0.7625,
+       "retention": 1.0260902857947345,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        28.641447119323935,
+        33.68246635419037
+       ],
+       "post_recovery_return": 26.147534809889986,
+       "post_recovery_success_rate": 1.0,
+       "post_recovery_efficiency": 0.775,
+       "recovered_fraction": 1.0048340248852643,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 228.01881408691406,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 30.370113552626382,
+       "success_rate": 0.5,
+       "mean_steps": 26.0,
+       "efficiency": 0.3625,
+       "retention": 1.167105184453772,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        29.33703380439603,
+        15.014814076226246
+       ],
+       "post_recovery_return": 24.816239596187167,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.9536731511118212,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 846.6378173828125,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -3.669453740702412
+     },
+     "cross_region_communication": {
+      "receipt": {
+       "kind": "cross_region_communication",
+       "severity": 0.6,
+       "seed": 18,
+       "edges_total": 15490,
+       "edges_removed": 5853,
+       "fraction_removed": 0.37785668173014847,
+       "mask_digest": "2f4afcae07c5df2e25e696d64692b95deeaeb505f7b027c4b9f36ef63395ec7e"
+      },
+      "edges_removed": 5853,
+      "targeted": {
+       "return": 38.65275338625284,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 1.4854020480475798,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        30.351262338449775,
+        19.23552465727184
+       ],
+       "post_recovery_return": 38.384914348393195,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.4751091550314432,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 54.01779556274414,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 44.14060060381556,
+       "success_rate": 0.5,
+       "mean_steps": 39.5,
+       "efficiency": 0.025000000000000022,
+       "retention": 1.6962967135551363,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        28.141653697325744,
+        16.133997584957417
+       ],
+       "post_recovery_return": 37.3400375502642,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.4349551685770083,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 36.08948516845703,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -5.487847217562717
+     }
+    },
+    "progressive_random": [
+     {
+      "severity": 0.15,
+      "return": 26.697865371515626,
+      "success_rate": 1.0,
+      "efficiency": 0.7625
+     },
+     {
+      "severity": 0.3,
+      "return": 27.364611616944476,
+      "success_rate": 1.0,
+      "efficiency": 0.75
+     },
+     {
+      "severity": 0.44999999999999996,
+      "return": 27.364306603562436,
+      "success_rate": 1.0,
+      "efficiency": 0.75
+     },
+     {
+      "severity": 0.6,
+      "return": 38.683249575423915,
+      "success_rate": 0.0,
+      "efficiency": 0.0
+     }
+    ]
+   },
+   {
+    "seed": 23,
+    "intact_return": 27.931959893348008,
+    "intact_success_rate": 0.5,
+    "intact_efficiency": 0.3625,
+    "intact_mean_steps": 26.0,
+    "conditions": {
+     "hub_targeted": {
+      "receipt": {
+       "kind": "hub_targeted",
+       "severity": 0.6,
+       "seed": 30,
+       "edges_total": 15505,
+       "edges_removed": 1221,
+       "fraction_removed": 0.07874879071267334,
+       "mask_digest": "3f2a4472b460f5f612eb4380969859ef40fe56a3a9413ad72e8de573ee4fa656"
+      },
+      "edges_removed": 1221,
+      "targeted": {
+       "return": 31.808451167925146,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 1.138783361045149,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        27.605869566148215,
+        16.41674506842663
+       ],
+       "post_recovery_return": 30.792456988914576,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.35,
+       "recovered_fraction": 1.1024094659482808,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 9.360875129699707,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 21.947127759130836,
+       "success_rate": 0.5,
+       "mean_steps": 26.5,
+       "efficiency": 0.35,
+       "retention": 0.7857353312453217,
+       "functional_redundancy": 0.7857353312453217,
+       "recovery_curve": [
+        18.72727856714326,
+        16.416625051313485
+       ],
+       "post_recovery_return": 21.094922976589146,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.7552253066786373,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 187.24795532226562,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 9.86132340879431
+     },
+     "region_targeted": {
+      "receipt": {
+       "kind": "region_targeted",
+       "severity": 0.6,
+       "seed": 30,
+       "edges_total": 15505,
+       "edges_removed": 978,
+       "fraction_removed": 0.06307642695904547,
+       "mask_digest": "5844cd96e383f2bf65c2735e5015e1e127d46361f01d5715d1b5b1f55e2056a0"
+      },
+      "edges_removed": 978,
+      "targeted": {
+       "return": 28.62600056554823,
+       "success_rate": 0.5,
+       "mean_steps": 26.0,
+       "efficiency": 0.3625,
+       "retention": 1.0248475464969256,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        27.613808282417068,
+        16.416729114479548
+       ],
+       "post_recovery_return": 28.88071393519096,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.35,
+       "recovered_fraction": 1.0339666119193054,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 16.15130615234375,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 21.17964054562967,
+       "success_rate": 0.5,
+       "mean_steps": 26.0,
+       "efficiency": 0.3625,
+       "retention": 0.7582583043402407,
+       "functional_redundancy": 0.7582583043402407,
+       "recovery_curve": [
+        18.98056253348241,
+        16.416627934524186
+       ],
+       "post_recovery_return": 20.465696233762515,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.7326981820075009,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 225.61668395996094,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 7.446360019918561
+     },
+     "sensory_pathway": {
+      "receipt": {
+       "kind": "sensory_pathway",
+       "severity": 0.6,
+       "seed": 30,
+       "edges_total": 15505,
+       "edges_removed": 4802,
+       "fraction_removed": 0.309706546275395,
+       "mask_digest": "5505dd85499110d5bc714742bea00d0000b7482f68577d9e8ee58c31db6a532b"
+      },
+      "edges_removed": 4802,
+      "targeted": {
+       "return": 27.305371632071004,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 0.9775673363534284,
+       "functional_redundancy": 0.9775673363534284,
+       "recovery_curve": [
+        27.60558547402414,
+        16.416700154843834
+       ],
+       "post_recovery_return": 26.846816325356166,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.9611504680611306,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 6.6700968742370605,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 35.7722381015182,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 1.2806920186806279,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        25.01181228194322,
+        16.41684419556566
+       ],
+       "post_recovery_return": 36.61715040320432,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.3109409630766615,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 26.39572525024414,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -8.466866469447194
+     },
+     "memory_pathway": {
+      "receipt": {
+       "kind": "memory_pathway",
+       "severity": 0.6,
+       "seed": 30,
+       "edges_total": 15505,
+       "edges_removed": 2298,
+       "fraction_removed": 0.14821025475653016,
+       "mask_digest": "9b687c8d4fdfd17abb74b064d36c65821a9d818429257ef51a9550fc28549ffa"
+      },
+      "edges_removed": 2298,
+      "targeted": {
+       "return": 33.174612851717214,
+       "success_rate": 0.5,
+       "mean_steps": 26.5,
+       "efficiency": 0.35,
+       "retention": 1.187693702066991,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        27.66359307151458,
+        16.416839579277042
+       ],
+       "post_recovery_return": 33.00820857165189,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.35,
+       "recovered_fraction": 1.181736215349242,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 9.965048789978027,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 22.364205788662886,
+       "success_rate": 0.5,
+       "mean_steps": 26.5,
+       "efficiency": 0.35,
+       "retention": 0.8006672598004453,
+       "functional_redundancy": 0.8006672598004453,
+       "recovery_curve": [
+        18.242575196049007,
+        16.416743757810153
+       ],
+       "post_recovery_return": 21.750085468348022,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.35,
+       "recovered_fraction": 0.7786809644362909,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 79.90001678466797,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 10.810407063054328
+     },
+     "cross_region_communication": {
+      "receipt": {
+       "kind": "cross_region_communication",
+       "severity": 0.6,
+       "seed": 30,
+       "edges_total": 15505,
+       "edges_removed": 5852,
+       "fraction_removed": 0.3774266365688488,
+       "mask_digest": "d691ce8e56e3958fbe71d6aa3d5e3264e14807966d84f3d57af12fe83cf67967"
+      },
+      "edges_removed": 5852,
+      "targeted": {
+       "return": 25.809879689827365,
+       "success_rate": 0.5,
+       "mean_steps": 27.0,
+       "efficiency": 0.3375,
+       "retention": 0.9240268061524026,
+       "functional_redundancy": 0.9240268061524026,
+       "recovery_curve": [
+        27.624054857757326,
+        16.41697217285734
+       ],
+       "post_recovery_return": 25.748802591191044,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.3375,
+       "recovered_fraction": 0.921840167661243,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 6.1141133308410645,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 37.82229778361295,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 1.3540867854611351,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        27.742243418621072,
+        16.416851636139743
+       ],
+       "post_recovery_return": 38.37240731856153,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.37378141258537,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 25.336158752441406,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -12.012418093785588
+     }
+    },
+    "progressive_random": [
+     {
+      "severity": 0.15,
+      "return": 23.097027429385573,
+      "success_rate": 0.5,
+      "efficiency": 0.325
+     },
+     {
+      "severity": 0.3,
+      "return": 33.391035886963024,
+      "success_rate": 0.0,
+      "efficiency": 0.0
+     },
+     {
+      "severity": 0.44999999999999996,
+      "return": 39.34421319200791,
+      "success_rate": 0.0,
+      "efficiency": 0.0
+     },
+     {
+      "severity": 0.6,
+      "return": 39.14602113000058,
+      "success_rate": 0.0,
+      "efficiency": 0.0
+     }
+    ]
+   },
+   {
+    "seed": 37,
+    "intact_return": 25.208726896843345,
+    "intact_success_rate": 1.0,
+    "intact_efficiency": 0.8125,
+    "intact_mean_steps": 8.5,
+    "conditions": {
+     "hub_targeted": {
+      "receipt": {
+       "kind": "hub_targeted",
+       "severity": 0.6,
+       "seed": 44,
+       "edges_total": 15500,
+       "edges_removed": 1219,
+       "fraction_removed": 0.07864516129032258,
+       "mask_digest": "535617cce40e00db0b399ebb281ee84aa7636babfdbbd5516d1bb67a81584cf0"
+      },
+      "edges_removed": 1219,
+      "targeted": {
+       "return": 34.90394948496363,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 1.3845978667544028,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        40.578907772333224,
+        21.08703237864996
+       ],
+       "post_recovery_return": 14.805167704457174,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.587303268627623,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 2375.668212890625,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 33.062792643120765,
+       "success_rate": 0.5,
+       "mean_steps": 26.5,
+       "efficiency": 0.35,
+       "retention": 1.3115613802480803,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        44.78674602063325,
+        23.732846655405993
+       ],
+       "post_recovery_return": 18.371670159087277,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.45,
+       "recovered_fraction": 0.728782148906845,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 2603.68310546875,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 1.8411568418428672
+     },
+     "region_targeted": {
+      "receipt": {
+       "kind": "region_targeted",
+       "severity": 0.6,
+       "seed": 44,
+       "edges_total": 15500,
+       "edges_removed": 975,
+       "fraction_removed": 0.06290322580645161,
+       "mask_digest": "4608d1dbafcd9488546d91a099fac728c14ee0d23fa493492689c20e381136b3"
+      },
+      "edges_removed": 975,
+      "targeted": {
+       "return": 25.223201281683128,
+       "success_rate": 1.0,
+       "mean_steps": 8.5,
+       "efficiency": 0.8125,
+       "retention": 1.0005741815086107,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        37.09312602642321,
+        23.42100544163921
+       ],
+       "post_recovery_return": 18.357507818688944,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.4625,
+       "recovered_fraction": 0.7282203458274478,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 1441.4388427734375,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 28.40022454132012,
+       "success_rate": 1.0,
+       "mean_steps": 11.0,
+       "efficiency": 0.75,
+       "retention": 1.1266028886558495,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        41.182903897503586,
+        24.70798982957399
+       ],
+       "post_recovery_return": 18.045800784252933,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.45,
+       "recovered_fraction": 0.7158553011462329,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 2636.0166015625,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -3.177023259636993
+     },
+     "sensory_pathway": {
+      "receipt": {
+       "kind": "sensory_pathway",
+       "severity": 0.6,
+       "seed": 44,
+       "edges_total": 15500,
+       "edges_removed": 4815,
+       "fraction_removed": 0.3106451612903226,
+       "mask_digest": "1a88b2d267365ef5a720a5dd6e04f9824c26db07221ce650c54b8b169bec07ca"
+      },
+      "edges_removed": 4815,
+      "targeted": {
+       "return": 37.924286378828285,
+       "success_rate": 0.5,
+       "mean_steps": 27.0,
+       "efficiency": 0.3375,
+       "retention": 1.5044110134565023,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        47.097551066765675,
+        18.64927783643503
+       ],
+       "post_recovery_return": 21.377785789515706,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.4375,
+       "recovered_fraction": 0.8480311551232144,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 1092.253662109375,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 35.606418580449954,
+       "success_rate": 1.0,
+       "mean_steps": 17.0,
+       "efficiency": 0.6,
+       "retention": 1.412463974327423,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        36.68492853400569,
+        39.27805651061502
+       ],
+       "post_recovery_return": 35.6187587277211,
+       "post_recovery_success_rate": 1.0,
+       "post_recovery_efficiency": 0.6,
+       "recovered_fraction": 1.4129534931881589,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 29.899646759033203,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 2.3178677983783302
+     },
+     "memory_pathway": {
+      "receipt": {
+       "kind": "memory_pathway",
+       "severity": 0.6,
+       "seed": 44,
+       "edges_total": 15500,
+       "edges_removed": 2287,
+       "fraction_removed": 0.1475483870967742,
+       "mask_digest": "39642fff189174923f8a1e5cc498ee154346d8709649953893d9dd371479c1b4"
+      },
+      "edges_removed": 2287,
+      "targeted": {
+       "return": 24.552890863831927,
+       "success_rate": 1.0,
+       "mean_steps": 8.0,
+       "efficiency": 0.825,
+       "retention": 0.9739837701564555,
+       "functional_redundancy": 0.9739837701564555,
+       "recovery_curve": [
+        46.33634459669994,
+        23.19465981664904
+       ],
+       "post_recovery_return": 18.376554970609472,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.4625,
+       "recovered_fraction": 0.7289759235287125,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 1993.3170166015625,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 32.46350993366823,
+       "success_rate": 0.5,
+       "mean_steps": 25.0,
+       "efficiency": 0.3875,
+       "retention": 1.2877885530083366,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        35.24083278371589,
+        28.944411867352596
+       ],
+       "post_recovery_return": 29.802091393377474,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.18221326746609,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 437.07891845703125,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -7.910619069836301
+     },
+     "cross_region_communication": {
+      "receipt": {
+       "kind": "cross_region_communication",
+       "severity": 0.6,
+       "seed": 44,
+       "edges_total": 15500,
+       "edges_removed": 5840,
+       "fraction_removed": 0.3767741935483871,
+       "mask_digest": "0f8a2a09fae4f035bacfef7712f92d9acefc7d40aed3e93e890b4344f0ba2652"
+      },
+      "edges_removed": 5840,
+      "targeted": {
+       "return": 45.0684376102413,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 1.787810935263248,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        33.96045687004744,
+        40.921814226159306
+       ],
+       "post_recovery_return": 45.164206099113585,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.7916099565015748,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 73.00302124023438,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 46.56403306143773,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 1.8471394153295586,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        50.726869750804795,
+        44.64993870170339
+       ],
+       "post_recovery_return": 45.933640936404046,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.8221325148377838,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 55.20167922973633,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -1.4955954511964364
+     }
+    },
+    "progressive_random": [
+     {
+      "severity": 0.15,
+      "return": 25.232623733656823,
+      "success_rate": 1.0,
+      "efficiency": 0.8125
+     },
+     {
+      "severity": 0.3,
+      "return": 24.532499394323665,
+      "success_rate": 1.0,
+      "efficiency": 0.825
+     },
+     {
+      "severity": 0.44999999999999996,
+      "return": 25.21551698791302,
+      "success_rate": 1.0,
+      "efficiency": 0.8125
+     },
+     {
+      "severity": 0.6,
+      "return": 25.202958569201833,
+      "success_rate": 1.0,
+      "efficiency": 0.8125
+     }
+    ]
+   },
+   {
+    "seed": 51,
+    "intact_return": 29.96880060836353,
+    "intact_success_rate": 0.0,
+    "intact_efficiency": 0.0,
+    "intact_mean_steps": 40.0,
+    "conditions": {
+     "hub_targeted": {
+      "receipt": {
+       "kind": "hub_targeted",
+       "severity": 0.6,
+       "seed": 58,
+       "edges_total": 15482,
+       "edges_removed": 1219,
+       "fraction_removed": 0.07873659733884511,
+       "mask_digest": "436157f9e3ca328d4edc4510293d53663c55536a7698b75869b81bc36f4b4327"
+      },
+      "edges_removed": 1219,
+      "targeted": {
+       "return": 30.762951689373736,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 1.026499261394818,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        21.662614850186618,
+        33.512255092016154
+       ],
+       "post_recovery_return": 30.386236641080338,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.0139290203225655,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 78.11544799804688,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 26.94728169281086,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 0.8991778498232779,
+       "functional_redundancy": 0.8991778498232779,
+       "recovery_curve": [
+        26.794661484570998,
+        32.2639172834654
+       ],
+       "post_recovery_return": 26.018790439282007,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.8681959207944019,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 74.33007049560547,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 3.8156699965628746
+     },
+     "region_targeted": {
+      "receipt": {
+       "kind": "region_targeted",
+       "severity": 0.6,
+       "seed": 58,
+       "edges_total": 15482,
+       "edges_removed": 970,
+       "fraction_removed": 0.06265340395297765,
+       "mask_digest": "609b12c29ae50cdb2aa2061acccd3af20d645ee2529ec6f4f4c8671f874a2ae9"
+      },
+      "edges_removed": 970,
+      "targeted": {
+       "return": 30.296046800325215,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 1.0109195625223106,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        21.66428838183227,
+        34.79970940754208
+       ],
+       "post_recovery_return": 26.758968211152883,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.892894198898475,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 146.99400329589844,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 26.410565988020018,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 0.8812687011788353,
+       "functional_redundancy": 0.8812687011788353,
+       "recovery_curve": [
+        25.423773452077917,
+        32.241032664516574
+       ],
+       "post_recovery_return": 26.144618631748457,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.8723945603766391,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 78.1030502319336,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 3.8854808123051967
+     },
+     "sensory_pathway": {
+      "receipt": {
+       "kind": "sensory_pathway",
+       "severity": 0.6,
+       "seed": 58,
+       "edges_total": 15482,
+       "edges_removed": 4809,
+       "fraction_removed": 0.31061878310295826,
+       "mask_digest": "365ef0b916ac9e00cebacd8b0ae98c3f2c1cde6d3569e03a1c14d46152fc21e5"
+      },
+      "edges_removed": 4809,
+      "targeted": {
+       "return": 25.412044358689336,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 0.8479499960901832,
+       "functional_redundancy": 0.8479499960901832,
+       "recovery_curve": [
+        29.347392778345643,
+        43.60413476844674
+       ],
+       "post_recovery_return": 25.457263637228742,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.8494588745778591,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 161.42526245117188,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 40.447603490011,
+       "success_rate": 1.0,
+       "mean_steps": 27.0,
+       "efficiency": 0.35,
+       "retention": 1.3496570656459004,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        29.411548965094703,
+        44.74194293895631
+       ],
+       "post_recovery_return": 35.07728904176409,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.170460222955166,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 145.7479248046875,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -15.035559131321662
+     },
+     "memory_pathway": {
+      "receipt": {
+       "kind": "memory_pathway",
+       "severity": 0.6,
+       "seed": 58,
+       "edges_total": 15482,
+       "edges_removed": 2275,
+       "fraction_removed": 0.14694483916806614,
+       "mask_digest": "72b88446cb72509206c837973818318646d1e4305289d0a77f84355468527e28"
+      },
+      "edges_removed": 2275,
+      "targeted": {
+       "return": 30.78973680763027,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 1.0273930281693568,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        21.660442409331594,
+        32.37878861768473
+       ],
+       "post_recovery_return": 31.384408109203747,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.0472360412196529,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 55.68369674682617,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 28.16338295911644,
+       "success_rate": 0.0,
+       "mean_steps": 40.0,
+       "efficiency": 0.0,
+       "retention": 0.9397567599437648,
+       "functional_redundancy": 0.9397567599437648,
+       "recovery_curve": [
+        28.09360811749802,
+        32.29983549923844
+       ],
+       "post_recovery_return": 26.02984579733846,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 0.8685648163735386,
+       "recovery_episodes_to_90pct": null,
+       "connectivity_change": {
+        "learned_weight_change": 48.47226333618164,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 2.62635384851383
+     },
+     "cross_region_communication": {
+      "receipt": {
+       "kind": "cross_region_communication",
+       "severity": 0.6,
+       "seed": 58,
+       "edges_total": 15482,
+       "edges_removed": 5844,
+       "fraction_removed": 0.3774706110321664,
+       "mask_digest": "d2e26b7a812e7f5c0cde135395a96aa51ce8adff41d6a95ed4c0f5714c3f0c54"
+      },
+      "edges_removed": 5844,
+      "targeted": {
+       "return": 40.28647477012319,
+       "success_rate": 1.0,
+       "mean_steps": 28.0,
+       "efficiency": 0.325,
+       "retention": 1.3442805168145522,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        32.00471631006855,
+        50.15299334295595
+       ],
+       "post_recovery_return": 36.03427605214026,
+       "post_recovery_success_rate": 0.0,
+       "post_recovery_efficiency": 0.0,
+       "recovered_fraction": 1.2023929994076574,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 109.09345245361328,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 48.869418180862375,
+       "success_rate": 1.0,
+       "mean_steps": 35.0,
+       "efficiency": 0.15000000000000002,
+       "retention": 1.6306764764961652,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        30.716535022940526,
+        41.07602629975933
+       ],
+       "post_recovery_return": 48.722359080855924,
+       "post_recovery_success_rate": 1.0,
+       "post_recovery_efficiency": 0.15000000000000002,
+       "recovered_fraction": 1.6257694032392724,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 27.57182502746582,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -8.582943410739183
+     }
+    },
+    "progressive_random": [
+     {
+      "severity": 0.15,
+      "return": 25.92976415791042,
+      "success_rate": 0.0,
+      "efficiency": 0.0
+     },
+     {
+      "severity": 0.3,
+      "return": 26.188244387219612,
+      "success_rate": 0.0,
+      "efficiency": 0.0
+     },
+     {
+      "severity": 0.44999999999999996,
+      "return": 24.534563733079437,
+      "success_rate": 0.0,
+      "efficiency": 0.0
+     },
+     {
+      "severity": 0.6,
+      "return": 25.684744343619176,
+      "success_rate": 0.0,
+      "efficiency": 0.0
+     }
+    ]
+   },
+   {
+    "seed": 67,
+    "intact_return": 24.38098783087856,
+    "intact_success_rate": 1.0,
+    "intact_efficiency": 0.825,
+    "intact_mean_steps": 8.0,
+    "conditions": {
+     "hub_targeted": {
+      "receipt": {
+       "kind": "hub_targeted",
+       "severity": 0.6,
+       "seed": 74,
+       "edges_total": 15497,
+       "edges_removed": 1209,
+       "fraction_removed": 0.0780150996967155,
+       "mask_digest": "89699b33ca6c13f16a42baeffb1401db62c002af593ca014ae01a10e871ba457"
+      },
+      "edges_removed": 1209,
+      "targeted": {
+       "return": 24.36431675534217,
+       "success_rate": 1.0,
+       "mean_steps": 8.0,
+       "efficiency": 0.825,
+       "retention": 0.9993162264116602,
+       "functional_redundancy": 0.9993162264116602,
+       "recovery_curve": [
+        28.38680259945429,
+        29.539383875435092
+       ],
+       "post_recovery_return": 25.11074825080429,
+       "post_recovery_success_rate": 1.0,
+       "post_recovery_efficiency": 0.8125,
+       "recovered_fraction": 1.0299315362030363,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 823.0955810546875,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 24.370096915586213,
+       "success_rate": 1.0,
+       "mean_steps": 8.0,
+       "efficiency": 0.825,
+       "retention": 0.9995533029519602,
+       "functional_redundancy": 0.9995533029519602,
+       "recovery_curve": [
+        28.66423134405441,
+        27.15367199368402
+       ],
+       "post_recovery_return": 23.770256614004417,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.4125,
+       "recovered_fraction": 0.9749505138548713,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 1678.8162841796875,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -0.005780160244043486
+     },
+     "region_targeted": {
+      "receipt": {
+       "kind": "region_targeted",
+       "severity": 0.6,
+       "seed": 74,
+       "edges_total": 15497,
+       "edges_removed": 953,
+       "fraction_removed": 0.06149577337549203,
+       "mask_digest": "4a40a44f4870bc41b2538db8e6f74552567d8753106bbbfbe6e0363e5d97dfd0"
+      },
+      "edges_removed": 953,
+      "targeted": {
+       "return": 24.377382278384786,
+       "success_rate": 1.0,
+       "mean_steps": 8.0,
+       "efficiency": 0.825,
+       "retention": 0.9998521162260207,
+       "functional_redundancy": 0.9998521162260207,
+       "recovery_curve": [
+        28.484919365655,
+        23.45239130345735
+       ],
+       "post_recovery_return": 23.739916484035554,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.4125,
+       "recovered_fraction": 0.9737060962710015,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 1723.3782958984375,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 24.373230972207157,
+       "success_rate": 1.0,
+       "mean_steps": 8.0,
+       "efficiency": 0.825,
+       "retention": 0.9996818480561489,
+       "functional_redundancy": 0.9996818480561489,
+       "recovery_curve": [
+        28.071043474869832,
+        26.765618528510178
+       ],
+       "post_recovery_return": 23.718460281419837,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.4125,
+       "recovered_fraction": 0.9728260579901676,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 1735.1815185546875,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 0.004151306177629266
+     },
+     "sensory_pathway": {
+      "receipt": {
+       "kind": "sensory_pathway",
+       "severity": 0.6,
+       "seed": 74,
+       "edges_total": 15497,
+       "edges_removed": 4835,
+       "fraction_removed": 0.3119958701684197,
+       "mask_digest": "bdd7b78cfb8a2c44de9cd2aaba9086747f1f137ef8aa3598b299798d44c478e8"
+      },
+      "edges_removed": 4835,
+      "targeted": {
+       "return": 24.348126237413982,
+       "success_rate": 1.0,
+       "mean_steps": 8.0,
+       "efficiency": 0.825,
+       "retention": 0.9986521631653104,
+       "functional_redundancy": 0.9986521631653104,
+       "recovery_curve": [
+        38.774405346702494,
+        25.660318200987085
+       ],
+       "post_recovery_return": 25.134843363843117,
+       "post_recovery_success_rate": 1.0,
+       "post_recovery_efficiency": 0.8125,
+       "recovered_fraction": 1.0309198108868172,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 1157.1229248046875,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 25.023933508660146,
+       "success_rate": 1.0,
+       "mean_steps": 8.5,
+       "efficiency": 0.8125,
+       "retention": 1.0263707804721225,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        39.25266989479228,
+        29.508705130404326
+       ],
+       "post_recovery_return": 25.064321474135117,
+       "post_recovery_success_rate": 1.0,
+       "post_recovery_efficiency": 0.8125,
+       "recovered_fraction": 1.028027315709953,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 27.534912109375,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -0.675807271246164
+     },
+     "memory_pathway": {
+      "receipt": {
+       "kind": "memory_pathway",
+       "severity": 0.6,
+       "seed": 74,
+       "edges_total": 15497,
+       "edges_removed": 2301,
+       "fraction_removed": 0.14848035103568433,
+       "mask_digest": "0ea7addc6f45fc541f3f692abba382399f2154302248a30bc948156da4ce1e81"
+      },
+      "edges_removed": 2301,
+      "targeted": {
+       "return": 24.369383584031524,
+       "success_rate": 1.0,
+       "mean_steps": 8.0,
+       "efficiency": 0.825,
+       "retention": 0.9995240452549532,
+       "functional_redundancy": 0.9995240452549532,
+       "recovery_curve": [
+        35.350095392199336,
+        23.527476433794384
+       ],
+       "post_recovery_return": 24.768172140940713,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.4,
+       "recovered_fraction": 1.0158805833770108,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 1641.9329833984375,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 25.033545484970162,
+       "success_rate": 1.0,
+       "mean_steps": 8.5,
+       "efficiency": 0.8125,
+       "retention": 1.0267650211147366,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        44.25102925435538,
+        24.346035318990417
+       ],
+       "post_recovery_return": 24.87399099339028,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.4,
+       "recovered_fraction": 1.0202208034363287,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 1831.696533203125,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": -0.6641619009386375
+     },
+     "cross_region_communication": {
+      "receipt": {
+       "kind": "cross_region_communication",
+       "severity": 0.6,
+       "seed": 74,
+       "edges_total": 15497,
+       "edges_removed": 5847,
+       "fraction_removed": 0.3772988320320062,
+       "mask_digest": "aabfeb343ad79e3356eb71a3e8dad84d572651549e173946303c41f1c2bcb12b"
+      },
+      "edges_removed": 5847,
+      "targeted": {
+       "return": 27.17036336021811,
+       "success_rate": 0.5,
+       "mean_steps": 24.5,
+       "efficiency": 0.4,
+       "retention": 1.114407814346505,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        32.26992988195991,
+        30.418093920753204
+       ],
+       "post_recovery_return": 23.64145436048861,
+       "post_recovery_success_rate": 0.5,
+       "post_recovery_efficiency": 0.4,
+       "recovered_fraction": 0.9696676166068493,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 148.3974609375,
+        "grown_synapses": 0
+       }
+      },
+      "matched_random": {
+       "return": 25.00546080451694,
+       "success_rate": 1.0,
+       "mean_steps": 8.5,
+       "efficiency": 0.8125,
+       "retention": 1.0256131120678993,
+       "functional_redundancy": 1.0,
+       "recovery_curve": [
+        36.56465680911537,
+        29.460540611664975
+       ],
+       "post_recovery_return": 25.045017211839003,
+       "post_recovery_success_rate": 1.0,
+       "post_recovery_efficiency": 0.8125,
+       "recovered_fraction": 1.0272355404779558,
+       "recovery_episodes_to_90pct": 1,
+       "connectivity_change": {
+        "learned_weight_change": 23.45387077331543,
+        "grown_synapses": 0
+       }
+      },
+      "targeted_minus_random": 2.164902555701172
+     }
+    },
+    "progressive_random": [
+     {
+      "severity": 0.15,
+      "return": 24.357333447109458,
+      "success_rate": 1.0,
+      "efficiency": 0.825
+     },
+     {
+      "severity": 0.3,
+      "return": 25.050753628098313,
+      "success_rate": 1.0,
+      "efficiency": 0.8125
+     },
+     {
+      "severity": 0.44999999999999996,
+      "return": 25.00776370170918,
+      "success_rate": 1.0,
+      "efficiency": 0.8125
+     },
+     {
+      "severity": 0.6,
+      "return": 41.71419097644856,
+      "success_rate": 0.0,
+      "efficiency": 0.0
+     }
+    ]
+   }
+  ]
+ },
+ "verdict": "descriptive",
+ "evidence_tier": "PAIRED_EXPERIMENT",
+ "created_unix": 1794731550.0836926,
+ "result_digest": "16e0231094d805c84c09ec600d15cba2416cea23bdd42fea1a95827e7bc2ec24",
+ "interpretation_note": "the existing forage task pays reward every step, so a slower agent can score a higher return; read success_rate and mean_steps alongside return",
+ "disclaimer": "synthetic lesions on a synthetic connectome; not a model of biological injury or recovery"
+}

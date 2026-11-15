@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+predictive_coding,baseline,11,multi_soma,30.412999,27.361024,1.000,3.4407,1173212,0.00000000,0,0.750000,11.00
+predictive_coding,baseline,23,multi_soma,22.282187,29.724475,1.000,3.6371,1173412,0.00000000,0,0.687500,13.50
+predictive_coding,baseline,37,multi_soma,25.265808,25.230445,1.000,3.6650,1174012,0.00000000,0,0.812500,8.50
+predictive_coding,baseline,51,multi_soma,33.250777,30.557760,1.000,3.6514,1173712,0.00000000,0,0.625000,16.00
+predictive_coding,baseline,67,multi_soma,26.549055,24.973025,1.000,4.1529,1171912,0.00000000,0,0.812500,8.50
+predictive_coding,candidate,11,multi_soma+local_predictive_coding,30.489683,26.676712,1.000,4.4787,1173212,0.00000000,0,0.762500,10.50
+predictive_coding,candidate,23,multi_soma+local_predictive_coding,22.298941,29.768720,1.000,4.0288,1173412,0.00000000,0,0.687500,13.50
+predictive_coding,candidate,37,multi_soma+local_predictive_coding,25.284656,24.532958,1.000,5.5159,1174012,0.00000000,0,0.825000,8.00
+predictive_coding,candidate,51,multi_soma+local_predictive_coding,33.372690,30.635448,1.000,4.5448,1173712,0.00000000,0,0.625000,16.00
+predictive_coding,candidate,67,multi_soma+local_predictive_coding,26.569277,24.994478,1.000,4.0388,1171912,0.00000000,0,0.812500,8.50

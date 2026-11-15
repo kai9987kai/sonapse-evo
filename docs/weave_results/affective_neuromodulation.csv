@@ -1,0 +1,16 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+affective_neuromodulation,baseline,11,reward_gated_plasticity,29.994394,26.772101,1.000,5.7794,1176284,0.00189768,0,0.762500,10.50
+affective_neuromodulation,baseline,23,reward_gated_plasticity,22.301931,29.762410,1.000,4.7816,1176484,0.00067061,0,0.687500,13.50
+affective_neuromodulation,baseline,37,reward_gated_plasticity,25.286262,24.556103,1.000,6.1428,1177084,0.00107070,0,0.825000,8.00
+affective_neuromodulation,baseline,51,reward_gated_plasticity,33.359585,30.183213,1.000,6.0885,1176784,0.00248109,0,0.637500,15.50
+affective_neuromodulation,baseline,67,reward_gated_plasticity,26.559707,25.033561,1.000,4.9245,1174984,0.00120352,0,0.812500,8.50
+affective_neuromodulation,candidate,11,reward_gated_plasticity+neuromodulatory_field+affective_control,30.339861,26.231187,1.000,6.4135,1219292,0.00212926,0,0.775000,10.00
+affective_neuromodulation,candidate,23,reward_gated_plasticity+neuromodulatory_field+affective_control,21.860819,30.045427,1.000,5.7649,1219492,0.00061207,0,0.687500,13.50
+affective_neuromodulation,candidate,37,reward_gated_plasticity+neuromodulatory_field+affective_control,24.440140,24.692722,1.000,6.2384,1220092,0.00100590,0,0.825000,8.00
+affective_neuromodulation,candidate,51,reward_gated_plasticity+neuromodulatory_field+affective_control,32.391387,29.741953,1.000,6.2480,1219792,0.00274156,0,0.650000,15.00
+affective_neuromodulation,candidate,67,reward_gated_plasticity+neuromodulatory_field+affective_control,25.689413,24.467845,1.000,6.2514,1217992,0.00113754,0,0.825000,8.00
+affective_neuromodulation,candidate_minus_affective_control,11,reward_gated_plasticity+neuromodulatory_field,30.249341,26.262700,1.000,6.0938,1219292,0.00208543,0,0.775000,10.00
+affective_neuromodulation,candidate_minus_affective_control,23,reward_gated_plasticity+neuromodulatory_field,22.316151,29.984725,1.000,5.6529,1219492,0.00068803,0,0.687500,13.50
+affective_neuromodulation,candidate_minus_affective_control,37,reward_gated_plasticity+neuromodulatory_field,24.391857,24.667562,1.000,6.8852,1220092,0.00098792,0,0.825000,8.00
+affective_neuromodulation,candidate_minus_affective_control,51,reward_gated_plasticity+neuromodulatory_field,32.283658,29.156650,1.000,6.0618,1219792,0.00269879,0,0.662500,14.50
+affective_neuromodulation,candidate_minus_affective_control,67,reward_gated_plasticity+neuromodulatory_field,26.122094,24.447731,1.000,5.9393,1217992,0.00116888,0,0.825000,8.00

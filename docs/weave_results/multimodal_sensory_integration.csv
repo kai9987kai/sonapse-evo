@@ -1,0 +1,16 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+multimodal_sensory_integration,baseline,11,legacy,-11.677925,-31.110767,0.000,1.9862,1163996,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,baseline,23,legacy,-30.672710,-30.653770,0.000,1.9479,1164196,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,baseline,37,legacy,-31.119020,-31.160935,0.000,2.0775,1164796,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,baseline,51,legacy,2.599213,-30.994805,0.000,1.9386,1164496,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,baseline,67,legacy,-13.781541,21.156301,0.000,1.9802,1162696,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,candidate,11,multimodal_sensory+cross_modal_fusion,5.319278,-3.492606,0.000,7.0637,1178076,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,candidate,23,multimodal_sensory+cross_modal_fusion,-30.349788,-30.852256,0.000,7.4074,1178276,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,candidate,37,multimodal_sensory+cross_modal_fusion,-31.076921,-31.174106,0.000,8.0203,1178876,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,candidate,51,multimodal_sensory+cross_modal_fusion,-30.705765,-28.334158,0.000,8.8036,1178576,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,candidate,67,multimodal_sensory+cross_modal_fusion,-13.938971,21.170325,0.000,6.7814,1176776,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,candidate_minus_cross_modal_fusion,11,multimodal_sensory,8.356373,26.595006,0.000,6.2038,1173596,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,candidate_minus_cross_modal_fusion,23,multimodal_sensory,-30.769457,-30.757488,0.000,6.3359,1173796,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,candidate_minus_cross_modal_fusion,37,multimodal_sensory,-31.146144,-31.200849,0.000,5.9902,1174396,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,candidate_minus_cross_modal_fusion,51,multimodal_sensory,-13.826235,-30.362440,0.000,5.6867,1174096,0.00000000,0,0.000000,80.00
+multimodal_sensory_integration,candidate_minus_cross_modal_fusion,67,multimodal_sensory,-13.959370,17.495503,0.000,6.0602,1172296,0.00000000,0,0.000000,80.00

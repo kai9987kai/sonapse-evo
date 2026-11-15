@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+structural_plasticity,baseline,11,reward_gated_plasticity,29.994394,26.772101,1.000,6.3354,1176284,0.00189768,0,0.762500,10.50
+structural_plasticity,baseline,23,reward_gated_plasticity,22.301931,29.762410,1.000,6.9652,1176484,0.00067061,0,0.687500,13.50
+structural_plasticity,baseline,37,reward_gated_plasticity,25.286262,24.556103,1.000,8.3034,1177084,0.00107070,0,0.825000,8.00
+structural_plasticity,baseline,51,reward_gated_plasticity,33.359585,30.183213,1.000,7.9712,1176784,0.00248109,0,0.637500,15.50
+structural_plasticity,baseline,67,reward_gated_plasticity,26.559707,25.033561,1.000,4.4156,1174984,0.00120352,0,0.812500,8.50
+structural_plasticity,candidate,11,reward_gated_plasticity+structural_plasticity,30.024520,26.789621,1.000,6.1227,1184924,0.00188155,0,0.762500,10.50
+structural_plasticity,candidate,23,reward_gated_plasticity+structural_plasticity,22.302022,29.736943,1.000,5.0578,1180708,0.00066581,0,0.687500,13.50
+structural_plasticity,candidate,37,reward_gated_plasticity+structural_plasticity,25.285873,24.560727,1.000,4.8357,1181404,0.00106563,0,0.825000,8.00
+structural_plasticity,candidate,51,reward_gated_plasticity+structural_plasticity,33.383672,30.213381,1.000,7.4894,1189360,0.00245548,0,0.637500,15.50
+structural_plasticity,candidate,67,reward_gated_plasticity+structural_plasticity,26.554618,25.040093,1.000,7.3669,1179304,0.00119715,0,0.812500,8.50

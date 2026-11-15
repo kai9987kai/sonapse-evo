@@ -1,0 +1,23 @@
+multimodal_sensory_integration     [return    ] inconclusive   diff   +6.016 CI [-0.08, +16.59] cost x3.8 31.6s
+affective_neuromodulation          [efficiency] supported      diff   +0.008 CI [+0.00, +0.01] cost x1.1 5.5s
+micro_collective_learning          [return    ] inconclusive   diff   -5.195 CI [-17.60, +2.07] cost x1.3 29.6s
+expert_routing                     [return    ] inconclusive   diff   +0.341 CI [-0.01, +0.77] cost x1.1 36.3s
+meta_plasticity                    [efficiency] inconclusive   diff   +0.000 CI [+0.00, +0.00] cost x1.0 3.5s
+predictive_replay                  [efficiency] inconclusive   diff   +0.000 CI [+0.00, +0.00] cost x1.0 3.6s
+connectivity_context_attention     [efficiency] inconclusive   diff   +0.005 CI [+0.00, +0.01] cost x2.7 11.5s
+flyhash_sparse_projections         [efficiency] not_supported  diff   -0.007 CI [-0.01, -0.00] cost x4.1 4.2s
+stdp                               [efficiency] inconclusive   diff   +0.000 CI [+0.00, +0.00] cost x1.4 4.1s
+adaptive_conduction                [efficiency] inconclusive   diff   +0.002 CI [+0.00, +0.01] cost x1.0 4.1s
+quantised_synapses                 [efficiency] inconclusive   diff   +0.000 CI [+0.00, +0.00] cost x4.0 2.3s
+hierarchical_temporal_memory       [return    ] inconclusive   diff   +0.087 CI [-0.00, +0.19] cost x1.1 22.6s
+uncertainty_gated_propagation      [efficiency] not_supported  diff   -0.012 CI [-0.02, -0.00] cost x1.0 3.6s
+predictive_coding                  [efficiency] inconclusive   diff   +0.005 CI [+0.00, +0.01] cost x1.2 2.6s
+structural_plasticity              [efficiency] inconclusive   diff   +0.000 CI [+0.00, +0.00] cost x0.9 4.1s
+associative_memory                 [efficiency] inconclusive   diff   +0.002 CI [+0.00, +0.01] cost x5.4 7.3s
+action_grounded_self_modelling     [return    ] inconclusive   diff   +2.375 CI [-0.73, +5.23] cost x1.2 25.1s
+multi_soma_integration             [efficiency] not_supported  diff   -0.212 CI [-0.28, -0.12] cost x6.2 11.4s
+multi_region_routing               [efficiency] inconclusive   diff   -0.072 CI [-0.21, +0.00] cost x3.5 5.0s
+neural_grafting                    [return    ] inconclusive   diff   -4.570 CI [-16.69, +2.37] cost x1.3 30.5s
+cross_modal_learning               [return    ] inconclusive   diff   +0.654 CI [-0.99, +2.33] cost x1.2 24.1s
+specialist_expert_evolution        [return    ] inconclusive   diff   +0.144 CI [-0.00, +0.43] cost x1.2 30.5s
+done in 362s

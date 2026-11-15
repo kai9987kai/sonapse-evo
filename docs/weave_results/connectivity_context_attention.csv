@@ -1,0 +1,16 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+connectivity_context_attention,baseline,11,dendritic_compartments,43.793379,36.335559,1.000,3.6800,1173212,0.00000000,0,0.575000,18.00
+connectivity_context_attention,baseline,23,dendritic_compartments,29.246615,41.297410,1.000,4.0067,1173412,0.00000000,0,0.462500,22.50
+connectivity_context_attention,baseline,37,dendritic_compartments,25.958877,26.358204,1.000,4.7795,1174012,0.00000000,0,0.787500,9.50
+connectivity_context_attention,baseline,51,dendritic_compartments,36.391027,33.003810,1.000,4.6271,1173712,0.00000000,0,0.562500,18.50
+connectivity_context_attention,baseline,67,dendritic_compartments,27.678837,26.112574,1.000,4.4555,1171912,0.00000000,0,0.787500,9.50
+connectivity_context_attention,candidate,11,structural_encoder+connectivity_attention+dendritic_compartments,43.788161,36.333693,1.000,11.8755,1363676,0.00000000,0,0.575000,18.00
+connectivity_context_attention,candidate,23,structural_encoder+connectivity_attention+dendritic_compartments,29.229339,40.622318,1.000,11.7656,1363876,0.00000000,0,0.475000,22.00
+connectivity_context_attention,candidate,37,structural_encoder+connectivity_attention+dendritic_compartments,26.008347,26.402046,1.000,11.9415,1364476,0.00000000,0,0.787500,9.50
+connectivity_context_attention,candidate,51,structural_encoder+connectivity_attention+dendritic_compartments,35.653101,33.108296,1.000,11.4335,1364176,0.00000000,0,0.562500,18.50
+connectivity_context_attention,candidate,67,structural_encoder+connectivity_attention+dendritic_compartments,32.988525,25.480978,1.000,11.3830,1362376,0.00000000,0,0.800000,9.00
+connectivity_context_attention,candidate_minus_structural_encoder,11,connectivity_attention+dendritic_compartments,43.759365,36.316664,1.000,11.1733,1323740,0.00000000,0,0.575000,18.00
+connectivity_context_attention,candidate_minus_structural_encoder,23,connectivity_attention+dendritic_compartments,29.223842,41.293296,1.000,11.1577,1323940,0.00000000,0,0.462500,22.50
+connectivity_context_attention,candidate_minus_structural_encoder,37,connectivity_attention+dendritic_compartments,25.983122,26.376962,1.000,10.9609,1324540,0.00000000,0,0.787500,9.50
+connectivity_context_attention,candidate_minus_structural_encoder,51,connectivity_attention+dendritic_compartments,35.990998,33.037187,1.000,11.2523,1324240,0.00000000,0,0.562500,18.50
+connectivity_context_attention,candidate_minus_structural_encoder,67,connectivity_attention+dendritic_compartments,32.976713,26.136542,1.000,11.4317,1322440,0.00000000,0,0.787500,9.50
