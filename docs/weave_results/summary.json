@@ -1,0 +1,1434 @@
+{
+ "multimodal_sensory_integration": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "neuroweave_1200x660",
+  "baseline": -20.552795416739706,
+  "candidate": -14.536560263438094,
+  "primary_metric": "return",
+  "efficiency": [
+   0.0,
+   0.0
+  ],
+  "secondary": {
+   "metric": "efficiency",
+   "mean_diff": 0.0,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   0.0,
+   0.0
+  ],
+  "mean_steps": [
+   80.0,
+   80.0
+  ],
+  "ablations": {
+   "candidate_vs_candidate_minus_cross_modal_fusion": -4.890506794721707
+  },
+  "mean_diff": 6.016235153301612,
+  "ci95": [
+   -0.08185760748052928,
+   16.588676258008174
+  ],
+  "cohens_d": 0.495828800643059,
+  "wins": 3,
+  "n": 5,
+  "cost_ratio": 3.8343258500315973,
+  "faults": 0,
+  "seconds": 31.6
+ },
+ "affective_neuromodulation": {
+  "verdict": "supported",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.261477653025132,
+  "candidate": 27.03582676560928,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7449999999999999,
+   0.7524999999999998
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": -0.22565088741585554,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.2,
+   10.9
+  ],
+  "ablations": {
+   "candidate_vs_candidate_minus_affective_control": -0.002499999999999991
+  },
+  "mean_diff": 0.007500000000000018,
+  "ci95": [
+   0.002499999999999991,
+   0.012500000000000044
+  ],
+  "cohens_d": 1.0954451150103321,
+  "wins": 3,
+  "n": 5,
+  "cost_ratio": 1.1154325939573404,
+  "faults": 0,
+  "seconds": 5.5
+ },
+ "micro_collective_learning": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "neuroweave_1200x660",
+  "baseline": -9.646053468716385,
+  "candidate": -14.840913347749867,
+  "primary_metric": "return",
+  "efficiency": [
+   0.0,
+   0.0
+  ],
+  "secondary": {
+   "metric": "efficiency",
+   "mean_diff": 0.0,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   0.0,
+   0.0
+  ],
+  "mean_steps": [
+   80.0,
+   80.0
+  ],
+  "ablations": {},
+  "mean_diff": -5.194859879033482,
+  "ci95": [
+   -17.604648216578127,
+   2.072905466663898
+  ],
+  "cohens_d": -0.38259535110266,
+  "wins": 1,
+  "n": 5,
+  "cost_ratio": 1.2973202056100535,
+  "faults": 0,
+  "seconds": 29.6
+ },
+ "expert_routing": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "neuroweave_1200x660",
+  "baseline": -14.840913347749867,
+  "candidate": -14.4996597247649,
+  "primary_metric": "return",
+  "efficiency": [
+   0.0,
+   0.0
+  ],
+  "secondary": {
+   "metric": "efficiency",
+   "mean_diff": 0.0,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   0.0,
+   0.0
+  ],
+  "mean_steps": [
+   80.0,
+   80.0
+  ],
+  "ablations": {},
+  "mean_diff": 0.34125362298497175,
+  "ci95": [
+   -0.014688294809284486,
+   0.770973671411556
+  ],
+  "cohens_d": 0.6788787215235854,
+  "wins": 3,
+  "n": 5,
+  "cost_ratio": 1.0564373159965357,
+  "faults": 0,
+  "seconds": 36.3
+ },
+ "meta_plasticity": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.261477653025132,
+  "candidate": 27.225438886745884,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7449999999999999,
+   0.7449999999999999
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": -0.03603876627924905,
+   "verdict": "not_supported"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.2,
+   11.2
+  ],
+  "ablations": {},
+  "mean_diff": 0.0,
+  "ci95": [
+   0.0,
+   0.0
+  ],
+  "cohens_d": null,
+  "wins": 0,
+  "n": 5,
+  "cost_ratio": 1.0307528135964086,
+  "faults": 0,
+  "seconds": 3.5
+ },
+ "predictive_replay": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.263553590031385,
+  "candidate": 27.263633225751374,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7449999999999999,
+   0.7449999999999999
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": 7.96357199831732e-05,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.2,
+   11.2
+  ],
+  "ablations": {},
+  "mean_diff": 0.0,
+  "ci95": [
+   0.0,
+   0.0
+  ],
+  "cohens_d": null,
+  "wins": 0,
+  "n": 5,
+  "cost_ratio": 1.0341760590639897,
+  "faults": 0,
+  "seconds": 3.6
+ },
+ "connectivity_context_attention": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 32.62151136438738,
+  "candidate": 32.38946610583072,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.635,
+   0.64
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": -0.23204525855666702,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   15.6,
+   15.4
+  ],
+  "ablations": {
+   "candidate_vs_candidate_minus_structural_encoder": 0.004999999999999993
+  },
+  "mean_diff": 0.004999999999999993,
+  "ci95": [
+   0.0,
+   0.009999999999999998
+  ],
+  "cohens_d": 0.7302967433402214,
+  "wins": 2,
+  "n": 5,
+  "cost_ratio": 2.710104152253877,
+  "faults": 0,
+  "seconds": 11.5
+ },
+ "flyhash_sparse_projections": {
+  "verdict": "not_supported",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.29534668680494,
+  "candidate": 27.738594482901597,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7424999999999999,
+   0.735
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": 0.44324779609665443,
+   "verdict": "supported"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.3,
+   11.6
+  ],
+  "ablations": {
+   "candidate_vs_candidate_minus_flyhash_projection": -0.002499999999999991
+  },
+  "mean_diff": -0.007499999999999974,
+  "ci95": [
+   -0.012499999999999956,
+   -0.002499999999999991
+  ],
+  "cohens_d": -1.0954451150103321,
+  "wins": 0,
+  "n": 5,
+  "cost_ratio": 4.103197400030185,
+  "faults": 0,
+  "seconds": 4.2
+ },
+ "stdp": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.264898250238694,
+  "candidate": 27.264485933331922,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7449999999999999,
+   0.7449999999999999
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": -0.0004123169067703714,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.2,
+   11.2
+  ],
+  "ablations": {},
+  "mean_diff": 0.0,
+  "ci95": [
+   0.0,
+   0.0
+  ],
+  "cohens_d": null,
+  "wins": 0,
+  "n": 5,
+  "cost_ratio": 1.3624732110354942,
+  "faults": 0,
+  "seconds": 4.1
+ },
+ "adaptive_conduction": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 30.324979101877535,
+  "candidate": 30.297202087161928,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.675,
+   0.6775
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": -0.027777014715607607,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   14.0,
+   13.9
+  ],
+  "ablations": {},
+  "mean_diff": 0.002499999999999991,
+  "ci95": [
+   0.0,
+   0.007499999999999974
+  ],
+  "cohens_d": 0.447213595499958,
+  "wins": 1,
+  "n": 5,
+  "cost_ratio": 1.0367039456734015,
+  "faults": 0,
+  "seconds": 4.1
+ },
+ "quantised_synapses": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.29534668680494,
+  "candidate": 27.299481535495715,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7424999999999999,
+   0.7424999999999999
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": 0.00413484869077223,
+   "verdict": "supported"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.3,
+   11.3
+  ],
+  "ablations": {},
+  "mean_diff": 0.0,
+  "ci95": [
+   0.0,
+   0.0
+  ],
+  "cohens_d": null,
+  "wins": 0,
+  "n": 5,
+  "cost_ratio": 4.01775911638008,
+  "faults": 0,
+  "seconds": 2.3
+ },
+ "hierarchical_temporal_memory": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "memory_navigation",
+  "baseline": 4.935240674348533,
+  "candidate": 5.0219188906506345,
+  "primary_metric": "return",
+  "efficiency": [
+   0.0,
+   0.0
+  ],
+  "secondary": {
+   "metric": "efficiency",
+   "mean_diff": 0.0,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   0.0,
+   0.0
+  ],
+  "mean_steps": [
+   80.0,
+   80.0
+  ],
+  "ablations": {},
+  "mean_diff": 0.08667821630210107,
+  "ci95": [
+   -0.004934394642463591,
+   0.18523272156698697
+  ],
+  "cohens_d": 0.6936301379443025,
+  "wins": 3,
+  "n": 5,
+  "cost_ratio": 1.0892974913014646,
+  "faults": 0,
+  "seconds": 22.6
+ },
+ "uncertainty_gated_propagation": {
+  "verdict": "not_supported",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.29534668680494,
+  "candidate": 27.96677714872943,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7424999999999999,
+   0.7300000000000001
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": 0.6714304619244935,
+   "verdict": "supported"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.3,
+   11.8
+  ],
+  "ablations": {},
+  "mean_diff": -0.012499999999999956,
+  "ci95": [
+   -0.019999999999999928,
+   -0.004999999999999982
+  ],
+  "cohens_d": -1.4142135623730951,
+  "wins": 0,
+  "n": 5,
+  "cost_ratio": 0.9605836390197587,
+  "faults": 0,
+  "seconds": 3.6
+ },
+ "predictive_coding": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.569345809729363,
+  "candidate": 27.321663076070912,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7375,
+   0.7424999999999999
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": -0.24768273365844493,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.5,
+   11.3
+  ],
+  "ablations": {},
+  "mean_diff": 0.004999999999999982,
+  "ci95": [
+   0.0,
+   0.009999999999999964
+  ],
+  "cohens_d": 0.7302967433402214,
+  "wins": 2,
+  "n": 5,
+  "cost_ratio": 1.2188902105795072,
+  "faults": 0,
+  "seconds": 2.6
+ },
+ "structural_plasticity": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.261477653025132,
+  "candidate": 27.26815325279034,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7449999999999999,
+   0.7449999999999999
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": 0.006675599765205931,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.2,
+   11.2
+  ],
+  "ablations": {},
+  "mean_diff": 0.0,
+  "ci95": [
+   0.0,
+   0.0
+  ],
+  "cohens_d": null,
+  "wins": 0,
+  "n": 5,
+  "cost_ratio": 0.9082598530329027,
+  "faults": 0,
+  "seconds": 4.1
+ },
+ "associative_memory": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.29534668680494,
+  "candidate": 27.22564945594133,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7424999999999999,
+   0.7449999999999999
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": -0.06969723086361342,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.3,
+   11.2
+  ],
+  "ablations": {
+   "candidate_vs_candidate_minus_fast_weights": 0.0,
+   "candidate_vs_candidate_minus_memory_ecology": 0.0
+  },
+  "mean_diff": 0.002499999999999991,
+  "ci95": [
+   0.0,
+   0.007499999999999974
+  ],
+  "cohens_d": 0.447213595499958,
+  "wins": 1,
+  "n": 5,
+  "cost_ratio": 5.442253086569845,
+  "faults": 0,
+  "seconds": 7.3
+ },
+ "action_grounded_self_modelling": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "disturbed",
+  "baseline": -6.496143608416678,
+  "candidate": -4.120869697382519,
+  "primary_metric": "return",
+  "efficiency": [
+   0.0,
+   0.0
+  ],
+  "secondary": {
+   "metric": "efficiency",
+   "mean_diff": 0.0,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   0.0,
+   0.0
+  ],
+  "mean_steps": [
+   80.0,
+   80.0
+  ],
+  "ablations": {},
+  "mean_diff": 2.37527391103416,
+  "ci95": [
+   -0.7278331980416681,
+   5.2296125593225335
+  ],
+  "cohens_d": 0.6190736728152322,
+  "wins": 4,
+  "n": 5,
+  "cost_ratio": 1.2025995087751478,
+  "faults": 0,
+  "seconds": 25.1
+ },
+ "multi_soma_integration": {
+  "verdict": "not_supported",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 27.29534668680494,
+  "candidate": 37.33525570189358,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.7424999999999999,
+   0.53
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": 10.039909015088634,
+   "verdict": "supported"
+  },
+  "success_rate": [
+   1.0,
+   1.0
+  ],
+  "mean_steps": [
+   11.3,
+   19.8
+  ],
+  "ablations": {
+   "candidate_vs_candidate_minus_dendritic_compartments": -0.08000000000000002,
+   "candidate_vs_candidate_minus_axonal_branches": -0.11250000000000004
+  },
+  "mean_diff": -0.2125,
+  "ci95": [
+   -0.27749999999999997,
+   -0.12250000000000001
+  ],
+  "cohens_d": -2.150348808914498,
+  "wins": 0,
+  "n": 5,
+  "cost_ratio": 6.1742144206229455,
+  "faults": 0,
+  "seconds": 11.4
+ },
+ "multi_region_routing": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "forage",
+  "baseline": 26.70244405524186,
+  "candidate": 26.46867379111422,
+  "primary_metric": "efficiency",
+  "efficiency": [
+   0.5549999999999999,
+   0.48249999999999993
+  ],
+  "secondary": {
+   "metric": "return",
+   "mean_diff": -0.23377026412764082,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   0.7,
+   0.6
+  ],
+  "mean_steps": [
+   18.5,
+   21.3
+  ],
+  "ablations": {},
+  "mean_diff": -0.0725,
+  "ci95": [
+   -0.2125,
+   0.0
+  ],
+  "cohens_d": -0.4670741226583514,
+  "wins": 0,
+  "n": 5,
+  "cost_ratio": 3.48961473293231,
+  "faults": 0,
+  "seconds": 5.0
+ },
+ "neural_grafting": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "neuroweave_1200x660",
+  "baseline": -9.646053468716385,
+  "candidate": -14.216068515404539,
+  "primary_metric": "return",
+  "efficiency": [
+   0.0,
+   0.0
+  ],
+  "secondary": {
+   "metric": "efficiency",
+   "mean_diff": 0.0,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   0.0,
+   0.0
+  ],
+  "mean_steps": [
+   80.0,
+   80.0
+  ],
+  "ablations": {},
+  "mean_diff": -4.570015046688149,
+  "ci95": [
+   -16.686017457057634,
+   2.3689301278446804
+  ],
+  "cohens_d": -0.3422802549013793,
+  "wins": 4,
+  "n": 5,
+  "cost_ratio": 1.3381117934926023,
+  "faults": 0,
+  "seconds": 30.5
+ },
+ "cross_modal_learning": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "neuroweave_1200x660",
+  "baseline": -15.162031686489167,
+  "candidate": -14.508167432172547,
+  "primary_metric": "return",
+  "efficiency": [
+   0.0012499999999999955,
+   0.0
+  ],
+  "secondary": {
+   "metric": "efficiency",
+   "mean_diff": -0.0012499999999999955,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   0.1,
+   0.0
+  ],
+  "mean_steps": [
+   80.0,
+   80.0
+  ],
+  "ablations": {},
+  "mean_diff": 0.6538642543166183,
+  "ci95": [
+   -0.994817958654562,
+   2.33109872777083
+  ],
+  "cohens_d": 0.2910578589822733,
+  "wins": 3,
+  "n": 5,
+  "cost_ratio": 1.236692704152006,
+  "faults": 0,
+  "seconds": 24.1
+ },
+ "specialist_expert_evolution": {
+  "verdict": "inconclusive",
+  "evidence_tier": "PAIRED_EXPERIMENT",
+  "environment": "neuroweave_1200x660",
+  "baseline": -14.643268833151723,
+  "candidate": -14.49973419328552,
+  "primary_metric": "return",
+  "efficiency": [
+   0.0,
+   0.0
+  ],
+  "secondary": {
+   "metric": "efficiency",
+   "mean_diff": 0.0,
+   "verdict": "inconclusive"
+  },
+  "success_rate": [
+   0.0,
+   0.0
+  ],
+  "mean_steps": [
+   80.0,
+   80.0
+  ],
+  "ablations": {},
+  "mean_diff": 0.14353463986620554,
+  "ci95": [
+   -0.00047531174436343804,
+   0.42773103934934154
+  ],
+  "cohens_d": 0.452079935161481,
+  "wins": 4,
+  "n": 5,
+  "cost_ratio": 1.207663190545298,
+  "faults": 0,
+  "seconds": 30.5
+ },
+ "topology_optimisation": {
+  "ranking": [
+   "multiscale_regional",
+   "erdos_renyi",
+   "ring_lattice",
+   "hybrid",
+   "hub_capped",
+   "degree_shuffled",
+   "clustered_small_world",
+   "hub_skewed",
+   "uniform_random",
+   "legacy",
+   "hierarchical_modular",
+   "multi_region"
+  ],
+  "ranking_by_efficiency": [
+   "hierarchical_modular",
+   "legacy",
+   "hybrid",
+   "hub_capped",
+   "degree_shuffled",
+   "clustered_small_world",
+   "hub_skewed",
+   "uniform_random",
+   "erdos_renyi",
+   "ring_lattice",
+   "multi_region",
+   "multiscale_regional"
+  ],
+  "primary_metric": "efficiency",
+  "summary": {
+   "legacy": {
+    "heldout_mean": 27.29534668680494,
+    "heldout_std": 2.452113105368488,
+    "success_rate": 1.0,
+    "efficiency_mean": 0.7424999999999999,
+    "lesioned_efficiency_mean": 0.7424999999999999,
+    "lesioned_success_rate": 1.0,
+    "mean_steps": 11.3,
+    "lesion_retention_mean": 0.9999390856753179,
+    "measured_ms_per_step": 1.5777523047693829,
+    "edges_mean": 5711.4,
+    "in_degree_max_mean": 16.4,
+    "in_degree_cv_mean": 0.3607009179224866,
+    "clustering_coefficient_mean": 0.03704793886579004,
+    "modularity_mean": 0.530019191495518,
+    "characteristic_path_length_mean": 3.685373132582593,
+    "global_efficiency_mean": 0.28797222286893903,
+    "hub_concentration_top5pct_mean": 0.07686794474645578,
+    "regional_communication_efficiency_mean": 0.2631722422712871,
+    "reciprocity_mean": 0.02051276639056303
+   },
+   "clustered_small_world": {
+    "heldout_mean": 27.452188882562886,
+    "heldout_std": 2.314188082381708,
+    "success_rate": 1.0,
+    "efficiency_mean": 0.74,
+    "lesioned_efficiency_mean": 0.74,
+    "lesioned_success_rate": 1.0,
+    "mean_steps": 11.4,
+    "lesion_retention_mean": 0.9999367572634229,
+    "measured_ms_per_step": 1.4765996626741988,
+    "edges_mean": 5074.6,
+    "in_degree_max_mean": 12.6,
+    "in_degree_cv_mean": 0.2290245957019656,
+    "clustering_coefficient_mean": 0.3251057951103907,
+    "modularity_mean": 0.5472019658388338,
+    "characteristic_path_length_mean": 4.679538787483702,
+    "global_efficiency_mean": 0.232572484013162,
+    "hub_concentration_top5pct_mean": 0.0675133716645185,
+    "regional_communication_efficiency_mean": 0.22278896904355588,
+    "reciprocity_mean": 0.6633108798119431
+   },
+   "hub_skewed": {
+    "heldout_mean": 27.44684175733239,
+    "heldout_std": 2.30719657447647,
+    "success_rate": 1.0,
+    "efficiency_mean": 0.74,
+    "lesioned_efficiency_mean": 0.74,
+    "lesioned_success_rate": 1.0,
+    "mean_steps": 11.4,
+    "lesion_retention_mean": 0.9996817357940883,
+    "measured_ms_per_step": 1.451738736401591,
+    "edges_mean": 6105.4,
+    "in_degree_max_mean": 22.0,
+    "in_degree_cv_mean": 0.47276549048801986,
+    "clustering_coefficient_mean": 0.02199952130941571,
+    "modularity_mean": -0.004228774833560034,
+    "characteristic_path_length_mean": 3.4493062369825744,
+    "global_efficiency_mean": 0.3080268089960887,
+    "hub_concentration_top5pct_mean": 0.08187827111735177,
+    "regional_communication_efficiency_mean": 0.3082452458178852,
+    "reciprocity_mean": 0.010481978381185492
+   },
+   "uniform_random": {
+    "heldout_mean": 27.445112239887198,
+    "heldout_std": 2.3066784529056545,
+    "success_rate": 1.0,
+    "efficiency_mean": 0.74,
+    "lesioned_efficiency_mean": 0.74,
+    "lesioned_success_rate": 1.0,
+    "mean_steps": 11.4,
+    "lesion_retention_mean": 0.9997451249805774,
+    "measured_ms_per_step": 2.1293061247783527,
+    "edges_mean": 6112.4,
+    "in_degree_max_mean": 18.6,
+    "in_degree_cv_mean": 0.34996312248307687,
+    "clustering_coefficient_mean": 0.020292651937784977,
+    "modularity_mean": -0.0036977885607069995,
+    "characteristic_path_length_mean": 3.420561959334667,
+    "global_efficiency_mean": 0.31029762874837025,
+    "hub_concentration_top5pct_mean": 0.07685950334105233,
+    "regional_communication_efficiency_mean": 0.3104620125299592,
+    "reciprocity_mean": 0.010732947759447971
+   },
+   "degree_shuffled": {
+    "heldout_mean": 27.454203761050298,
+    "heldout_std": 2.014401139412986,
+    "success_rate": 1.0,
+    "efficiency_mean": 0.74,
+    "lesioned_efficiency_mean": 0.7375,
+    "lesioned_success_rate": 1.0,
+    "mean_steps": 11.4,
+    "lesion_retention_mean": 1.00457184383925,
+    "measured_ms_per_step": 1.4680751877550091,
+    "edges_mean": 5074.6,
+    "in_degree_max_mean": 12.6,
+    "in_degree_cv_mean": 0.2290245957019656,
+    "clustering_coefficient_mean": 0.015199185762387194,
+    "modularity_mean": 0.0005525986325649434,
+    "characteristic_path_length_mean": 3.6459256844850065,
+    "global_efficiency_mean": 0.2910212950890917,
+    "hub_concentration_top5pct_mean": 0.0675133716645185,
+    "regional_communication_efficiency_mean": 0.2907460998863667,
+    "reciprocity_mean": 0.007487028477976709
+   },
+   "erdos_renyi": {
+    "heldout_mean": 27.587684115399764,
+    "heldout_std": 2.453347779162983,
+    "success_rate": 1.0,
+    "efficiency_mean": 0.7375,
+    "lesioned_efficiency_mean": 0.74,
+    "lesioned_success_rate": 1.0,
+    "mean_steps": 11.5,
+    "lesion_retention_mean": 0.995254019856284,
+    "measured_ms_per_step": 1.2383757999945557,
+    "edges_mean": 6156.8,
+    "in_degree_max_mean": 18.2,
+    "in_degree_cv_mean": 0.34796087316968405,
+    "clustering_coefficient_mean": 0.020685325932987986,
+    "modularity_mean": -0.0007147350980103384,
+    "characteristic_path_length_mean": 3.4178632866662526,
+    "global_efficiency_mean": 0.3106982697740113,
+    "hub_concentration_top5pct_mean": 0.07686167245945662,
+    "regional_communication_efficiency_mean": 0.31079330952559714,
+    "reciprocity_mean": 0.010921323595901504
+   },
+   "hub_capped": {
+    "heldout_mean": 27.457868324326263,
+    "heldout_std": 2.3126109112070865,
+    "success_rate": 1.0,
+    "efficiency_mean": 0.74,
+    "lesioned_efficiency_mean": 0.7375,
+    "lesioned_success_rate": 1.0,
+    "mean_steps": 11.4,
+    "lesion_retention_mean": 1.0056529388198208,
+    "measured_ms_per_step": 1.1569873844245566,
+    "edges_mean": 5073.8,
+    "in_degree_max_mean": 12.0,
+    "in_degree_cv_mean": 0.22845604769742905,
+    "clustering_coefficient_mean": 0.32515924860134415,
+    "modularity_mean": 0.5472621192127555,
+    "characteristic_path_length_mean": 4.680361799217731,
+    "global_efficiency_mean": 0.23253132372570934,
+    "hub_concentration_top5pct_mean": 0.06744508227877802,
+    "regional_communication_efficiency_mean": 0.22273927541688576,
+    "reciprocity_mean": 0.6634161439183546
+   },
+   "ring_lattice": {
+    "heldout_mean": 27.58162048690922,
+    "heldout_std": 2.4087896652268865,
+    "success_rate": 1.0,
+    "efficiency_mean": 0.7375,
+    "lesioned_efficiency_mean": 0.6775,
+    "lesioned_success_rate": 0.9,
+    "mean_steps": 11.5,
+    "lesion_retention_mean": 1.0480696387491248,
+    "measured_ms_per_step": 1.2563807311455246,
+    "edges_mean": 6147.0,
+    "in_degree_max_mean": 9.0,
+    "in_degree_cv_mean": 0.007793420899302739,
+    "clustering_coefficient_mean": 0.6417410714285716,
+    "modularity_mean": 0.6564178441586055,
+    "characteristic_path_length_mean": 43.544589308996095,
+    "global_efficiency_mean": 0.056319488202622545,
+    "hub_concentration_top5pct_mean": 0.0499430616560924,
+    "regional_communication_efficiency_mean": 0.025071141970572114,
+    "reciprocity_mean": 0.9995119570522206
+   },
+   "hierarchical_modular": {
+    "heldout_mean": 27.21268915922846,
+    "heldout_std": 2.3041581309544665,
+    "success_rate": 1.0,
+    "efficiency_mean": 0.7449999999999999,
+    "lesioned_efficiency_mean": 0.7449999999999999,
+    "lesioned_success_rate": 1.0,
+    "mean_steps": 11.2,
+    "lesion_retention_mean": 0.9992907739484126,
+    "measured_ms_per_step": 1.1215796681399062,
+    "edges_mean": 5400.4,
+    "in_degree_max_mean": 16.0,
+    "in_degree_cv_mean": 0.3483539152019031,
+    "clustering_coefficient_mean": 0.14864100755379742,
+    "modularity_mean": 0.59120680047322,
+    "characteristic_path_length_mean": 4.0141103247035455,
+    "global_efficiency_mean": 0.26917613459986345,
+    "hub_concentration_top5pct_mean": 0.07601506783496305,
+    "regional_communication_efficiency_mean": 0.23826576162124496,
+    "reciprocity_mean": 0.15391120612226744
+   },
+   "multi_region": {
+    "heldout_mean": 26.70244405524186,
+    "heldout_std": 2.0131813340745324,
+    "success_rate": 0.7,
+    "efficiency_mean": 0.5549999999999999,
+    "lesioned_efficiency_mean": 0.6175,
+    "lesioned_success_rate": 0.8,
+    "mean_steps": 18.5,
+    "lesion_retention_mean": 1.041676701178048,
+    "measured_ms_per_step": 1.283004135402405,
+    "edges_mean": 15494.8,
+    "in_degree_max_mean": 39.6,
+    "in_degree_cv_mean": 0.330165864599322,
+    "clustering_coefficient_mean": 0.07289843306980828,
+    "modularity_mean": 0.2386926204385606,
+    "characteristic_path_length_mean": 2.5780272164276403,
+    "global_efficiency_mean": 0.41271627824858753,
+    "hub_concentration_top5pct_mean": 0.07230822591202793,
+    "regional_communication_efficiency_mean": 0.3962296126795716,
+    "reciprocity_mean": 0.04595040226341272
+   },
+   "multiscale_regional": {
+    "heldout_mean": 28.663362066859793,
+    "heldout_std": 4.382112369573183,
+    "success_rate": 0.7,
+    "efficiency_mean": 0.55,
+    "lesioned_efficiency_mean": 0.5325,
+    "lesioned_success_rate": 0.7,
+    "mean_steps": 18.7,
+    "lesion_retention_mean": 1.1493911223717077,
+    "measured_ms_per_step": 1.1564410963810743,
+    "edges_mean": 11543.4,
+    "in_degree_max_mean": 26.6,
+    "in_degree_cv_mean": 0.24744984823756266,
+    "clustering_coefficient_mean": 0.12170871793973678,
+    "modularity_mean": 0.580725381971761,
+    "characteristic_path_length_mean": 2.9711334745762707,
+    "global_efficiency_mean": 0.3605875842025207,
+    "hub_concentration_top5pct_mean": 0.06979816686904822,
+    "regional_communication_efficiency_mean": 0.33421202164489794,
+    "reciprocity_mean": 0.3140824413526307
+   },
+   "hybrid": {
+    "heldout_mean": 27.491625830547008,
+    "heldout_std": 2.319129684746336,
+    "success_rate": 1.0,
+    "efficiency_mean": 0.74,
+    "lesioned_efficiency_mean": 0.7425,
+    "lesioned_success_rate": 1.0,
+    "mean_steps": 11.4,
+    "lesion_retention_mean": 0.9951230273455772,
+    "measured_ms_per_step": 1.2269999140629895,
+    "edges_mean": 5128.6,
+    "in_degree_max_mean": 13.0,
+    "in_degree_cv_mean": 0.2359557826300071,
+    "clustering_coefficient_mean": 0.21785196319203673,
+    "modularity_mean": 0.5056186369310944,
+    "characteristic_path_length_mean": 4.300985984354629,
+    "global_efficiency_mean": 0.25084870902402684,
+    "hub_concentration_top5pct_mean": 0.06797007330838033,
+    "regional_communication_efficiency_mean": 0.2414209192818609,
+    "reciprocity_mean": 0.6241885052329156
+   }
+  },
+  "comparisons": {
+   "clustered_small_world_vs_legacy": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.002499999999999991
+   },
+   "hub_skewed_vs_legacy": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.002499999999999991
+   },
+   "uniform_random_vs_legacy": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.002499999999999991
+   },
+   "degree_shuffled_vs_legacy": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.002499999999999991
+   },
+   "erdos_renyi_vs_legacy": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.004999999999999982
+   },
+   "hub_capped_vs_legacy": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.002499999999999991
+   },
+   "ring_lattice_vs_legacy": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.00499999999999996
+   },
+   "hierarchical_modular_vs_legacy": {
+    "verdict": "inconclusive",
+    "mean_diff": 0.002499999999999991
+   },
+   "multi_region_vs_legacy": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.1875
+   },
+   "multiscale_regional_vs_legacy": {
+    "verdict": "not_supported",
+    "mean_diff": -0.19249999999999998
+   },
+   "hybrid_vs_legacy": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.002499999999999991
+   }
+  }
+ },
+ "lesion_robustness": {
+  "summary": {
+   "hub_targeted": {
+    "targeted_mean": 29.57558117576658,
+    "matched_random_mean": 26.469446292774155,
+    "intact_mean": 26.70244405524186,
+    "intact_success_rate": 0.7,
+    "targeted_success_rate": 0.4,
+    "random_success_rate": 0.6,
+    "targeted_mean_steps": 27.6,
+    "intact_efficiency": 0.5549999999999999,
+    "targeted_efficiency": 0.32,
+    "random_efficiency": 0.45999999999999996,
+    "targeted_retention": 1.109966096606975,
+    "random_retention": 0.999191641477869,
+    "edges_removed_mean": 1216.8
+   },
+   "region_targeted": {
+    "targeted_mean": 26.90849384212106,
+    "matched_random_mean": 25.276763119218554,
+    "intact_mean": 26.70244405524186,
+    "intact_success_rate": 0.7,
+    "targeted_success_rate": 0.7,
+    "random_success_rate": 0.7,
+    "targeted_mean_steps": 18.5,
+    "intact_efficiency": 0.5549999999999999,
+    "targeted_efficiency": 0.5549999999999999,
+    "random_efficiency": 0.5425,
+    "targeted_retention": 1.007224026206712,
+    "random_retention": 0.9531501163852429,
+    "edges_removed_mean": 964.6
+   },
+   "sensory_pathway": {
+    "targeted_mean": 29.143745471940502,
+    "matched_random_mean": 34.71801210810864,
+    "intact_mean": 26.70244405524186,
+    "intact_success_rate": 0.7,
+    "targeted_success_rate": 0.4,
+    "random_success_rate": 0.7,
+    "targeted_mean_steps": 29.2,
+    "intact_efficiency": 0.5549999999999999,
+    "targeted_efficiency": 0.27999999999999997,
+    "random_efficiency": 0.3825,
+    "targeted_retention": 1.1018947185619816,
+    "random_retention": 1.296214961861483,
+    "edges_removed_mean": 4812.8
+   },
+   "memory_pathway": {
+    "targeted_mean": 27.91745678382698,
+    "matched_random_mean": 27.678951543808818,
+    "intact_mean": 26.70244405524186,
+    "intact_success_rate": 0.7,
+    "targeted_success_rate": 0.7,
+    "random_success_rate": 0.5,
+    "targeted_mean_steps": 18.6,
+    "intact_efficiency": 0.5549999999999999,
+    "targeted_efficiency": 0.5525,
+    "random_efficiency": 0.38249999999999995,
+    "targeted_retention": 1.0429369662884984,
+    "random_retention": 1.044416555664211,
+    "edges_removed_mean": 2288.8
+   },
+   "cross_region_communication": {
+    "targeted_mean": 35.39758176333256,
+    "matched_random_mean": 40.480362086849105,
+    "intact_mean": 26.70244405524186,
+    "intact_success_rate": 0.7,
+    "targeted_success_rate": 0.4,
+    "random_success_rate": 0.5,
+    "targeted_mean_steps": 31.9,
+    "intact_efficiency": 0.5549999999999999,
+    "targeted_efficiency": 0.2125,
+    "random_efficiency": 0.1975,
+    "targeted_retention": 1.3311856241248576,
+    "random_retention": 1.5107625005819787,
+    "edges_removed_mean": 5847.2
+   }
+  },
+  "comparisons": {
+   "hub_targeted_targeted_vs_matched_random": {
+    "verdict": "supported",
+    "mean_diff": 3.1061348829924262,
+    "metric": "return"
+   },
+   "hub_targeted_targeted_damage_exceeds_random": {
+    "verdict": "inconclusive",
+    "mean_diff": 0.13999999999999999,
+    "metric": "efficiency"
+   },
+   "region_targeted_targeted_vs_matched_random": {
+    "verdict": "inconclusive",
+    "mean_diff": 1.6317307229025004,
+    "metric": "return"
+   },
+   "region_targeted_targeted_damage_exceeds_random": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.0125,
+    "metric": "efficiency"
+   },
+   "sensory_pathway_targeted_vs_matched_random": {
+    "verdict": "not_supported",
+    "mean_diff": -5.57426663616814,
+    "metric": "return"
+   },
+   "sensory_pathway_targeted_damage_exceeds_random": {
+    "verdict": "inconclusive",
+    "mean_diff": 0.1025,
+    "metric": "efficiency"
+   },
+   "memory_pathway_targeted_vs_matched_random": {
+    "verdict": "inconclusive",
+    "mean_diff": 0.2385052400181614,
+    "metric": "return"
+   },
+   "memory_pathway_targeted_damage_exceeds_random": {
+    "verdict": "not_supported",
+    "mean_diff": -0.16999999999999998,
+    "metric": "efficiency"
+   },
+   "cross_region_communication_targeted_vs_matched_random": {
+    "verdict": "not_supported",
+    "mean_diff": -5.08278032351655,
+    "metric": "return"
+   },
+   "cross_region_communication_targeted_damage_exceeds_random": {
+    "verdict": "inconclusive",
+    "mean_diff": -0.015000000000000003,
+    "metric": "efficiency"
+   }
+  },
+  "progressive": [
+   [
+    {
+     "severity": 0.15,
+     "return": 26.697865371515626,
+     "success_rate": 1.0,
+     "efficiency": 0.7625
+    },
+    {
+     "severity": 0.3,
+     "return": 27.364611616944476,
+     "success_rate": 1.0,
+     "efficiency": 0.75
+    },
+    {
+     "severity": 0.44999999999999996,
+     "return": 27.364306603562436,
+     "success_rate": 1.0,
+     "efficiency": 0.75
+    },
+    {
+     "severity": 0.6,
+     "return": 38.683249575423915,
+     "success_rate": 0.0,
+     "efficiency": 0.0
+    }
+   ],
+   [
+    {
+     "severity": 0.15,
+     "return": 23.097027429385573,
+     "success_rate": 0.5,
+     "efficiency": 0.325
+    },
+    {
+     "severity": 0.3,
+     "return": 33.391035886963024,
+     "success_rate": 0.0,
+     "efficiency": 0.0
+    },
+    {
+     "severity": 0.44999999999999996,
+     "return": 39.34421319200791,
+     "success_rate": 0.0,
+     "efficiency": 0.0
+    },
+    {
+     "severity": 0.6,
+     "return": 39.14602113000058,
+     "success_rate": 0.0,
+     "efficiency": 0.0
+    }
+   ],
+   [
+    {
+     "severity": 0.15,
+     "return": 25.232623733656823,
+     "success_rate": 1.0,
+     "efficiency": 0.8125
+    },
+    {
+     "severity": 0.3,
+     "return": 24.532499394323665,
+     "success_rate": 1.0,
+     "efficiency": 0.825
+    },
+    {
+     "severity": 0.44999999999999996,
+     "return": 25.21551698791302,
+     "success_rate": 1.0,
+     "efficiency": 0.8125
+    },
+    {
+     "severity": 0.6,
+     "return": 25.202958569201833,
+     "success_rate": 1.0,
+     "efficiency": 0.8125
+    }
+   ],
+   [
+    {
+     "severity": 0.15,
+     "return": 25.92976415791042,
+     "success_rate": 0.0,
+     "efficiency": 0.0
+    },
+    {
+     "severity": 0.3,
+     "return": 26.188244387219612,
+     "success_rate": 0.0,
+     "efficiency": 0.0
+    },
+    {
+     "severity": 0.44999999999999996,
+     "return": 24.534563733079437,
+     "success_rate": 0.0,
+     "efficiency": 0.0
+    },
+    {
+     "severity": 0.6,
+     "return": 25.684744343619176,
+     "success_rate": 0.0,
+     "efficiency": 0.0
+    }
+   ],
+   [
+    {
+     "severity": 0.15,
+     "return": 24.357333447109458,
+     "success_rate": 1.0,
+     "efficiency": 0.825
+    },
+    {
+     "severity": 0.3,
+     "return": 25.050753628098313,
+     "success_rate": 1.0,
+     "efficiency": 0.8125
+    },
+    {
+     "severity": 0.44999999999999996,
+     "return": 25.00776370170918,
+     "success_rate": 1.0,
+     "efficiency": 0.8125
+    },
+    {
+     "severity": 0.6,
+     "return": 41.71419097644856,
+     "success_rate": 0.0,
+     "efficiency": 0.0
+    }
+   ]
+  ]
+ },
+ "_meta": {
+  "seeds": [
+   11,
+   23,
+   37,
+   51,
+   67
+  ],
+  "total_seconds": 362.4
+ }
+}

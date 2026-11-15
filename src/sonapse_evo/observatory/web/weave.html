@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SONAPSE-EVO NeuroWeave Observatory</title>
+<style>
+:root{--bg:#090d13;--card-bg:#121820;--border:#242c38;--accent:#58a6ff;--accent-green:#3fb950;--accent-amber:#d29922;--accent-red:#f85149;--accent-purple:#bc8cff;--text:#c9d1d9;--text-muted:#8b949e}
+*{box-sizing:border-box}
+body{margin:0;padding:16px 24px;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:13px}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:12px}
+h1{margin:0;font-size:20px}h2{margin:0 0 10px;font-size:14px;color:var(--accent)}h3{margin:10px 0 6px;font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em}
+a{color:var(--accent)}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;border:1px solid var(--border);font-size:11px;margin-left:4px}
+.badge.ok{color:var(--accent-green);border-color:var(--accent-green)}.badge.warn{color:var(--accent-amber);border-color:var(--accent-amber)}.badge.bad{color:var(--accent-red);border-color:var(--accent-red)}.badge.purple{color:var(--accent-purple);border-color:var(--accent-purple)}
+nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+nav button{background:var(--card-bg);color:var(--text);border:1px solid var(--border);padding:7px 12px;border-radius:6px;cursor:pointer}
+nav button.active{border-color:var(--accent);color:var(--accent)}
+section{display:none}section.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:14px;min-width:0}
+.wide{grid-column:1/-1}
+button.act,select,input[type=number],input[type=text]{background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 9px;font-size:12px}
+button.act{cursor:pointer;margin:3px 3px 3px 0}button.act:hover{border-color:var(--accent)}button.primary{border-color:var(--accent-purple);color:var(--accent-purple)}button.danger{border-color:var(--accent-red);color:var(--accent-red)}
+label{display:inline-flex;align-items:center;gap:5px;margin:2px 8px 2px 0;max-width:100%;min-width:0}
+label select{flex:1 1 auto;min-width:0;max-width:100%;text-overflow:ellipsis}
+table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--border);white-space:nowrap}th{color:var(--text-muted);font-weight:500}
+.scroll{overflow-x:auto}
+.bar{height:8px;background:var(--bg);border-radius:4px;overflow:hidden;min-width:60px}.bar>i{display:block;height:100%;background:var(--accent)}
+.kv{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--border);padding:3px 0}.kv span:first-child{color:var(--text-muted)}.kv span:last-child{overflow:hidden;text-overflow:ellipsis}
+.muted{color:var(--text-muted);font-size:12px}
+.mech{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px 10px}
+canvas{width:100%;display:block;background:var(--bg);border:1px solid var(--border);border-radius:6px}
+pre{white-space:pre-wrap;word-break:break-word;font-size:11px;margin:6px 0 0;color:var(--text-muted)}
+video{display:none}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>SONAPSE-EVO <span class="badge purple">NeuroWeave Observatory</span></h1><div class="muted"><a href="/">&larr; original observatory</a> &middot; measured from the running model &middot; synthetic research abstraction, not a biological simulation</div></div>
+  <div id="pills"></div>
+</header>
+<nav id="tabs"></nav>
+
+<section id="tab-lab">
+ <div class="grid">
+  <div class="card"><h2>Model</h2>
+   <label>Profile <select id="profile"></select></label><button class="act" id="applyProfile">Apply profile</button><button class="act primary" id="maxMode">MAX mode (all mechanisms)</button><br>
+   <label>Seed <input type="number" id="seed" value="42" style="width:80px"></label><label>Neurons <input type="number" id="neurons" value="768" min="64" max="16384" style="width:90px"></label><br>
+   <label>Topology <select id="topology"></select></label><label>Environment <select id="environment"></select></label><br>
+   <button class="act" id="rebuild">Rebuild model</button><button class="act" id="run">Run</button><button class="act" id="step1">Step</button><button class="act" id="step25">Step &times;25</button><br>
+   <button class="act" id="regress">Regression check (all-off identity)</button><button class="act" id="measure">Measure cost</button>
+   <pre id="modelOut"></pre></div>
+  <div class="card"><h2>Experiments</h2>
+   <label>Experiment <select id="experiment" style="max-width:260px"></select></label><label><input type="checkbox" id="quick" checked> quick (smoke-sized)</label><br>
+   <button class="act" id="runExp">Run experiment</button><a class="muted" href="/api/weave/receipt">download last receipt</a><br>
+   <div class="muted" id="hypothesis"></div><div id="expOut" class="scroll"></div>
+   <h3>Promotion</h3><button class="act" id="promote">Propose promotion of last candidate</button><button class="act" id="unpromote">Roll back</button><pre id="promoOut"></pre></div>
+  <div class="card"><h2>Lesion bench</h2>
+   <label>Kind <select id="lesionKind"></select></label><label>Severity <input type="number" id="severity" value="0.3" min="0" max="1" step="0.05" style="width:70px"></label><br>
+   <button class="act danger" id="lesion">Apply lesion</button><button class="act" id="clearLesion">Clear lesion</button><pre id="lesionOut"></pre></div>
+  <div class="card wide"><h2>Mechanism switches <span class="muted" id="mechCount"></span></h2><div id="mechs"></div></div>
+ </div>
+</section>
+
+<section id="tab-neural">
+ <div class="grid">
+  <div class="card wide"><h2>Regional populations</h2><div class="scroll" id="regions"></div></div>
+  <div class="card"><h2>Soma populations</h2><div id="somas"></div><h3>Population activity (sampled neurons)</h3><canvas id="rates" height="46"></canvas></div>
+  <div class="card"><h2>Compartments (population means)</h2><div id="cells"></div></div>
+  <div class="card"><h2>Connectome</h2><div id="graph"></div><h3>Inter-region density</h3><canvas id="density" height="150"></canvas></div>
+  <div class="card"><h2>Neuron inspector</h2><label>Neuron <input type="number" id="nid" value="0" min="0" style="width:90px"></label><button class="act" id="inspect">Inspect</button><div id="neuron"></div></div>
+ </div>
+</section>
+
+<section id="tab-mod"><div class="grid">
+  <div class="card"><h2>Neuromodulator levels</h2><div id="mods"></div></div>
+  <div class="card"><h2>Affective control state</h2><div id="affect"></div><p class="muted">Operational control variables computed from reward and surprise. They are not subjective states.</p></div>
+  <div class="card"><h2>Control outputs</h2><div id="control"></div></div>
+  <div class="card wide"><h2>Receptors and regional modulation</h2><div class="scroll" id="regional"></div></div>
+</div></section>
+
+<section id="tab-sense"><div class="grid">
+  <div class="card wide"><h2>Sixteen sensory channels</h2><div class="scroll" id="channels"></div></div>
+  <div class="card"><h2>Live camera and microphone</h2>
+   <p class="muted">Frames and audio are reduced to a few numbers inside this page. Only those numbers are sent to the model; raw media is never uploaded, stored or exported.</p>
+   <button class="act" id="cam">Start camera</button><button class="act" id="mic">Start microphone</button><button class="act" id="simSensors">Return to environment sensors</button>
+   <pre id="liveOut"></pre><video id="video" playsinline muted></video><canvas id="grab" width="32" height="24" style="display:none"></canvas></div>
+  <div class="card"><h2>Cross-modal fusion</h2><div id="fusion"></div></div>
+</div></section>
+
+<section id="tab-learn"><div class="grid" id="learn"></div></section>
+
+<section id="tab-env"><div class="grid">
+  <div class="card wide"><h2>Environment <span class="muted" id="envName"></span></h2><canvas id="arena" width="1200" height="660"></canvas></div>
+  <div class="card"><h2>Agent and feedback</h2><div id="envStats"></div></div>
+  <div class="card"><h2>Reward and activity</h2><canvas id="spark" height="90"></canvas><div id="returns" class="muted"></div></div>
+  <div class="card"><h2>Predictions</h2><div id="preds"></div></div>
+</div></section>
+
+<section id="tab-studio"><div class="grid">
+  <div class="card"><h2>Export</h2>
+   <a class="act" href="/api/weave/export"><button class="act">Model package (JSON)</button></a>
+   <a href="/api/weave/standalone"><button class="act">Standalone HTML runner</button></a>
+   <a href="/api/weave/fpga"><button class="act">FPGA mapping manifest</button></a>
+   <p class="muted">The package holds the full model for continued learning in Python. The standalone runner is frozen inference only and lists what it does not execute. The FPGA manifest is a mapping description, not RTL or a bitstream.</p>
+   <div id="manifest"></div></div>
+  <div class="card"><h2>Import (read-only validation first)</h2>
+   <input type="file" id="file" accept=".json,application/json"><button class="act" id="validate">Validate package</button>
+   <div id="importOut"></div>
+   <a href="/api/weave/standalone?staged=1"><button class="act">Standalone runner from imported package</button></a>
+   <button class="act danger" id="activate">Replace live model with imported package</button>
+   <p class="muted">Validation never changes the running model. Replacing it is a separate, explicit step.</p></div>
+  <div class="card"><h2>Execution backends</h2><div id="backends"></div></div>
+</div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=v=>typeof v==='number'?(Number.isInteger(v)?String(v):v.toFixed(Math.abs(v)<1?4:2)):(v===null||v===undefined?'-':(typeof v==='object'?JSON.stringify(v):String(v)));
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const TABS=[['lab','Laboratory'],['neural','Neural'],['mod','Neuromodulation'],['sense','Sensory'],['learn','Learning'],['env','Environment'],['studio','Model studio']];
+let S=null,O=null,tab='lab';
+async function api(action,extra={}){const r=await fetch('/api/weave/action',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,...extra})});return r.json();}
+function kv(obj){return Object.entries(obj).map(([k,v])=>`<div class="kv"><span>${esc(k)}</span><span>${esc(fmt(v))}</span></div>`).join('');}
+function bars(obj,lo=0,hi=1){return Object.entries(obj).map(([k,v])=>`<div class="kv"><span>${esc(k)}</span><span style="display:flex;gap:8px;align-items:center"><span class="bar" style="width:110px"><i style="width:${Math.max(0,Math.min(100,(v-lo)/(hi-lo)*100))}%"></i></span>${fmt(v)}</span></div>`).join('');}
+function table(rows,cols){if(!rows.length)return '<div class="muted">nothing to show</div>';return '<table><tr>'+cols.map(c=>`<th>${esc(c)}</th>`).join('')+'</tr>'+rows.map(r=>'<tr>'+cols.map(c=>`<td>${esc(fmt(r[c]))}</td>`).join('')+'</tr>').join('')+'</table>';}
+function fill(sel,items,value){sel.innerHTML=items.map(i=>`<option value="${esc(i[0])}">${esc(i[1])}</option>`).join('');if(value!==undefined)sel.value=value;}
+
+function setTab(t){tab=t;document.querySelectorAll('section').forEach(s=>s.classList.toggle('active',s.id==='tab-'+t));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.t===t));render();}
+$('tabs').innerHTML=TABS.map(([t,n])=>`<button data-t="${t}">${n}</button>`).join('');
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.t)));
+
+async function loadOptions(){
+  O=await (await fetch('/api/weave/options')).json();
+  fill($('profile'),Object.entries(O.profiles).map(([k,n])=>[k,`${k} (${n})`]));
+  fill($('topology'),O.topologies.map(k=>[k,k]));
+  fill($('environment'),O.environments.filter(e=>e.name!=='multi_agent').map(e=>[e.name,`${e.name} - ${e.description}`]));
+  fill($('experiment'),O.experiments.map(e=>[e.id,e.title]));
+  fill($('lesionKind'),O.lesion_kinds.map(k=>[k,k]));
+  $('experiment').addEventListener('change',showHypothesis);showHypothesis();
+  $('backends').innerHTML=table(Object.entries(O.backends).map(([k,v])=>({backend:k,available:v.available,legacy_path:v.legacy_path,weave_path:v.weave_path,note:v.note||''})),['backend','available','legacy_path','weave_path','note']);
+}
+function showHypothesis(){const e=O.experiments.find(x=>x.id===$('experiment').value);if(e)$('hypothesis').textContent=`Hypothesis: ${e.hypothesis} Candidate: ${e.candidate.join(', ')||'-'}; baseline: ${e.baseline.join(', ')||'legacy'}; environment: ${e.environment}.`;}
+
+function renderMechs(){
+  const groups={};S.mechanisms.forEach(m=>(groups[m.group]=groups[m.group]||[]).push(m));
+  const focus=document.activeElement&&document.activeElement.dataset&&document.activeElement.dataset.mech;
+  $('mechs').innerHTML=Object.entries(groups).map(([g,ms])=>`<h3>${esc(g)}</h3><div class="mech">`+ms.map(m=>`<label title="${esc(m.summary)}"><input type="checkbox" data-mech="${esc(m.id)}" ${m.enabled?'checked':''}> ${esc(m.title)}${m.enabled&&m.kind==='plugin'&&!m.attached?' <span class="badge bad">fault</span>':''}</label>`).join('')+'</div>').join('');
+  $('mechs').querySelectorAll('input').forEach(i=>i.addEventListener('change',async()=>{const r=await api('set_mechanism',{id:i.dataset.mech,enabled:i.checked});if(r.error)$('modelOut').textContent=r.error;poll();}));
+  if(focus){const el=$('mechs').querySelector(`[data-mech="${focus}"]`);if(el)el.focus();}
+  $('mechCount').textContent=`${S.mechanisms.filter(m=>m.enabled).length} of ${S.mechanisms.length} enabled`;
+}
+let mechSig='',synced=false;
+function render(){
+  if(!S)return;const t=S.telemetry,c=S.config;
+  if(!synced&&O){synced=true;$('profile').value=c.profile in O.profiles?c.profile:'legacy';$('seed').value=c.seed;$('neurons').value=c.total_neurons;$('topology').value=c.topology_kind;$('environment').value=c.environment;}
+  $('pills').innerHTML=`<span class="badge purple">${esc(c.profile)}</span><span class="badge">${t.enabled.length} mechanisms</span><span class="badge">${t.neurons} neurons</span><span class="badge">${esc(c.topology_kind)}</span><span class="badge">step ${t.counters.steps}</span><span class="badge ${S.running?'ok':'warn'}">${S.running?'RUNNING':'PAUSED'}</span><span class="badge ${t.faults.length?'bad':'ok'}">${t.faults.length} faults</span>`;
+  $('run').textContent=S.running?'Pause':'Run';
+  if(tab==='lab'){const sig=S.mechanisms.map(m=>m.id+m.enabled+m.attached).join();if(sig!==mechSig){mechSig=sig;renderMechs();}
+    $('lesionOut').textContent=`${S.lesion.edges_lesioned} of ${S.lesion.edges_total} base synapses lesioned`;
+    $('promoOut').textContent=`stable set: ${S.promotion.stable.join(', ')||'(none - default profile stays legacy)'}\narchived failures: ${S.promotion.failures}`;}
+  if(tab==='neural'){
+    $('regions').innerHTML=table(S.regions,['name','role','neurons','rate','spike_rate','proximal','distal','apical','context','gating','release','surprise']);
+    $('somas').innerHTML=bars(S.somas,0,Math.max(1e-6,...Object.values(S.somas)));
+    $('cells').innerHTML=kv(t.cell);
+    const g=S.graph;$('graph').innerHTML=kv({edges:g.edges,density:g.density,clustering:g.clustering_coefficient,modularity:g.modularity,'path length':g.characteristic_path_length,'global efficiency':g.global_efficiency,'hub share (top 5%)':g.hub_concentration_top5pct,'regional efficiency':g.regional_communication_efficiency,'in-degree max':g.in_degree.max,'in-degree CV':g.in_degree.cv,...g.edge_classes,'grown synapses':t.edges.grown,'mean |learned delta|':t.edges.mean_abs_delta,'routing gain':t.edges.routing_gain_mean});
+    heat($('rates'),[S.rates_sample],1);heat($('density'),g.inter_region_density,Math.max(1e-9,...g.inter_region_density.flat()));}
+  if(tab==='mod'){const s=t.signals;$('mods').innerHTML=bars(s.modulators,-1,1);$('affect').innerHTML=bars(s.affect,-1,1);
+    $('control').innerHTML=kv({'plasticity gain':s.plasticity_gain,exploration:s.exploration,persistence:s.persistence,'attention gain':s.attention_gain,'control reliability':s.control_reliability,uncertainty:s.uncertainty,surprise:s.surprise,...s.extra});
+    const f=t.mechanisms.neuromodulatory_field;$('regional').innerHTML=f?('<h3>mean receptor sensitivity</h3>'+kv(f.receptor_mean)+'<h3>local field by region</h3>'+table(Object.entries(f.regional).map(([r,v])=>({region:r,...v})),['region','dopamine','serotonin','acetylcholine','noradrenaline','octopamine','endocannabinoid'])):'<div class="muted">Enable "Neuromodulatory field" to see receptor profiles and regional modulation.</div>';}
+  if(tab==='sense'){const h=t.mechanisms.multimodal_sensory,f=t.mechanisms.cross_modal_fusion;
+    if(!h){$('channels').innerHTML='<div class="muted">Enable "Multimodal sensory integration" in the Laboratory tab.</div>';}
+    else{const focused=document.activeElement&&document.activeElement.dataset&&document.activeElement.dataset.ch;if(!focused){
+      $('channels').innerHTML='<table><tr><th>channel</th><th>value</th><th></th><th>mode</th><th>provenance</th><th>status</th></tr>'+Object.entries(h.channels).map(([n,v])=>`<tr><td>${esc(n)}</td><td>${fmt(v)}</td><td><span class="bar" style="width:120px"><i style="width:${Math.min(100,Math.abs(v)*100)}%"></i></span></td><td><select data-ch="${esc(n)}">${['enabled','disabled','simulated','external'].map(m=>`<option ${h.modes[n]===m?'selected':''}>${m}</option>`).join('')}</select></td><td>${esc(h.provenance[n])}</td><td>${h.missing.includes(n)?'<span class="badge warn">missing</span>':'<span class="badge ok">live</span>'}</td></tr>`).join('')+'</table>';
+      $('channels').querySelectorAll('select').forEach(s=>s.addEventListener('change',()=>api('channel_mode',{channel:s.dataset.ch,mode:s.value})));}}
+    $('fusion').innerHTML=f?kv({'imputed channels':f.imputed_channels,'association norm':f.association_norm,updates:f.updates})+'<h3>reliability weights</h3>'+kv(f.weights)+'<h3>prediction error</h3>'+kv(f.prediction_error):'<div class="muted">Enable "Cross-modal fusion".</div>';
+    $('liveOut').textContent=`live sensors: ${S.live_sensors?'browser':'environment'}\ncamera: ${h&&h.camera_enabled?'used':'not used'} | microphone: ${h&&h.microphone_enabled?'used':'not used'} | raw media stored: no`+(h?'\n'+Object.entries(h.extended).map(([k,v])=>k+': '+fmt(v)).join('\n'):'');}
+  if(tab==='learn'){const ids=Object.keys(t.mechanisms).filter(k=>!['multimodal_sensory','cross_modal_fusion','neuromodulatory_field'].includes(k));
+    $('learn').innerHTML=(ids.length?ids.map(id=>{const m=S.mechanisms.find(x=>x.id===id),flat={};Object.entries(t.mechanisms[id]).forEach(([k,v])=>{if(v&&typeof v==='object'&&!Array.isArray(v))Object.entries(v).slice(0,10).forEach(([k2,v2])=>flat[k+'.'+k2]=v2);else flat[k]=v;});return `<div class="card"><h2>${esc(m?m.title:id)}</h2>${kv(flat)}</div>`;}).join(''):'<div class="card wide muted">No plug-in mechanism is enabled. Switch some on in the Laboratory tab; their live learning, memory, routing and structural statistics appear here.</div>')
+      +`<div class="card"><h2>Synapses</h2>${kv(t.edges)}</div>`;}
+  if(tab==='env'){const e=S.environment;$('envName').textContent=e.name||'';drawArena(e);
+    $('envStats').innerHTML=kv({episode:S.episode,'episode return':S.episode_return,...(e.stats||{}),energy:e.agent?e.agent.energy:'-'});
+    spark($('spark'),S.history);$('returns').textContent='recent episode returns: '+(S.last_returns.map(v=>v.toFixed(1)).join(', ')||'none yet');
+    const p={};['predictive_world_model','hierarchical_prediction','efference_self_model','micro_collective','specialist_graft'].forEach(id=>{if(t.mechanisms[id])Object.entries(t.mechanisms[id]).forEach(([k,v])=>{if(typeof v!=='object')p[id.split('_')[0]+'.'+k]=v;});});
+    $('preds').innerHTML=Object.keys(p).length?kv(p):'<div class="muted">Enable the world model, prediction horizons or the self-model to see action and outcome predictions.</div>';}
+  if(tab==='studio'){$('manifest').innerHTML='<h3>current model</h3>'+kv({neurons:t.neurons,'base synapses':t.edges.base,'grown synapses':t.edges.grown,'mechanisms enabled':t.enabled.length,'learning enabled':t.learning_enabled,profile:t.profile,'weave version':t.weave_version});
+    const r=S.staged_import;$('importOut').innerHTML=r?`<div class="kv"><span>validation</span><span class="badge ${r.ok?'ok':'bad'}">${r.ok?'VALID':'REJECTED'}</span></div>`+kv({format:r.formatVersion,'active model changed':r.active_model_changed,...(r.counts||{})})+(r.issues.length?'<h3>issues</h3><pre>'+esc(r.issues.join('\n'))+'</pre>':'')+(r.warnings.length?'<h3>warnings</h3><pre>'+esc(r.warnings.join('\n'))+'</pre>':'')+(r.capabilities?'<h3>capabilities</h3>'+kv(Object.fromEntries(Object.entries(r.capabilities).filter(([k])=>k!=='notes'))):''):'<div class="muted">No package validated yet.</div>';}
+}
+function heat(cv,rows,max){const x=cv.getContext('2d'),w=cv.width=cv.clientWidth||300,h=cv.height,n=rows.length,m=rows[0].length;x.clearRect(0,0,w,h);for(let i=0;i<n;i++)for(let j=0;j<m;j++){x.globalAlpha=Math.min(1,Math.max(0,rows[i][j]/max));x.fillStyle=css('--accent');x.fillRect(j*w/m,i*h/n,Math.ceil(w/m),Math.ceil(h/n));}x.globalAlpha=1;}
+function spark(cv,hist){const x=cv.getContext('2d'),w=cv.width=cv.clientWidth||300,h=cv.height;x.clearRect(0,0,w,h);if(hist.length<2)return;
+  [['reward',css('--accent-green'),-1,1],['mean_rate',css('--accent'),0,.4],['uncertainty',css('--accent-amber'),0,.2]].forEach(([k,col,lo,hi])=>{x.strokeStyle=col;x.beginPath();hist.forEach((p,i)=>{const px=i*w/(hist.length-1),py=h-(Math.max(lo,Math.min(hi,p[k]))-lo)/(hi-lo)*h;i?x.lineTo(px,py):x.moveTo(px,py);});x.stroke();});
+  x.fillStyle=css('--text-muted');x.font='10px sans-serif';x.fillText('reward (green) / mean rate (blue) / uncertainty (amber)',4,10);}
+function drawArena(e){const cv=$('arena'),x=cv.getContext('2d');if(!e.width){x.clearRect(0,0,cv.width,cv.height);x.fillStyle=css('--text-muted');x.font='20px sans-serif';x.fillText('This environment has no spatial scene to draw.',30,60);return;}
+  cv.width=e.width;cv.height=e.height;x.clearRect(0,0,e.width,e.height);
+  (e.thermal||[]).forEach(z=>{x.globalAlpha=.12;x.fillStyle=z.value>.5?css('--accent-red'):css('--accent');x.beginPath();x.arc(z.x,z.y,z.r,0,7);x.fill();});x.globalAlpha=1;
+  (e.food||[]).forEach(f=>{x.fillStyle=css('--accent-green');x.globalAlpha=.4+.6*f.energy;x.beginPath();x.arc(f.x,f.y,7,0,7);x.fill();});x.globalAlpha=1;
+  (e.obstacles||[]).forEach(o=>{x.fillStyle=css('--border');x.strokeStyle=css('--text-muted');x.beginPath();x.arc(o.x,o.y,o.r,0,7);x.fill();x.stroke();});
+  if(e.path&&e.path.length>1){x.strokeStyle=css('--accent-purple');x.beginPath();e.path.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.stroke();}
+  if(e.goal){x.strokeStyle=css('--accent-amber');x.lineWidth=3;x.setLineDash(e.goal.visible?[]:[6,6]);x.beginPath();x.arc(e.goal.x,e.goal.y,e.goal.radius,0,7);x.stroke();x.setLineDash([]);x.lineWidth=1;}
+  (e.others||[]).forEach(o=>{x.fillStyle=css('--accent-amber');x.beginPath();x.arc(o.x,o.y,12,0,7);x.fill();});
+  if(e.agent){const a=e.agent;x.fillStyle=css('--accent');x.beginPath();x.arc(a.x,a.y,14,0,7);x.fill();x.strokeStyle=css('--text');x.lineWidth=3;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(a.x+26*Math.cos(a.heading),a.y+26*Math.sin(a.heading));x.stroke();x.lineWidth=1;}}
+
+async function poll(){try{S=await (await fetch('/api/weave/state')).json();render();}catch(e){$('pills').innerHTML='<span class="badge bad">DISCONNECTED</span>';}}
+const show=(el,r)=>{$(el).textContent=r.error?('error: '+r.error):JSON.stringify(r,null,1);poll();};
+$('applyProfile').onclick=async()=>show('modelOut',await api('set_profile',{profile:$('profile').value}));
+$('maxMode').onclick=async()=>{$('profile').value='max';show('modelOut',await api('set_profile',{profile:'max'}));};
+$('rebuild').onclick=async()=>show('modelOut',await api('rebuild',{seed:+$('seed').value,total_neurons:+$('neurons').value,topology_kind:$('topology').value,environment:$('environment').value,profile:$('profile').value}));
+$('run').onclick=async()=>{await api('run',{running:!S.running});poll();};
+$('step1').onclick=async()=>{await api('step',{n:1});poll();};$('step25').onclick=async()=>{await api('step',{n:25});poll();};
+$('regress').onclick=async()=>show('modelOut',await api('regression_check'));
+$('measure').onclick=async()=>show('modelOut',await api('profile',{steps:20}));
+$('lesion').onclick=async()=>show('lesionOut',await api('lesion',{kind:$('lesionKind').value,severity:+$('severity').value}));
+$('clearLesion').onclick=async()=>show('lesionOut',await api('clear_lesion'));
+$('runExp').onclick=async()=>{$('expOut').innerHTML='<div class="muted">running...</div>';const r=await api('experiment',{id:$('experiment').value,quick:$('quick').checked});
+  if(r.error){$('expOut').innerHTML='<pre>'+esc(r.error)+'</pre>';return;}
+  const rows=Object.entries(r.summary).map(([arm,v])=>({arm,...v}));const cmp=r.comparisons&&r.comparisons.candidate_vs_baseline;
+  $('expOut').innerHTML=`<div class="kv"><span>verdict</span><span class="badge ${r.verdict==='supported'?'ok':'warn'}">${esc(r.verdict)}</span></div><div class="kv"><span>evidence tier</span><span>${esc(r.evidence_tier)}</span></div>`+(cmp?kv({'mean paired difference':cmp.mean_diff,reason:cmp.reason,seeds:cmp.n_seeds}):'')+table(rows,Object.keys(rows[0]).filter(k=>typeof rows[0][k]!=='object').slice(0,7));poll();};
+$('promote').onclick=async()=>show('promoOut',await api('propose_promotion'));$('unpromote').onclick=async()=>show('promoOut',await api('rollback_promotion'));
+$('inspect').onclick=async()=>{const d=await (await fetch('/api/weave/neuron?i='+(+$('nid').value))).json();$('neuron').innerHTML=d.error?esc(d.error):kv({region:d.region,rate:d.rate,type:d.sign,'in-degree':d.in_degree,'out-degree':d.out_degree,'axon branches':d.branches.map(b=>b.toFixed(3)).join(' / ')})+'<h3>compartments</h3>'+kv(d.compartments)+'<h3>strongest inputs</h3>'+table(d.strongest_inputs,['from','weight']);};
+$('validate').onclick=async()=>{const f=$('file').files[0];if(!f){$('importOut').textContent='Choose a JSON package first.';return;}const r=await api('validate_import',{package:await f.text()});if(r.error)$('importOut').textContent=r.error;poll();};
+$('activate').onclick=async()=>{if(confirm('Replace the running model with the validated imported package?')){const r=await api('activate_import');alert(r.error||r.status);poll();}};
+
+// ---- local camera / microphone feature extraction (raw media never leaves this page) ----
+let camStream=null,micStream=null,audioCtx=null,analyser=null,prevLum=null,sendTimer=null,pending={};
+function sampleCam(){const v=$('video'),g=$('grab').getContext('2d',{willReadFrequently:true});g.drawImage(v,0,0,32,24);const d=g.getImageData(0,0,32,24).data,n=768,lum=new Float32Array(n);let L=0,rg=0,by=0;
+  for(let i=0;i<n;i++){const r=d[i*4]/255,gr=d[i*4+1]/255,b=d[i*4+2]/255;lum[i]=.299*r+.587*gr+.114*b;L+=lum[i];rg+=r-gr;by+=b-(r+gr)/2;}
+  let edges=0,motion=0;for(let y=0;y<23;y++)for(let x=0;x<31;x++){const i=y*32+x;if(Math.abs(lum[i]-lum[i+1])+Math.abs(lum[i]-lum[i+32])>.15)edges++;}
+  if(prevLum)for(let i=0;i<n;i++)motion+=Math.abs(lum[i]-prevLum[i]);prevLum=lum;
+  Object.assign(pending,{visual_luminance:L/n,visual_red_green:rg/n,visual_blue_yellow:by/n,visual_edge_density:edges/(23*31),visual_motion:Math.min(1,4*motion/n)});}
+function sampleMic(){const f=new Uint8Array(analyser.frequencyBinCount);analyser.getByteFrequencyData(f);const hz=audioCtx.sampleRate/analyser.fftSize,band=(lo,hi)=>{let s=0,c=0;for(let i=Math.floor(lo/hz);i<Math.min(f.length,Math.ceil(hi/hz));i++){s+=f[i];c++;}return c?s/c/255:0;};
+  Object.assign(pending,{audio_low:band(20,300),audio_mid:band(300,2000),audio_high:band(2000,8000)});}
+function startSending(){if(sendTimer)return;sendTimer=setInterval(()=>{if(camStream)sampleCam();if(micStream)sampleMic();if(Object.keys(pending).length){api('sensors',{values:pending,provenance:'direct_sensory'});pending={};}},250);}
+function stopSendingIfIdle(){if(!camStream&&!micStream&&sendTimer){clearInterval(sendTimer);sendTimer=null;}}
+$('cam').onclick=async()=>{try{if(camStream){camStream.getTracks().forEach(t=>t.stop());camStream=null;prevLum=null;$('cam').textContent='Start camera';stopSendingIfIdle();return;}
+  camStream=await navigator.mediaDevices.getUserMedia({video:{width:160,height:120}});$('video').srcObject=camStream;await $('video').play();$('cam').textContent='Stop camera';startSending();}catch(e){$('liveOut').textContent='camera unavailable: '+e.message;}};
+$('mic').onclick=async()=>{try{if(micStream){micStream.getTracks().forEach(t=>t.stop());micStream=null;if(audioCtx)audioCtx.close();audioCtx=null;$('mic').textContent='Start microphone';stopSendingIfIdle();return;}
+  micStream=await navigator.mediaDevices.getUserMedia({audio:true});audioCtx=new AudioContext();analyser=audioCtx.createAnalyser();analyser.fftSize=1024;audioCtx.createMediaStreamSource(micStream).connect(analyser);$('mic').textContent='Stop microphone';startSending();}catch(e){$('liveOut').textContent='microphone unavailable: '+e.message;}};
+$('simSensors').onclick=async()=>{await api('release_sensors');poll();};
+
+loadOptions().then(()=>{setTab('lab');poll();setInterval(poll,1000);});
+</script>
+</body>
+</html>

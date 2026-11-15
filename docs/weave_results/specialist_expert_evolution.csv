@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+specialist_expert_evolution,baseline,11,multimodal_sensory+micro_collective+collective_meta_learning,6.649118,-1.671747,0.000,7.0642,1173596,0.00000000,0,0.000000,80.00
+specialist_expert_evolution,baseline,23,multimodal_sensory+micro_collective+collective_meta_learning,-30.838221,-30.872017,0.000,7.4031,1173796,0.00000000,0,0.000000,80.00
+specialist_expert_evolution,baseline,37,multimodal_sensory+micro_collective+collective_meta_learning,-31.152938,-31.226571,0.000,6.3828,1174396,0.00000000,0,0.000000,80.00
+specialist_expert_evolution,baseline,51,multimodal_sensory+micro_collective+collective_meta_learning,-13.869221,-30.419743,0.000,6.6662,1174096,0.00000000,0,0.000000,80.00
+specialist_expert_evolution,baseline,67,multimodal_sensory+micro_collective+collective_meta_learning,-13.912566,20.973733,0.000,6.5170,1172296,0.00000000,0,0.000000,80.00
+specialist_expert_evolution,candidate,11,multimodal_sensory+micro_collective+collective_meta_learning+expert_routing,-11.578196,-1.670285,0.000,7.7810,1173596,0.00000000,0,0.000000,80.00
+specialist_expert_evolution,candidate,23,multimodal_sensory+micro_collective+collective_meta_learning+expert_routing,-30.828698,-30.864845,0.000,7.6557,1173796,0.00000000,0,0.000000,80.00
+specialist_expert_evolution,candidate,37,multimodal_sensory+micro_collective+collective_meta_learning+expert_routing,-31.161206,-31.226102,0.000,7.6510,1174396,0.00000000,0,0.000000,80.00
+specialist_expert_evolution,candidate,51,multimodal_sensory+micro_collective+collective_meta_learning+expert_routing,-13.870771,-29.708287,0.000,8.5304,1174096,0.00000000,0,0.000000,80.00
+specialist_expert_evolution,candidate,67,multimodal_sensory+micro_collective+collective_meta_learning+expert_routing,-13.874222,20.970849,0.000,9.4825,1172296,0.00000000,0,0.000000,80.00

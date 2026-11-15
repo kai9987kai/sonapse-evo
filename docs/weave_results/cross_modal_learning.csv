@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+cross_modal_learning,baseline,11,multimodal_sensory,8.387076,-1.658224,0.000,5.1661,1173596,0.00000000,0,0.000000,80.00
+cross_modal_learning,baseline,23,multimodal_sensory,-30.773561,-30.759150,0.000,5.2365,1173796,0.00000000,0,0.000000,80.00
+cross_modal_learning,baseline,37,multimodal_sensory,-31.148596,-31.219181,0.000,5.0945,1174396,0.00000000,0,0.000000,80.00
+cross_modal_learning,baseline,51,multimodal_sensory,-13.808411,-30.342914,0.000,5.0526,1174096,0.00000000,0,0.000000,80.00
+cross_modal_learning,baseline,67,multimodal_sensory,-31.189695,18.169311,0.500,6.1389,1172296,0.00000000,0,0.006250,80.00
+cross_modal_learning,candidate,11,multimodal_sensory+cross_modal_fusion,5.336916,-4.084704,0.000,5.8611,1178076,0.00000000,0,0.000000,80.00
+cross_modal_learning,candidate,23,multimodal_sensory+cross_modal_fusion,-30.346122,-30.852753,0.000,6.0864,1178276,0.00000000,0,0.000000,80.00
+cross_modal_learning,candidate,37,multimodal_sensory+cross_modal_fusion,-16.056988,-31.153105,0.000,6.7046,1178876,0.00000000,0,0.000000,80.00
+cross_modal_learning,candidate,51,multimodal_sensory+cross_modal_fusion,-31.164189,-27.632470,0.000,6.0875,1178576,0.00000000,0,0.000000,80.00
+cross_modal_learning,candidate,67,multimodal_sensory+cross_modal_fusion,-13.671587,21.182194,0.000,8.2660,1176776,0.00000000,0,0.000000,80.00

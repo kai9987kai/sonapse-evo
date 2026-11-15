@@ -1,0 +1,16 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+flyhash_sparse_projections,baseline,11,legacy,30.420692,26.667886,1.000,1.3022,1163996,0.00000000,0,0.762500,10.50
+flyhash_sparse_projections,baseline,23,legacy,22.300507,29.714806,1.000,1.4653,1164196,0.00000000,0,0.687500,13.50
+flyhash_sparse_projections,baseline,37,legacy,25.279848,24.519853,1.000,1.9803,1164796,0.00000000,0,0.825000,8.00
+flyhash_sparse_projections,baseline,51,legacy,33.200425,30.582609,1.000,1.2399,1164496,0.00000000,0,0.625000,16.00
+flyhash_sparse_projections,baseline,67,legacy,26.556696,24.991579,1.000,1.3945,1162696,0.00000000,0,0.812500,8.50
+flyhash_sparse_projections,candidate,11,flyhash_projection+sparse_distributed_code,30.185620,27.425502,1.000,6.3868,1173212,0.00000000,0,0.750000,11.00
+flyhash_sparse_projections,candidate,23,flyhash_projection+sparse_distributed_code,22.278789,29.782286,1.000,5.7895,1173412,0.00000000,0,0.687500,13.50
+flyhash_sparse_projections,candidate,37,flyhash_projection+sparse_distributed_code,24.804492,25.222277,1.000,5.7763,1174012,0.00000000,0,0.812500,8.50
+flyhash_sparse_projections,candidate,51,flyhash_projection+sparse_distributed_code,33.669103,31.275323,1.000,6.1745,1173712,0.00000000,0,0.612500,16.50
+flyhash_sparse_projections,candidate,67,flyhash_projection+sparse_distributed_code,26.520882,24.987584,1.000,6.1634,1171912,0.00000000,0,0.812500,8.50
+flyhash_sparse_projections,candidate_minus_flyhash_projection,11,sparse_distributed_code,30.497751,27.367318,1.000,5.6393,1173212,0.00000000,0,0.750000,11.00
+flyhash_sparse_projections,candidate_minus_flyhash_projection,23,sparse_distributed_code,22.284570,29.819450,1.000,5.7868,1173412,0.00000000,0,0.687500,13.50
+flyhash_sparse_projections,candidate_minus_flyhash_projection,37,sparse_distributed_code,24.805225,25.238380,1.000,5.6541,1174012,0.00000000,0,0.812500,8.50
+flyhash_sparse_projections,candidate_minus_flyhash_projection,51,sparse_distributed_code,33.047349,30.552392,1.000,5.5222,1173712,0.00000000,0,0.625000,16.00
+flyhash_sparse_projections,candidate_minus_flyhash_projection,67,sparse_distributed_code,26.602820,24.987813,1.000,5.6748,1171912,0.00000000,0,0.812500,8.50

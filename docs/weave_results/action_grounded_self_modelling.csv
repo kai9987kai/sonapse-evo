@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+action_grounded_self_modelling,baseline,11,reward_gated_plasticity,-1.222214,-8.567667,0.000,4.7472,1176284,0.00145809,0,0.000000,80.00
+action_grounded_self_modelling,baseline,23,reward_gated_plasticity,-18.954539,3.889658,0.000,5.0834,1176484,0.00181367,0,0.000000,80.00
+action_grounded_self_modelling,baseline,37,reward_gated_plasticity,-11.515260,-8.650598,0.000,5.4020,1177084,0.00156759,0,0.000000,80.00
+action_grounded_self_modelling,baseline,51,reward_gated_plasticity,-7.188523,-11.507736,0.000,6.5869,1176784,0.00124779,0,0.000000,80.00
+action_grounded_self_modelling,baseline,67,reward_gated_plasticity,-20.325628,-7.644375,0.000,6.4560,1174984,0.00140659,0,0.000000,80.00
+action_grounded_self_modelling,candidate,11,reward_gated_plasticity+efference_self_model,-2.523189,-1.493935,0.000,7.0964,1179228,0.00066488,0,0.000000,80.00
+action_grounded_self_modelling,candidate,23,reward_gated_plasticity+efference_self_model,-21.532035,0.901569,0.000,6.6801,1179428,0.00060835,0,0.000000,80.00
+action_grounded_self_modelling,candidate,37,reward_gated_plasticity+efference_self_model,-7.013809,-7.967702,0.000,6.7521,1180028,0.00057422,0,0.000000,80.00
+action_grounded_self_modelling,candidate,51,reward_gated_plasticity+efference_self_model,-7.112517,-6.858139,0.000,6.7341,1179728,0.00046857,0,0.000000,80.00
+action_grounded_self_modelling,candidate,67,reward_gated_plasticity+efference_self_model,-22.059597,-5.186141,0.000,6.7413,1177928,0.00046145,0,0.000000,80.00

@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+uncertainty_gated_propagation,baseline,11,predictive_world_model,30.420692,26.667886,1.000,5.9517,1193796,0.00000000,0,0.762500,10.50
+uncertainty_gated_propagation,baseline,23,predictive_world_model,22.300507,29.714806,1.000,6.0320,1193996,0.00000000,0,0.687500,13.50
+uncertainty_gated_propagation,baseline,37,predictive_world_model,25.279848,24.519853,1.000,6.0280,1194596,0.00000000,0,0.825000,8.00
+uncertainty_gated_propagation,baseline,51,predictive_world_model,33.200425,30.582609,1.000,5.5772,1194296,0.00000000,0,0.625000,16.00
+uncertainty_gated_propagation,baseline,67,predictive_world_model,26.556696,24.991579,1.000,6.0284,1192496,0.00000000,0,0.812500,8.50
+uncertainty_gated_propagation,candidate,11,predictive_world_model+uncertainty_gating,30.309557,27.352839,1.000,6.6300,1193796,0.00000000,0,0.750000,11.00
+uncertainty_gated_propagation,candidate,23,predictive_world_model+uncertainty_gating,22.283373,30.353841,1.000,5.6375,1193996,0.00000000,0,0.675000,14.00
+uncertainty_gated_propagation,candidate,37,predictive_world_model+uncertainty_gating,25.245856,25.921913,1.000,5.4846,1194596,0.00000000,0,0.800000,9.00
+uncertainty_gated_propagation,candidate,51,predictive_world_model+uncertainty_gating,33.543842,31.241000,1.000,4.8782,1194296,0.00000000,0,0.612500,16.50
+uncertainty_gated_propagation,candidate,67,predictive_world_model+uncertainty_gating,26.523593,24.964293,1.000,5.8197,1192496,0.00000000,0,0.812500,8.50

@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+micro_collective_learning,baseline,11,multimodal_sensory,8.356373,26.595006,0.000,6.5611,1173596,0.00000000,0,0.000000,80.00
+micro_collective_learning,baseline,23,multimodal_sensory,-30.769457,-30.757488,0.000,6.1304,1173796,0.00000000,0,0.000000,80.00
+micro_collective_learning,baseline,37,multimodal_sensory,-31.146144,-31.200849,0.000,6.4758,1174396,0.00000000,0,0.000000,80.00
+micro_collective_learning,baseline,51,multimodal_sensory,-13.826235,-30.362440,0.000,6.4027,1174096,0.00000000,0,0.000000,80.00
+micro_collective_learning,baseline,67,multimodal_sensory,-13.959370,17.495503,0.000,6.2501,1172296,0.00000000,0,0.000000,80.00
+micro_collective_learning,candidate,11,multimodal_sensory+micro_collective+collective_meta_learning,-11.593263,-2.732767,0.000,7.9559,1173596,0.00000000,0,0.000000,80.00
+micro_collective_learning,candidate,23,multimodal_sensory+micro_collective+collective_meta_learning,-30.847834,-30.863756,0.000,8.7048,1173796,0.00000000,0,0.000000,80.00
+micro_collective_learning,candidate,37,multimodal_sensory+micro_collective+collective_meta_learning,-31.161728,-31.213307,0.000,8.4944,1174396,0.00000000,0,0.000000,80.00
+micro_collective_learning,candidate,51,multimodal_sensory+micro_collective+collective_meta_learning,-13.850050,-30.389536,0.000,8.2101,1174096,0.00000000,0,0.000000,80.00
+micro_collective_learning,candidate,67,multimodal_sensory+micro_collective+collective_meta_learning,-13.878166,20.994800,0.000,7.9157,1172296,0.00000000,0,0.000000,80.00

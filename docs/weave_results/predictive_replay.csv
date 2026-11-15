@@ -1,0 +1,11 @@
+experiment_id,arm,seed,mechanisms,train_mean,heldout_mean,heldout_success_rate,measured_ms_per_step,measured_state_bytes,mean_abs_weight_delta,faults,heldout_efficiency,heldout_mean_steps
+predictive_replay,baseline,11,reward_gated_plasticity+sleep_consolidation,29.994635,26.776033,1.000,5.9876,1225436,0.00193780,0,0.762500,10.50
+predictive_replay,baseline,23,reward_gated_plasticity+sleep_consolidation,22.301931,29.762410,1.000,4.8308,1222564,0.00067061,0,0.687500,13.50
+predictive_replay,baseline,37,reward_gated_plasticity+sleep_consolidation,25.286262,24.556103,1.000,6.8143,1226236,0.00107070,0,0.825000,8.00
+predictive_replay,baseline,51,reward_gated_plasticity+sleep_consolidation,33.363822,30.189660,1.000,5.3501,1225936,0.00252580,0,0.637500,15.50
+predictive_replay,baseline,67,reward_gated_plasticity+sleep_consolidation,26.559707,25.033561,1.000,5.0683,1224136,0.00120352,0,0.812500,8.50
+predictive_replay,candidate,11,reward_gated_plasticity+sleep_consolidation+predictive_replay,29.995487,26.776244,1.000,6.2913,1369436,0.00194052,0,0.762500,10.50
+predictive_replay,candidate,23,reward_gated_plasticity+sleep_consolidation+predictive_replay,22.301931,29.762410,1.000,5.1375,1273764,0.00067061,0,0.687500,13.50
+predictive_replay,candidate,37,reward_gated_plasticity+sleep_consolidation+predictive_replay,25.286262,24.556103,1.000,5.5555,1309436,0.00107070,0,0.825000,8.00
+predictive_replay,candidate,51,reward_gated_plasticity+sleep_consolidation+predictive_replay,33.363964,30.189912,1.000,5.7244,1417936,0.00252459,0,0.637500,15.50
+predictive_replay,candidate,67,reward_gated_plasticity+sleep_consolidation+predictive_replay,26.556250,25.033496,1.000,6.3012,1310536,0.00120307,0,0.812500,8.50

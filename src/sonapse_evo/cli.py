@@ -386,8 +386,17 @@ def main():
 
     serve_p = subparsers.add_parser("serve", help="Launch observatory dashboard")
     serve_p.add_argument("--port", type=int, default=8890, help="Web server port")
+    serve_p.add_argument("--host", default="", help="Bind address (default: all interfaces, as before; use 127.0.0.1 to stay local)")
+
+    # NeuroWeave evolution layer: additional sub-commands (the commands above are unchanged)
+    from .neuroweave import cli as weave_cli
+    weave_cli.register(subparsers)
 
     args = parser.parse_args()
+
+    weave_exit = weave_cli.dispatch(args)
+    if weave_exit is not None:
+        sys.exit(weave_exit)
 
     if args.subcommand == "smoke":
         sys.exit(run_smoke_test())
@@ -405,7 +414,7 @@ def main():
         sys.exit(run_criticality(args.seed))
     elif args.subcommand == "serve":
         from .observatory.server import run_server
-        run_server(args.port)
+        run_server(args.port, host=args.host)
     else:
         parser.print_help()
 
